@@ -1,0 +1,3070 @@
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:97:24: error: no matching constructor for initialization of 'R3BGfi'
+    run->AddModule(new R3BGfi("Gfi",
+                       ^      ~~~~~~
+G__R3BGfiDict dictionary payload:37:5: note: candidate constructor not viable: requires 2 arguments, but 3 were provided
+    R3BGfi(const char* name, Bool_t active);
+    ^
+G__R3BGfiDict dictionary payload:26:7: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 3 were provided
+class R3BGfi : public R3BDetector
+      ^
+G__R3BGfiDict dictionary payload:31:5: note: candidate constructor not viable: requires 0 arguments, but 3 were provided
+    R3BGfi();
+    ^
+G__R3BGfiDict dictionary payload:46:5: note: candidate constructor not viable: requires 11 arguments, but 3 were provided
+    R3BGfi(const char* name,
+    ^
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:110:24: error: unknown type name 'R3BMfi'
+    run->AddModule(new R3BMfi("Mfi", "mfi_16O.geo.root", kTRUE));//, -63.82, 0., 520.25, 0., -13.5, 0.)); // s412
+                       ^
+Error in <TInterpreter::AutoParse>: Error parsing payload code for class R3BGladFieldMap with content:
+
+#line 1 "G__FieldDict dictionary payload"
+
+#ifndef G__VECTOR_HAS_CLASS_ITERATOR
+  #define G__VECTOR_HAS_CLASS_ITERATOR 1
+#endif
+
+#define _BACKWARD_BACKWARD_WARNING_H
+// -------------------------------------------------------------------------
+// -----                    R3BFieldConst header file                  -----
+// -------------------------------------------------------------------------
+
+
+/** R3BFieldConst.h
+ ** @since 12.01.2004
+ ** @version1.0
+ **
+ ** A constant (homogeneous) magnetic field
+ **/
+
+
+#ifndef R3BFIELDCONST_H
+#define R3BFIELDCONST_H 1
+
+
+#include "FairField.h"
+
+
+class R3BFieldPar;
+
+/**
+ * \brief R3BFieldConst class.
+ *
+ * A constant (homogeneous) magnetic field.
+ */
+
+class R3BFieldConst : public FairField
+{
+
+ public:    
+
+  /** Default constructor **/
+  R3BFieldConst();
+
+
+  /** Standard constructor 
+   ** @param name   Object name
+   ** @param xMin,xMax   x region of field (global coordinates)
+   ** @param yMin,yMax   y region of field (global coordinates)
+   ** @param zMin,zMax   z region of field (global coordinates)
+   ** @param bX,bY,bZ    Field values [kG]
+   **/
+  R3BFieldConst(const char* name, Double_t xMin, Double_t xMax,
+		Double_t yMin, Double_t yMax, Double_t zMin,
+		Double_t zMax, Double_t bX, Double_t bY, Double_t bZ);
+
+
+  /** Constructor from R3BFieldPar **/
+  R3BFieldConst(R3BFieldPar* fieldPar);
+
+
+  /** Destructor **/
+  virtual ~R3BFieldConst();
+
+
+  /** Set the field region
+   ** @param xMin,xMax   x region of field (global coordinates)
+   ** @param yMin,yMax   y region of field (global coordinates)
+   ** @param zMin,zMax   z region of field (global coordinates)
+   **/
+  void SetFieldRegion(Double_t xMin, Double_t xMax, Double_t yMin, 
+		      Double_t yMax, Double_t zMin, Double_t zMax);
+
+
+  /** Set the field values
+   ** @param bX,bY,bZ    Field values [kG]
+   **/
+  void SetField(Double_t bX, Double_t bY, Double_t bZ);
+  
+
+  /** Get components of field at a given point 
+   ** @param x,y,z   Point coordinates [cm]
+   **/
+  virtual Double_t GetBx(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBy(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBz(Double_t x, Double_t y, Double_t z);
+
+
+  /** Accessors to field region **/
+  Double_t GetXmin() const { return fXmin; }
+  Double_t GetXmax() const { return fXmax; }
+  Double_t GetYmin() const { return fYmin; }
+  Double_t GetYmax() const { return fYmax; }
+  Double_t GetZmin() const { return fZmin; }
+  Double_t GetZmax() const { return fZmax; }
+
+
+  /** Accessors to field values **/
+  Double_t GetBx() const { return fBx; }
+  Double_t GetBy() const { return fBy; }
+  Double_t GetBz() const { return fBz; }
+
+
+  /** Screen output **/
+  virtual void Print(Option_t *option="") const;
+
+
+ private:
+
+  /** Limits of the field region **/
+  Double_t fXmin;   
+  Double_t fXmax;
+  Double_t fYmin;
+  Double_t fYmax;
+  Double_t fZmin;
+  Double_t fZmax;
+  
+  /** Field components inside the field region **/
+  Double_t fBx;
+  Double_t fBy;
+  Double_t fBz;
+
+  ClassDef(R3BFieldConst, 1);
+
+};
+
+
+#endif
+// -------------------------------------------------------------------------
+// -----                    R3BFieldContFact header file               -----
+// -------------------------------------------------------------------------
+
+
+/** R3BFieldContFact.h
+ ** @author
+ ** @since 20.02.2006
+ ** @version 1.0
+ **
+ ** Parameter container factory for field parameter container
+ **/
+
+
+#ifndef R3BFIELDCONTFACT_H
+#define R3BFIELDCONTFACT_H 1
+
+
+#include "FairContFact.h"
+
+
+class FairContainer;
+class FairParSet;
+
+
+class R3BFieldContFact : public FairContFact
+{
+
+ public:
+
+  /** Constructor **/
+  R3BFieldContFact();
+
+
+  /** Destructor **/
+  ~R3BFieldContFact();
+
+
+  /** Create containers
+   ** Creates the requested parameter sets (R3BFieldPar) 
+   **/
+  FairParSet* createContainer(FairContainer* container);
+
+
+ private:
+
+  /** Set all containers  
+   ** Creates container objects with all accepted contexts and adds them
+   ** to the list of containers for the field library. 
+   **/
+  void SetAllContainers();
+
+
+  ClassDef(R3BFieldContFact,1);
+
+};
+
+#endif
+// -------------------------------------------------------------------------
+// -----                      R3BFieldMap header file                  -----
+// -------------------------------------------------------------------------
+
+
+/** R3BFieldMap.h
+ ** @since 12.01.2004
+ ** @version1.0
+ **
+ ** Magnetic field map on a 3-D grid.
+ ** Field values are hold and returned in kG.
+ **/
+
+
+#ifndef R3BFIELDMAP_H
+#define R3BFIELDMAP_H 1
+
+
+#include "FairField.h"
+#include "TRotation.h"
+#include "TVector3.h"
+
+class TArrayI;
+class TArrayF;
+class R3BFieldPar;
+
+class R3BFieldMap : public FairField {
+
+public:
+  /** Default constructor **/
+  R3BFieldMap();
+  /** Standard constructor
+   ** @param name       Name of field map
+   ** @param fileType   R = ROOT file, A = ASCII
+   **/
+  R3BFieldMap(const char* mapName, const char* fileType = "R");
+  /** Constructor from R3BFieldPar **/
+  R3BFieldMap(R3BFieldPar* fieldPar);
+  R3BFieldMap(Int_t ftype,Bool_t verbosity=kFALSE);
+
+
+  /** Destructor **/
+  virtual ~R3BFieldMap();
+  /** Initialisation (read map from file) **/
+  virtual void Init();
+  /** Write the field map to an ASCII file **/
+  void WriteAsciiFile(const char* fileName);
+  /** Write field map data to a ROOT file **/
+  void WriteRootFile(const char* fileName, const char* mapName);
+  /** Set the position of the field centre **/
+  virtual void SetPosition(Double_t x, Double_t y, Double_t z);
+  /** Set a global field scaling factor **/
+  virtual void SetScale(Double_t factor) { fScale = factor; }
+  /** Accessor to global scaling factor  **/
+  Double_t GetScale() const { return fScale; }
+  /** Screen output **/
+  virtual void Print(Option_t *option="") const;
+  /** Main GetField function */
+  virtual void GetFieldValue(const Double_t point[3], Double_t* bField);
+
+  void SetVerbose(Bool_t verbosity){ fVerbose = verbosity;}
+
+private:
+    const R3BFieldMap& operator=(const R3BFieldMap&);
+    R3BFieldMap(const R3BFieldMap&);
+
+
+ protected:
+  /** Reset the field parameters and data **/
+  void Reset();
+  /** Read the field map from an ASCII file **/
+  void ReadAsciiFile(const char* fileName);
+  /** Read field map from a ROOT file **/	
+  void ReadRootFile(const char* fileName, const char* mapName);
+
+  Int_t GetLineForPosition(TVector3*  pos) const;
+  Int_t GetPositionForLine(Int_t line, TVector3* pos) const;
+  Int_t GetLinesArrayForPosition(TVector3* pos, TArrayI* lines);
+
+  /** Map file name **/
+  TString fFileName;
+  /** Global scaling factor (w.r.t. map on file) **/
+  Double_t fScale;        //!       
+
+  /** Local Variables **/
+  Int_t stepsInX;        //!   
+  Int_t stepsInY;        //! 
+  Int_t stepsInZ;        //! steps in the field map along each direction
+  Double_t initialX;     //!
+  Double_t initialY;     //!
+  Double_t initialZ;     //! initial coordinates in field map
+  Double_t gridStep;     //! distance between points in field map
+
+  Double_t* Bxfield;     //! field values obtained from field map
+  Double_t* Byfield;     //!
+  Double_t* Bzfield;     //!
+
+
+  Int_t typeField;  //! 0 for ALADIN field map,
+                    // 1 for R3B map, 2 for other possib .
+                    // 3 ALADIN inverted for back tracking
+
+  TRotation* gRot;   //!
+  TVector3* gTrans;  //! 
+
+  Bool_t fVerbose;
+
+  ClassDef(R3BFieldMap,1)
+
+};
+
+
+#endif
+// -------------------------------------------------------------------------
+// -----                      CbmFieldPar header file                  -----
+// -------------------------------------------------------------------------
+
+
+/** R3BFieldPar.h
+ ** @author
+ ** @since 20.02.2006
+ ** @version 1.0
+ **
+ ** Parameter set for the CBM magnetic field. For the runtime database.
+ **/
+
+
+#ifndef R3BFIELDPAR_H
+#define R3BFIELDPAR_H 1
+
+
+#include "FairField.h"
+#include "FairParGenericSet.h"
+
+
+class FairParamList;
+
+const int kMaxFieldMapType = 5;        
+
+class R3BFieldPar : public FairParGenericSet
+{
+
+ public:
+
+  
+  /** Standard constructor  **/
+  R3BFieldPar(const char* name, const char* title, const char* context);
+
+/** default constructor  **/
+  R3BFieldPar();
+  
+  /** Destructor **/
+  ~R3BFieldPar();
+
+
+  /** Put parameters **/
+  virtual void putParams(FairParamList* list);
+
+
+  /** Get parameters **/
+  virtual Bool_t getParams(FairParamList* list);
+
+
+  /** Set parameters from R3BField  **/
+  void SetParameters(FairField* field);
+
+
+  /** Accessors **/
+  Int_t    GetType()      const { return fType; }
+  Double_t GetXmin()      const { return fXmin; }
+  Double_t GetXmax()      const { return fXmax; }
+  Double_t GetYmin()      const { return fYmin; }
+  Double_t GetYmax()      const { return fYmax; }
+  Double_t GetZmin()      const { return fZmin; }
+  Double_t GetZmax()      const { return fZmax; }
+  Double_t GetBx()        const { return fBx; }
+  Double_t GetBy()        const { return fBy; }
+  Double_t GetBz()        const { return fBz; }
+  void MapName(TString& name) { name = fMapName; }
+  Double_t GetPositionX() const { return fPosX; }
+  Double_t GetPositionY() const { return fPosY; }
+  Double_t GetPositionZ() const { return fPosZ; }
+  Double_t GetScale()     const { return fScale; }
+    Double_t GetCurrent()   const { return fCurrent; }
+
+
+ private:
+
+  /** Field type
+   ** 0 = constant field
+   ** 1 = field map
+   **/
+  Int_t fType;
+
+
+  /** Field limits in case of constant field **/
+  Double_t fXmin, fXmax;
+  Double_t fYmin, fYmax;
+  Double_t fZmin, fZmax;
+
+
+  /** Field values in case of constant field [kG] **/
+  Double_t fBx, fBy, fBz;
+
+
+  /** Field map name in case of field map **/
+  TString fMapName;
+
+
+  /** Field centre position for field map **/
+  Double_t fPosX, fPosY, fPosZ;
+
+
+  /** Scaling factor for field map **/
+  Double_t fScale;
+    
+
+    Double_t fCurrent;
+
+
+  ClassDef(R3BFieldPar,1);
+
+};
+
+
+#endif
+// -------------------------------------------------------------------------
+// -----                    CbmFieldCreator header file                  -----
+// -----                Created 15/01/07  by M. Al-Turany              -----
+// -------------------------------------------------------------------------
+
+
+#ifndef R3BFIELDCREATOR_H
+#define R3BFIELDCREATOR_H
+
+#include "FairField.h"
+#include "FairFieldFactory.h"
+#include "R3BFieldPar.h"
+
+class R3BFieldCreator : public FairFieldFactory 
+{
+public:
+    R3BFieldCreator();
+    virtual ~R3BFieldCreator();
+    virtual FairField* createFairField();
+    virtual void SetParm();
+    ClassDef(R3BFieldCreator,1);
+protected:
+    R3BFieldPar* fFieldPar;
+};
+#endif //R3BFIELDCREATOR_H
+#ifndef R3BGLADFIELDMAP_H
+#define R3BGLADFIELDMAP_H 1
+
+
+#include "FairField.h"
+#include "R3BFieldPar.h"
+#include "TRotation.h"
+#include "TVector3.h"
+
+class TArrayF;
+
+class R3BGladFieldMap : public FairField {
+
+
+public:
+
+
+  /** Default constructor **/
+  R3BGladFieldMap();
+
+
+  /** Standard constructor
+   ** @param name       Name of field map
+   ** @param fileType   R = ROOT file, A = ASCII
+   **/
+  R3BGladFieldMap(const char* mapName, const char* fileType = "A");
+
+
+  /** Constructor from R3BGladFieldPar **/
+  R3BGladFieldMap(R3BFieldPar* fieldPar);
+
+
+  /** Constructor from R3BGladFieldMapCreator **/
+ // R3BGladFieldMap(R3BGladFieldMapCreator* creator);
+
+
+  /** Destructor **/
+  virtual ~R3BGladFieldMap();
+
+
+  /** Initialisation (read map from file) **/
+  virtual void Init();
+
+
+  /** Get the field components at a certain point 
+   ** @param x,y,z     Point coordinates (global) [cm]
+   ** @value Bx,By,Bz  Field components [kG]
+   **/
+  virtual Double_t GetBx(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBy(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBz(Double_t x, Double_t y, Double_t z);
+
+
+  /** Determine whether a point is inside the field map
+   ** @param x,y,z              Point coordinates (global) [cm]
+   ** @param ix,iy,iz (return)  Grid cell
+   ** @param dx,dy,dz (return)  Distance from grid point [cm] if inside
+   ** @value kTRUE if inside map, else kFALSE
+   **/
+  virtual Bool_t IsInside(Double_t x, Double_t y, Double_t z,
+			  Int_t& ix, Int_t& iy, Int_t& iz,
+			  Double_t& dx, Double_t& dy, Double_t& dz);
+
+ 
+  /** Write the field map to an ASCII file **/
+  void WriteAsciiFile(const char* fileName);
+
+								
+  /** Write field map data to a ROOT file **/
+  //void WriteRootFile(const char* fileName, const char* mapName);
+
+
+  /** Set the position of the field centre **/
+  virtual void SetPosition(Double_t x, Double_t y, Double_t z);
+
+
+  /** Set a global field scaling factor **/
+  virtual void SetScale(Double_t factor) { fScale = factor; }
+
+
+  /** Accessors to field parameters in local coordinate system **/
+  Double_t GetXmin()  const { return fXmin; } 
+  Double_t GetYmin()  const { return fYmin; }
+  Double_t GetZmin()  const { return fZmin; }
+  Double_t GetXmax()  const { return fXmax; }  
+  Double_t GetYmax()  const { return fYmax; }
+  Double_t GetZmax()  const { return fZmax; }
+  Double_t GetXstep() const { return fXstep; }  
+  Double_t GetYstep() const { return fYstep; }
+  Double_t GetZstep() const { return fZstep; }
+  Int_t    GetNx()    const { return fNx; }
+  Int_t    GetNy()    const { return fNy; }
+  Int_t    GetNz()    const { return fNz; }
+
+
+  /** Accessor to field centre position in global system **/
+  Double_t GetPositionX() const { return fPosX; }
+  Double_t GetPositionY() const { return fPosY; }
+  Double_t GetPositionZ() const { return fPosZ; }
+
+
+  /** Accessor to field rotation **/
+  Double_t GetYAngle() const { return fYAngle; }
+
+
+  /** Accessor to global scaling factor  **/
+  Double_t GetScale() const { return fScale; }
+
+
+  /** Accessors to the field value arrays **/
+  TArrayF* GetBx() const { return fBx; }
+  TArrayF* GetBy() const { return fBy; }
+  TArrayF* GetBz() const { return fBz; }
+
+
+  /** Accessor to field map file **/
+  const char* GetFileName() { return fFileName.Data(); }
+
+
+  /** Screen output **/
+  virtual void Print(Option_t *option="") const;
+	
+
+	
+ protected:
+
+
+  /** Reset the field parameters and data **/
+  void Reset();
+
+
+  /** Read the field map from an ASCII file **/
+  void ReadAsciiFile(const char* fileName);
+
+
+  /** Read field map from a ROOT file **/	
+  //void ReadRootFile(const char* fileName, const char* mapName);
+
+
+  /** Set field parameters and data **/
+  //void SetField(const R3BGladFieldMapData* data);
+
+
+  /** Get field values by interpolation of the grid.
+   ** @param dx,dy,dz  Relative distance from grid point [cell units]
+   **/
+  Double_t Interpolate(Double_t dx, Double_t dy, Double_t dz); 
+
+
+  /** Map file name **/
+  TString fFileName;
+
+
+  /** Global scaling factor (w.r.t. map on file) **/
+  Double_t fScale;             
+
+
+  /** Field centre position in global coordinates  **/
+  Double_t fPosX, fPosY, fPosZ;
+
+
+  /** Field rotation around Y axis **/
+  Double_t fYAngle;
+
+
+  /** Field limits in local coordinate system **/
+  Double_t fXmin, fXmax, fXstep;
+  Double_t fYmin, fYmax, fYstep;
+  Double_t fZmin, fZmax, fZstep;
+
+
+  /** Number of grid points  **/
+  Int_t fNx, fNy, fNz;   //
+
+
+  /** Arrays with the field values  **/
+  TArrayF* fBx;    //!
+  TArrayF* fBy;    //! 
+  TArrayF* fBz;    //!
+
+
+  /** Variables for temporary storage 
+   ** Used in the very frequently called method GetFieldValue  **/
+  Double_t fHa[2][2][2];            //! Field at corners of a grid cell
+  Double_t fHb[2][2];               //! Interpolated field (2-dim)
+  Double_t fHc[2];                  //! Interpolated field (1-dim)
+
+  /** local transformation
+  **/
+  TRotation* gRot;    //!
+  TVector3* gTrans;   //!
+
+
+
+ ClassDef(R3BGladFieldMap,2)
+
+};
+
+
+#endif
+
+#ifndef R3BFIELDINTERP_H
+#define R3BFIELDINTERP_H
+
+#include <stdlib.h>
+
+
+// Class to interpolate one variable in three dimensions Using linear
+// interpolation.  When given a point outside the valid map: produce
+// values as at the boundary at that point, i.e.  give a continous
+// value outside.  But not where and in what direction it went wrong.
+
+
+class R3BFieldInterp
+{
+public:
+  R3BFieldInterp()
+    : _m1(0)
+    , _m2(0)
+    , _n(0)
+    , _data(NULL)
+  {
+    for (int i = 0; i < 3; i++)
+      _np[i] = 0;
+  }
+
+  ~R3BFieldInterp()
+  {
+    free(_data);
+  }
+    
+private:
+    const R3BFieldInterp& operator=(const R3BFieldInterp&);
+    R3BFieldInterp(const R3BFieldInterp&);
+
+public:
+  void interpolate(const R3BFieldInterp &s1,double w1,
+		   const R3BFieldInterp &s2,double w2);
+
+  void init();
+
+  bool expand();
+
+public:
+  double interp(int ic[3],double dc[3]/*,int &outside*/);
+
+  double interp3(int ic[3],double dc[3]/*,int &outside*/);
+
+public:  
+  int    _np[3];
+  int    _max_ic[3]; // _max_ic[i] = _np[i] - 1
+  int    _m1, _m2;   // _m1 = _np[1] * _np[2] ; _m2 = _np[2]
+  int    _n;         // _n = _np[0] * _np[1] * _np[2]
+  float *_data;
+
+  float get_data_pt(int i0,int i1,int i2)
+  {
+    return _data[i0 * _m1 + i1 * _m2 + i2];
+  }
+
+  void set_data_pt(int i0,int i1,int i2,float d)
+  {
+    _data[i0 * _m1 + i1 * _m2 + i2] = d;
+  }
+
+};
+
+#endif//R3BFIELD_INTERP_H_
+#ifndef R3BALADINFIELDMAP_H
+#define R3BALADINFIELDMAP_H 1
+
+
+#include "FairField.h"
+#include "TRotation.h"
+#include "TVector3.h"
+#include "R3BFieldInterp.h"
+#include "R3BFieldPar.h"
+#include <map>
+
+
+
+// ------------------  Land02 internal Structures -----------------------//
+// <DB @ March 2010 >
+// The syntax convention in Land02 is preserved, member variables
+// begins with an _<xx>. It will help to separated between imported Land02
+// code and native one.
+
+struct fields_ALADiN
+{
+  R3BFieldInterp f[2][3];
+};
+
+typedef std::map<Double_t,fields_ALADiN*> map_fields_ALADiN;
+
+struct coords_ALADiN
+{
+  // Note, these are in ALADiN measurement box axis system,
+  // i.e. x is forward (usual z) and z is usual -x
+
+  TVector3 fBox_pt[2];
+  TVector3 fMag_pt[2];
+  Double_t fCosa, fSina;
+};
+
+
+
+
+
+// -------------------- Standard R3BRoot Field Map API -----------------//
+
+class TArrayF;
+
+class R3BAladinFieldMap : public FairField {
+
+
+public:
+
+
+  /** Default constructor **/
+  R3BAladinFieldMap();
+
+
+  /** Standard constructor
+   ** @param name       Name of field map
+   ** @param fileType   R = ROOT file, A = ASCII
+   **/
+  R3BAladinFieldMap(const char* mapName, const char* fileType = "A");
+
+
+  /** Constructor from R3BAladinFieldPar **/
+  R3BAladinFieldMap(R3BFieldPar* fieldPar);
+
+
+  /** Constructor from R3BAladinFieldMapCreator **/
+ // R3BAladinFieldMap(R3BAladinFieldMapCreator* creator);
+
+
+  /** Destructor **/
+  virtual ~R3BAladinFieldMap();
+
+
+  /** Initialisation (read map from file) **/
+  virtual void Init();
+
+  virtual void InitField();
+  
+  
+  virtual void FillParContainer() {}
+  
+
+  /** Main GetField function */
+  virtual void GetFieldValue(const Double_t point[3], Double_t* bField);
+
+
+  /** Get the field components at a certain point 
+   ** @param x,y,z     Point coordinates (global) [cm]
+   ** @value Bx,By,Bz  Field components [kG]
+   **/
+  virtual Double_t GetBx(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBy(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBz(Double_t x, Double_t y, Double_t z);
+
+
+  /** Determine whether a point is inside the field map
+   ** @param x,y,z              Point coordinates (global) [cm]
+   ** @param ix,iy,iz (return)  Grid cell
+   ** @param dx,dy,dz (return)  Distance from grid point [cm] if inside
+   ** @value kTRUE if inside map, else kFALSE
+   **/
+  virtual Bool_t IsInside(Double_t x, Double_t y, Double_t z,
+			  Int_t& ix, Int_t& iy, Int_t& iz,
+			  Double_t& dx, Double_t& dy, Double_t& dz);
+
+ 
+  /** Write the field map to an ASCII file **/
+  void WriteAsciiFile(const char* fileName);
+
+								
+  /** Write field map data to a ROOT file **/
+  //void WriteRootFile(const char* fileName, const char* mapName);
+
+
+  /** Set the position of the field centre **/
+  virtual void SetPosition(Double_t x, Double_t y, Double_t z);
+
+
+  /** Set a global field scaling factor **/
+  virtual void SetScale(Double_t factor) { fScale = factor; }
+
+
+  /** Accessors to field parameters in local coordinate system **/
+  Double_t GetXmin()  const { return fXmin; } 
+  Double_t GetYmin()  const { return fYmin; }
+  Double_t GetZmin()  const { return fZmin; }
+  Double_t GetXmax()  const { return fXmax; }  
+  Double_t GetYmax()  const { return fYmax; }
+  Double_t GetZmax()  const { return fZmax; }
+  Double_t GetXstep() const { return fXstep; }  
+  Double_t GetYstep() const { return fYstep; }
+  Double_t GetZstep() const { return fZstep; }
+  Int_t    GetNx()    const { return fNx; }
+  Int_t    GetNy()    const { return fNy; }
+  Int_t    GetNz()    const { return fNz; }
+
+
+  /** Accessor to field centre position in global system **/
+  Double_t GetPositionX() const { return fPosX; }
+  Double_t GetPositionY() const { return fPosY; }
+  Double_t GetPositionZ() const { return fPosZ; }
+
+
+  /** Accessor to global scaling factor  **/
+  Double_t GetScale() const { return fScale; }
+
+
+  /** Accessors to the field value arrays **/
+  TArrayF* GetBx() const { return fBx; }
+  TArrayF* GetBy() const { return fBy; }
+  TArrayF* GetBz() const { return fBz; }
+
+
+  /** Accessor to field map file **/
+  const char* GetFileName() { return fFileName.Data(); }
+
+
+  void CalcFieldDiv(R3BFieldInterp f[3],Double_t d[3]);
+
+
+
+  /** Screen output **/
+  virtual void Print(Option_t *option="") const;
+	
+  /** Set Current **/
+
+  void SetCurrent(Double_t aCurrent ) { fCurrent=aCurrent;}
+  Double_t GetCurrent() { return fCurrent;}
+  void SetFringeField(Bool_t set ) {gFringeField=set;}
+
+	
+ protected:
+
+
+  /** Reset the field parameters and data **/
+  void Reset();
+
+
+  /** Read the field map from an ASCII file **/
+  void ReadAsciiFile(const char* fileName);
+
+
+  /** Read field map from a ROOT file **/	
+  //void ReadRootFile(const char* fileName, const char* mapName);
+
+
+  /** Set field parameters and data **/
+  //void SetField(const R3BAladinFieldMapData* data);
+
+
+  /** Get field values by interpolation of the grid.
+   ** @param dx,dy,dz  Relative distance from grid point [cell units]
+   **/
+  Double_t Interpolate(Double_t dx, Double_t dy, Double_t dz); 
+
+
+  /** Map file name **/
+  TString fFileName;
+
+
+  /** Global scaling factor (w.r.t. map on file) **/
+  Double_t fScale;             
+
+
+  /** Field centre position in global coordinates  **/
+  Double_t fPosX, fPosY, fPosZ; 
+
+
+  /** Field limits in local coordinate system **/
+  Double_t fXmin, fXmax, fXstep;
+  Double_t fYmin, fYmax, fYstep;
+  Double_t fZmin, fZmax, fZstep;
+
+
+  /** Number of grid points  **/
+  Int_t fNx, fNy, fNz;   //
+
+
+  /** Arrays with the field values  **/
+  TArrayF* fBx;    //!
+  TArrayF* fBy;    //! 
+  TArrayF* fBz;    //!
+
+
+  /** Variables for temporary storage 
+   ** Used in the very frequently called method GetFieldValue  **/
+  Double_t fHa[2][2][2];            //! Field at corners of a grid cell
+  Double_t fHb[2][2];               //! Interpolated field (2-dim)
+  Double_t fHc[2];                  //! Interpolated field (1-dim)
+
+  /** local transformation
+  **/
+  TRotation* gRot;    //!
+  TVector3* gTrans;   //!
+
+
+  /** land02 imported variables
+   **/
+
+  static map_fields_ALADiN gMapIFieldOrig; //!
+  static map_fields_ALADiN gMapIField;     //!
+
+  static coords_ALADiN     gCoords[2];     //!
+  static Bool_t            gInitialized;   //!
+
+  fields_ALADiN *fCurField;                //!
+  Double_t       fCurrent;                 //!
+  Double_t       fFieldSign;               //!
+
+
+  TVector3 af_box[2][2] ;            //!
+  TVector3 af_mag[2][2] ;            //!
+  Bool_t gFringeField;               //!
+
+
+
+ ClassDef(R3BAladinFieldMap,1)
+
+};
+
+
+#endif
+
+#undef  _BACKWARD_BACKWARD_WARNING_H
+
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:119:37: error: allocation of incomplete type 'R3BGladFieldMap'
+    R3BGladFieldMap* magField = new R3BGladFieldMap("R3BGladMap");
+                                    ^~~~~~~~~~~~~~~
+G__FieldDict dictionary forward declarations' payload:10:7: note: forward declaration of 'R3BGladFieldMap'
+class R3BGladFieldMap;
+      ^
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:120:13: error: member access into incomplete type 'R3BGladFieldMap'
+    magField->SetScale(fieldScale);
+            ^
+G__FieldDict dictionary forward declarations' payload:10:7: note: forward declaration of 'R3BGladFieldMap'
+class R3BGladFieldMap;
+      ^
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:124:23: error: cannot initialize a parameter of type 'FairField *' with an lvalue of type 'R3BGladFieldMap *'
+        run->SetField(magField);
+                      ^~~~~~~~
+G__BaseDict dictionary payload:1588:37: note: passing argument to parameter 'field' here
+    void        SetField(FairField* field);
+                                    ^
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:142:9: error: unknown type name 'FairBoxGenerator'
+        FairBoxGenerator* boxGen = new FairBoxGenerator(pdgId, 3);
+        ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:142:40: error: unknown type name 'FairBoxGenerator'
+        FairBoxGenerator* boxGen = new FairBoxGenerator(pdgId, 3);
+                                       ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:150:9: error: unknown type name 'R3BIonGenerator'
+        R3BIonGenerator* ionGen = new R3BIonGenerator(50, 128, 50, 10, 0., 0., 1.3);
+        ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:150:39: error: unknown type name 'R3BIonGenerator'
+        R3BIonGenerator* ionGen = new R3BIonGenerator(50, 128, 50, 10, 0., 0., 1.3);
+                                      ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:166:9: error: unknown type name 'FairBoxGenerator'
+        FairBoxGenerator* boxGen_n = new FairBoxGenerator(2112, 3);
+        ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:166:42: error: unknown type name 'FairBoxGenerator'
+        FairBoxGenerator* boxGen_n = new FairBoxGenerator(2112, 3);
+                                         ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:176:9: error: unknown type name 'R3BAsciiGenerator'
+        R3BAsciiGenerator* gen = new R3BAsciiGenerator((dir + "/input/" + inputFile).Data());
+        ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:176:38: error: unknown type name 'R3BAsciiGenerator'
+        R3BAsciiGenerator* gen = new R3BAsciiGenerator((dir + "/input/" + inputFile).Data());
+                                     ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:184:9: error: unknown type name 'R3BSpecificGenerator'
+        R3BSpecificGenerator* pR3bGen = new R3BSpecificGenerator(pdg, beamEnergy);
+        ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:184:45: error: unknown type name 'R3BSpecificGenerator'
+        R3BSpecificGenerator* pR3bGen = new R3BSpecificGenerator(pdg, beamEnergy);
+                                            ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:240:5: error: use of undeclared identifier 'gMC'
+    gMC->SetRandom(new TRandom3(randomSeed));
+    ^
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:244:5: error: use of undeclared identifier 'gMC'
+    gMC->SetMaxNStep(nSteps);
+    ^
+Error in <TInterpreter::AutoParse>: Error parsing payload code for class R3BFieldPar with content:
+
+#line 1 "G__FieldDict dictionary payload"
+
+#ifndef G__VECTOR_HAS_CLASS_ITERATOR
+  #define G__VECTOR_HAS_CLASS_ITERATOR 1
+#endif
+
+#define _BACKWARD_BACKWARD_WARNING_H
+// -------------------------------------------------------------------------
+// -----                    R3BFieldConst header file                  -----
+// -------------------------------------------------------------------------
+
+
+/** R3BFieldConst.h
+ ** @since 12.01.2004
+ ** @version1.0
+ **
+ ** A constant (homogeneous) magnetic field
+ **/
+
+
+#ifndef R3BFIELDCONST_H
+#define R3BFIELDCONST_H 1
+
+
+#include "FairField.h"
+
+
+class R3BFieldPar;
+
+/**
+ * \brief R3BFieldConst class.
+ *
+ * A constant (homogeneous) magnetic field.
+ */
+
+class R3BFieldConst : public FairField
+{
+
+ public:    
+
+  /** Default constructor **/
+  R3BFieldConst();
+
+
+  /** Standard constructor 
+   ** @param name   Object name
+   ** @param xMin,xMax   x region of field (global coordinates)
+   ** @param yMin,yMax   y region of field (global coordinates)
+   ** @param zMin,zMax   z region of field (global coordinates)
+   ** @param bX,bY,bZ    Field values [kG]
+   **/
+  R3BFieldConst(const char* name, Double_t xMin, Double_t xMax,
+		Double_t yMin, Double_t yMax, Double_t zMin,
+		Double_t zMax, Double_t bX, Double_t bY, Double_t bZ);
+
+
+  /** Constructor from R3BFieldPar **/
+  R3BFieldConst(R3BFieldPar* fieldPar);
+
+
+  /** Destructor **/
+  virtual ~R3BFieldConst();
+
+
+  /** Set the field region
+   ** @param xMin,xMax   x region of field (global coordinates)
+   ** @param yMin,yMax   y region of field (global coordinates)
+   ** @param zMin,zMax   z region of field (global coordinates)
+   **/
+  void SetFieldRegion(Double_t xMin, Double_t xMax, Double_t yMin, 
+		      Double_t yMax, Double_t zMin, Double_t zMax);
+
+
+  /** Set the field values
+   ** @param bX,bY,bZ    Field values [kG]
+   **/
+  void SetField(Double_t bX, Double_t bY, Double_t bZ);
+  
+
+  /** Get components of field at a given point 
+   ** @param x,y,z   Point coordinates [cm]
+   **/
+  virtual Double_t GetBx(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBy(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBz(Double_t x, Double_t y, Double_t z);
+
+
+  /** Accessors to field region **/
+  Double_t GetXmin() const { return fXmin; }
+  Double_t GetXmax() const { return fXmax; }
+  Double_t GetYmin() const { return fYmin; }
+  Double_t GetYmax() const { return fYmax; }
+  Double_t GetZmin() const { return fZmin; }
+  Double_t GetZmax() const { return fZmax; }
+
+
+  /** Accessors to field values **/
+  Double_t GetBx() const { return fBx; }
+  Double_t GetBy() const { return fBy; }
+  Double_t GetBz() const { return fBz; }
+
+
+  /** Screen output **/
+  virtual void Print(Option_t *option="") const;
+
+
+ private:
+
+  /** Limits of the field region **/
+  Double_t fXmin;   
+  Double_t fXmax;
+  Double_t fYmin;
+  Double_t fYmax;
+  Double_t fZmin;
+  Double_t fZmax;
+  
+  /** Field components inside the field region **/
+  Double_t fBx;
+  Double_t fBy;
+  Double_t fBz;
+
+  ClassDef(R3BFieldConst, 1);
+
+};
+
+
+#endif
+// -------------------------------------------------------------------------
+// -----                    R3BFieldContFact header file               -----
+// -------------------------------------------------------------------------
+
+
+/** R3BFieldContFact.h
+ ** @author
+ ** @since 20.02.2006
+ ** @version 1.0
+ **
+ ** Parameter container factory for field parameter container
+ **/
+
+
+#ifndef R3BFIELDCONTFACT_H
+#define R3BFIELDCONTFACT_H 1
+
+
+#include "FairContFact.h"
+
+
+class FairContainer;
+class FairParSet;
+
+
+class R3BFieldContFact : public FairContFact
+{
+
+ public:
+
+  /** Constructor **/
+  R3BFieldContFact();
+
+
+  /** Destructor **/
+  ~R3BFieldContFact();
+
+
+  /** Create containers
+   ** Creates the requested parameter sets (R3BFieldPar) 
+   **/
+  FairParSet* createContainer(FairContainer* container);
+
+
+ private:
+
+  /** Set all containers  
+   ** Creates container objects with all accepted contexts and adds them
+   ** to the list of containers for the field library. 
+   **/
+  void SetAllContainers();
+
+
+  ClassDef(R3BFieldContFact,1);
+
+};
+
+#endif
+// -------------------------------------------------------------------------
+// -----                      R3BFieldMap header file                  -----
+// -------------------------------------------------------------------------
+
+
+/** R3BFieldMap.h
+ ** @since 12.01.2004
+ ** @version1.0
+ **
+ ** Magnetic field map on a 3-D grid.
+ ** Field values are hold and returned in kG.
+ **/
+
+
+#ifndef R3BFIELDMAP_H
+#define R3BFIELDMAP_H 1
+
+
+#include "FairField.h"
+#include "TRotation.h"
+#include "TVector3.h"
+
+class TArrayI;
+class TArrayF;
+class R3BFieldPar;
+
+class R3BFieldMap : public FairField {
+
+public:
+  /** Default constructor **/
+  R3BFieldMap();
+  /** Standard constructor
+   ** @param name       Name of field map
+   ** @param fileType   R = ROOT file, A = ASCII
+   **/
+  R3BFieldMap(const char* mapName, const char* fileType = "R");
+  /** Constructor from R3BFieldPar **/
+  R3BFieldMap(R3BFieldPar* fieldPar);
+  R3BFieldMap(Int_t ftype,Bool_t verbosity=kFALSE);
+
+
+  /** Destructor **/
+  virtual ~R3BFieldMap();
+  /** Initialisation (read map from file) **/
+  virtual void Init();
+  /** Write the field map to an ASCII file **/
+  void WriteAsciiFile(const char* fileName);
+  /** Write field map data to a ROOT file **/
+  void WriteRootFile(const char* fileName, const char* mapName);
+  /** Set the position of the field centre **/
+  virtual void SetPosition(Double_t x, Double_t y, Double_t z);
+  /** Set a global field scaling factor **/
+  virtual void SetScale(Double_t factor) { fScale = factor; }
+  /** Accessor to global scaling factor  **/
+  Double_t GetScale() const { return fScale; }
+  /** Screen output **/
+  virtual void Print(Option_t *option="") const;
+  /** Main GetField function */
+  virtual void GetFieldValue(const Double_t point[3], Double_t* bField);
+
+  void SetVerbose(Bool_t verbosity){ fVerbose = verbosity;}
+
+private:
+    const R3BFieldMap& operator=(const R3BFieldMap&);
+    R3BFieldMap(const R3BFieldMap&);
+
+
+ protected:
+  /** Reset the field parameters and data **/
+  void Reset();
+  /** Read the field map from an ASCII file **/
+  void ReadAsciiFile(const char* fileName);
+  /** Read field map from a ROOT file **/	
+  void ReadRootFile(const char* fileName, const char* mapName);
+
+  Int_t GetLineForPosition(TVector3*  pos) const;
+  Int_t GetPositionForLine(Int_t line, TVector3* pos) const;
+  Int_t GetLinesArrayForPosition(TVector3* pos, TArrayI* lines);
+
+  /** Map file name **/
+  TString fFileName;
+  /** Global scaling factor (w.r.t. map on file) **/
+  Double_t fScale;        //!       
+
+  /** Local Variables **/
+  Int_t stepsInX;        //!   
+  Int_t stepsInY;        //! 
+  Int_t stepsInZ;        //! steps in the field map along each direction
+  Double_t initialX;     //!
+  Double_t initialY;     //!
+  Double_t initialZ;     //! initial coordinates in field map
+  Double_t gridStep;     //! distance between points in field map
+
+  Double_t* Bxfield;     //! field values obtained from field map
+  Double_t* Byfield;     //!
+  Double_t* Bzfield;     //!
+
+
+  Int_t typeField;  //! 0 for ALADIN field map,
+                    // 1 for R3B map, 2 for other possib .
+                    // 3 ALADIN inverted for back tracking
+
+  TRotation* gRot;   //!
+  TVector3* gTrans;  //! 
+
+  Bool_t fVerbose;
+
+  ClassDef(R3BFieldMap,1)
+
+};
+
+
+#endif
+// -------------------------------------------------------------------------
+// -----                      CbmFieldPar header file                  -----
+// -------------------------------------------------------------------------
+
+
+/** R3BFieldPar.h
+ ** @author
+ ** @since 20.02.2006
+ ** @version 1.0
+ **
+ ** Parameter set for the CBM magnetic field. For the runtime database.
+ **/
+
+
+#ifndef R3BFIELDPAR_H
+#define R3BFIELDPAR_H 1
+
+
+#include "FairField.h"
+#include "FairParGenericSet.h"
+
+
+class FairParamList;
+
+const int kMaxFieldMapType = 5;        
+
+class R3BFieldPar : public FairParGenericSet
+{
+
+ public:
+
+  
+  /** Standard constructor  **/
+  R3BFieldPar(const char* name, const char* title, const char* context);
+
+/** default constructor  **/
+  R3BFieldPar();
+  
+  /** Destructor **/
+  ~R3BFieldPar();
+
+
+  /** Put parameters **/
+  virtual void putParams(FairParamList* list);
+
+
+  /** Get parameters **/
+  virtual Bool_t getParams(FairParamList* list);
+
+
+  /** Set parameters from R3BField  **/
+  void SetParameters(FairField* field);
+
+
+  /** Accessors **/
+  Int_t    GetType()      const { return fType; }
+  Double_t GetXmin()      const { return fXmin; }
+  Double_t GetXmax()      const { return fXmax; }
+  Double_t GetYmin()      const { return fYmin; }
+  Double_t GetYmax()      const { return fYmax; }
+  Double_t GetZmin()      const { return fZmin; }
+  Double_t GetZmax()      const { return fZmax; }
+  Double_t GetBx()        const { return fBx; }
+  Double_t GetBy()        const { return fBy; }
+  Double_t GetBz()        const { return fBz; }
+  void MapName(TString& name) { name = fMapName; }
+  Double_t GetPositionX() const { return fPosX; }
+  Double_t GetPositionY() const { return fPosY; }
+  Double_t GetPositionZ() const { return fPosZ; }
+  Double_t GetScale()     const { return fScale; }
+    Double_t GetCurrent()   const { return fCurrent; }
+
+
+ private:
+
+  /** Field type
+   ** 0 = constant field
+   ** 1 = field map
+   **/
+  Int_t fType;
+
+
+  /** Field limits in case of constant field **/
+  Double_t fXmin, fXmax;
+  Double_t fYmin, fYmax;
+  Double_t fZmin, fZmax;
+
+
+  /** Field values in case of constant field [kG] **/
+  Double_t fBx, fBy, fBz;
+
+
+  /** Field map name in case of field map **/
+  TString fMapName;
+
+
+  /** Field centre position for field map **/
+  Double_t fPosX, fPosY, fPosZ;
+
+
+  /** Scaling factor for field map **/
+  Double_t fScale;
+    
+
+    Double_t fCurrent;
+
+
+  ClassDef(R3BFieldPar,1);
+
+};
+
+
+#endif
+// -------------------------------------------------------------------------
+// -----                    CbmFieldCreator header file                  -----
+// -----                Created 15/01/07  by M. Al-Turany              -----
+// -------------------------------------------------------------------------
+
+
+#ifndef R3BFIELDCREATOR_H
+#define R3BFIELDCREATOR_H
+
+#include "FairField.h"
+#include "FairFieldFactory.h"
+#include "R3BFieldPar.h"
+
+class R3BFieldCreator : public FairFieldFactory 
+{
+public:
+    R3BFieldCreator();
+    virtual ~R3BFieldCreator();
+    virtual FairField* createFairField();
+    virtual void SetParm();
+    ClassDef(R3BFieldCreator,1);
+protected:
+    R3BFieldPar* fFieldPar;
+};
+#endif //R3BFIELDCREATOR_H
+#ifndef R3BGLADFIELDMAP_H
+#define R3BGLADFIELDMAP_H 1
+
+
+#include "FairField.h"
+#include "R3BFieldPar.h"
+#include "TRotation.h"
+#include "TVector3.h"
+
+class TArrayF;
+
+class R3BGladFieldMap : public FairField {
+
+
+public:
+
+
+  /** Default constructor **/
+  R3BGladFieldMap();
+
+
+  /** Standard constructor
+   ** @param name       Name of field map
+   ** @param fileType   R = ROOT file, A = ASCII
+   **/
+  R3BGladFieldMap(const char* mapName, const char* fileType = "A");
+
+
+  /** Constructor from R3BGladFieldPar **/
+  R3BGladFieldMap(R3BFieldPar* fieldPar);
+
+
+  /** Constructor from R3BGladFieldMapCreator **/
+ // R3BGladFieldMap(R3BGladFieldMapCreator* creator);
+
+
+  /** Destructor **/
+  virtual ~R3BGladFieldMap();
+
+
+  /** Initialisation (read map from file) **/
+  virtual void Init();
+
+
+  /** Get the field components at a certain point 
+   ** @param x,y,z     Point coordinates (global) [cm]
+   ** @value Bx,By,Bz  Field components [kG]
+   **/
+  virtual Double_t GetBx(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBy(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBz(Double_t x, Double_t y, Double_t z);
+
+
+  /** Determine whether a point is inside the field map
+   ** @param x,y,z              Point coordinates (global) [cm]
+   ** @param ix,iy,iz (return)  Grid cell
+   ** @param dx,dy,dz (return)  Distance from grid point [cm] if inside
+   ** @value kTRUE if inside map, else kFALSE
+   **/
+  virtual Bool_t IsInside(Double_t x, Double_t y, Double_t z,
+			  Int_t& ix, Int_t& iy, Int_t& iz,
+			  Double_t& dx, Double_t& dy, Double_t& dz);
+
+ 
+  /** Write the field map to an ASCII file **/
+  void WriteAsciiFile(const char* fileName);
+
+								
+  /** Write field map data to a ROOT file **/
+  //void WriteRootFile(const char* fileName, const char* mapName);
+
+
+  /** Set the position of the field centre **/
+  virtual void SetPosition(Double_t x, Double_t y, Double_t z);
+
+
+  /** Set a global field scaling factor **/
+  virtual void SetScale(Double_t factor) { fScale = factor; }
+
+
+  /** Accessors to field parameters in local coordinate system **/
+  Double_t GetXmin()  const { return fXmin; } 
+  Double_t GetYmin()  const { return fYmin; }
+  Double_t GetZmin()  const { return fZmin; }
+  Double_t GetXmax()  const { return fXmax; }  
+  Double_t GetYmax()  const { return fYmax; }
+  Double_t GetZmax()  const { return fZmax; }
+  Double_t GetXstep() const { return fXstep; }  
+  Double_t GetYstep() const { return fYstep; }
+  Double_t GetZstep() const { return fZstep; }
+  Int_t    GetNx()    const { return fNx; }
+  Int_t    GetNy()    const { return fNy; }
+  Int_t    GetNz()    const { return fNz; }
+
+
+  /** Accessor to field centre position in global system **/
+  Double_t GetPositionX() const { return fPosX; }
+  Double_t GetPositionY() const { return fPosY; }
+  Double_t GetPositionZ() const { return fPosZ; }
+
+
+  /** Accessor to field rotation **/
+  Double_t GetYAngle() const { return fYAngle; }
+
+
+  /** Accessor to global scaling factor  **/
+  Double_t GetScale() const { return fScale; }
+
+
+  /** Accessors to the field value arrays **/
+  TArrayF* GetBx() const { return fBx; }
+  TArrayF* GetBy() const { return fBy; }
+  TArrayF* GetBz() const { return fBz; }
+
+
+  /** Accessor to field map file **/
+  const char* GetFileName() { return fFileName.Data(); }
+
+
+  /** Screen output **/
+  virtual void Print(Option_t *option="") const;
+	
+
+	
+ protected:
+
+
+  /** Reset the field parameters and data **/
+  void Reset();
+
+
+  /** Read the field map from an ASCII file **/
+  void ReadAsciiFile(const char* fileName);
+
+
+  /** Read field map from a ROOT file **/	
+  //void ReadRootFile(const char* fileName, const char* mapName);
+
+
+  /** Set field parameters and data **/
+  //void SetField(const R3BGladFieldMapData* data);
+
+
+  /** Get field values by interpolation of the grid.
+   ** @param dx,dy,dz  Relative distance from grid point [cell units]
+   **/
+  Double_t Interpolate(Double_t dx, Double_t dy, Double_t dz); 
+
+
+  /** Map file name **/
+  TString fFileName;
+
+
+  /** Global scaling factor (w.r.t. map on file) **/
+  Double_t fScale;             
+
+
+  /** Field centre position in global coordinates  **/
+  Double_t fPosX, fPosY, fPosZ;
+
+
+  /** Field rotation around Y axis **/
+  Double_t fYAngle;
+
+
+  /** Field limits in local coordinate system **/
+  Double_t fXmin, fXmax, fXstep;
+  Double_t fYmin, fYmax, fYstep;
+  Double_t fZmin, fZmax, fZstep;
+
+
+  /** Number of grid points  **/
+  Int_t fNx, fNy, fNz;   //
+
+
+  /** Arrays with the field values  **/
+  TArrayF* fBx;    //!
+  TArrayF* fBy;    //! 
+  TArrayF* fBz;    //!
+
+
+  /** Variables for temporary storage 
+   ** Used in the very frequently called method GetFieldValue  **/
+  Double_t fHa[2][2][2];            //! Field at corners of a grid cell
+  Double_t fHb[2][2];               //! Interpolated field (2-dim)
+  Double_t fHc[2];                  //! Interpolated field (1-dim)
+
+  /** local transformation
+  **/
+  TRotation* gRot;    //!
+  TVector3* gTrans;   //!
+
+
+
+ ClassDef(R3BGladFieldMap,2)
+
+};
+
+
+#endif
+
+#ifndef R3BFIELDINTERP_H
+#define R3BFIELDINTERP_H
+
+#include <stdlib.h>
+
+
+// Class to interpolate one variable in three dimensions Using linear
+// interpolation.  When given a point outside the valid map: produce
+// values as at the boundary at that point, i.e.  give a continous
+// value outside.  But not where and in what direction it went wrong.
+
+
+class R3BFieldInterp
+{
+public:
+  R3BFieldInterp()
+    : _m1(0)
+    , _m2(0)
+    , _n(0)
+    , _data(NULL)
+  {
+    for (int i = 0; i < 3; i++)
+      _np[i] = 0;
+  }
+
+  ~R3BFieldInterp()
+  {
+    free(_data);
+  }
+    
+private:
+    const R3BFieldInterp& operator=(const R3BFieldInterp&);
+    R3BFieldInterp(const R3BFieldInterp&);
+
+public:
+  void interpolate(const R3BFieldInterp &s1,double w1,
+		   const R3BFieldInterp &s2,double w2);
+
+  void init();
+
+  bool expand();
+
+public:
+  double interp(int ic[3],double dc[3]/*,int &outside*/);
+
+  double interp3(int ic[3],double dc[3]/*,int &outside*/);
+
+public:  
+  int    _np[3];
+  int    _max_ic[3]; // _max_ic[i] = _np[i] - 1
+  int    _m1, _m2;   // _m1 = _np[1] * _np[2] ; _m2 = _np[2]
+  int    _n;         // _n = _np[0] * _np[1] * _np[2]
+  float *_data;
+
+  float get_data_pt(int i0,int i1,int i2)
+  {
+    return _data[i0 * _m1 + i1 * _m2 + i2];
+  }
+
+  void set_data_pt(int i0,int i1,int i2,float d)
+  {
+    _data[i0 * _m1 + i1 * _m2 + i2] = d;
+  }
+
+};
+
+#endif//R3BFIELD_INTERP_H_
+#ifndef R3BALADINFIELDMAP_H
+#define R3BALADINFIELDMAP_H 1
+
+
+#include "FairField.h"
+#include "TRotation.h"
+#include "TVector3.h"
+#include "R3BFieldInterp.h"
+#include "R3BFieldPar.h"
+#include <map>
+
+
+
+// ------------------  Land02 internal Structures -----------------------//
+// <DB @ March 2010 >
+// The syntax convention in Land02 is preserved, member variables
+// begins with an _<xx>. It will help to separated between imported Land02
+// code and native one.
+
+struct fields_ALADiN
+{
+  R3BFieldInterp f[2][3];
+};
+
+typedef std::map<Double_t,fields_ALADiN*> map_fields_ALADiN;
+
+struct coords_ALADiN
+{
+  // Note, these are in ALADiN measurement box axis system,
+  // i.e. x is forward (usual z) and z is usual -x
+
+  TVector3 fBox_pt[2];
+  TVector3 fMag_pt[2];
+  Double_t fCosa, fSina;
+};
+
+
+
+
+
+// -------------------- Standard R3BRoot Field Map API -----------------//
+
+class TArrayF;
+
+class R3BAladinFieldMap : public FairField {
+
+
+public:
+
+
+  /** Default constructor **/
+  R3BAladinFieldMap();
+
+
+  /** Standard constructor
+   ** @param name       Name of field map
+   ** @param fileType   R = ROOT file, A = ASCII
+   **/
+  R3BAladinFieldMap(const char* mapName, const char* fileType = "A");
+
+
+  /** Constructor from R3BAladinFieldPar **/
+  R3BAladinFieldMap(R3BFieldPar* fieldPar);
+
+
+  /** Constructor from R3BAladinFieldMapCreator **/
+ // R3BAladinFieldMap(R3BAladinFieldMapCreator* creator);
+
+
+  /** Destructor **/
+  virtual ~R3BAladinFieldMap();
+
+
+  /** Initialisation (read map from file) **/
+  virtual void Init();
+
+  virtual void InitField();
+  
+  
+  virtual void FillParContainer() {}
+  
+
+  /** Main GetField function */
+  virtual void GetFieldValue(const Double_t point[3], Double_t* bField);
+
+
+  /** Get the field components at a certain point 
+   ** @param x,y,z     Point coordinates (global) [cm]
+   ** @value Bx,By,Bz  Field components [kG]
+   **/
+  virtual Double_t GetBx(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBy(Double_t x, Double_t y, Double_t z);
+  virtual Double_t GetBz(Double_t x, Double_t y, Double_t z);
+
+
+  /** Determine whether a point is inside the field map
+   ** @param x,y,z              Point coordinates (global) [cm]
+   ** @param ix,iy,iz (return)  Grid cell
+   ** @param dx,dy,dz (return)  Distance from grid point [cm] if inside
+   ** @value kTRUE if inside map, else kFALSE
+   **/
+  virtual Bool_t IsInside(Double_t x, Double_t y, Double_t z,
+			  Int_t& ix, Int_t& iy, Int_t& iz,
+			  Double_t& dx, Double_t& dy, Double_t& dz);
+
+ 
+  /** Write the field map to an ASCII file **/
+  void WriteAsciiFile(const char* fileName);
+
+								
+  /** Write field map data to a ROOT file **/
+  //void WriteRootFile(const char* fileName, const char* mapName);
+
+
+  /** Set the position of the field centre **/
+  virtual void SetPosition(Double_t x, Double_t y, Double_t z);
+
+
+  /** Set a global field scaling factor **/
+  virtual void SetScale(Double_t factor) { fScale = factor; }
+
+
+  /** Accessors to field parameters in local coordinate system **/
+  Double_t GetXmin()  const { return fXmin; } 
+  Double_t GetYmin()  const { return fYmin; }
+  Double_t GetZmin()  const { return fZmin; }
+  Double_t GetXmax()  const { return fXmax; }  
+  Double_t GetYmax()  const { return fYmax; }
+  Double_t GetZmax()  const { return fZmax; }
+  Double_t GetXstep() const { return fXstep; }  
+  Double_t GetYstep() const { return fYstep; }
+  Double_t GetZstep() const { return fZstep; }
+  Int_t    GetNx()    const { return fNx; }
+  Int_t    GetNy()    const { return fNy; }
+  Int_t    GetNz()    const { return fNz; }
+
+
+  /** Accessor to field centre position in global system **/
+  Double_t GetPositionX() const { return fPosX; }
+  Double_t GetPositionY() const { return fPosY; }
+  Double_t GetPositionZ() const { return fPosZ; }
+
+
+  /** Accessor to global scaling factor  **/
+  Double_t GetScale() const { return fScale; }
+
+
+  /** Accessors to the field value arrays **/
+  TArrayF* GetBx() const { return fBx; }
+  TArrayF* GetBy() const { return fBy; }
+  TArrayF* GetBz() const { return fBz; }
+
+
+  /** Accessor to field map file **/
+  const char* GetFileName() { return fFileName.Data(); }
+
+
+  void CalcFieldDiv(R3BFieldInterp f[3],Double_t d[3]);
+
+
+
+  /** Screen output **/
+  virtual void Print(Option_t *option="") const;
+	
+  /** Set Current **/
+
+  void SetCurrent(Double_t aCurrent ) { fCurrent=aCurrent;}
+  Double_t GetCurrent() { return fCurrent;}
+  void SetFringeField(Bool_t set ) {gFringeField=set;}
+
+	
+ protected:
+
+
+  /** Reset the field parameters and data **/
+  void Reset();
+
+
+  /** Read the field map from an ASCII file **/
+  void ReadAsciiFile(const char* fileName);
+
+
+  /** Read field map from a ROOT file **/	
+  //void ReadRootFile(const char* fileName, const char* mapName);
+
+
+  /** Set field parameters and data **/
+  //void SetField(const R3BAladinFieldMapData* data);
+
+
+  /** Get field values by interpolation of the grid.
+   ** @param dx,dy,dz  Relative distance from grid point [cell units]
+   **/
+  Double_t Interpolate(Double_t dx, Double_t dy, Double_t dz); 
+
+
+  /** Map file name **/
+  TString fFileName;
+
+
+  /** Global scaling factor (w.r.t. map on file) **/
+  Double_t fScale;             
+
+
+  /** Field centre position in global coordinates  **/
+  Double_t fPosX, fPosY, fPosZ; 
+
+
+  /** Field limits in local coordinate system **/
+  Double_t fXmin, fXmax, fXstep;
+  Double_t fYmin, fYmax, fYstep;
+  Double_t fZmin, fZmax, fZstep;
+
+
+  /** Number of grid points  **/
+  Int_t fNx, fNy, fNz;   //
+
+
+  /** Arrays with the field values  **/
+  TArrayF* fBx;    //!
+  TArrayF* fBy;    //! 
+  TArrayF* fBz;    //!
+
+
+  /** Variables for temporary storage 
+   ** Used in the very frequently called method GetFieldValue  **/
+  Double_t fHa[2][2][2];            //! Field at corners of a grid cell
+  Double_t fHb[2][2];               //! Interpolated field (2-dim)
+  Double_t fHc[2];                  //! Interpolated field (1-dim)
+
+  /** local transformation
+  **/
+  TRotation* gRot;    //!
+  TVector3* gTrans;   //!
+
+
+  /** land02 imported variables
+   **/
+
+  static map_fields_ALADiN gMapIFieldOrig; //!
+  static map_fields_ALADiN gMapIField;     //!
+
+  static coords_ALADiN     gCoords[2];     //!
+  static Bool_t            gInitialized;   //!
+
+  fields_ALADiN *fCurField;                //!
+  Double_t       fCurrent;                 //!
+  Double_t       fFieldSign;               //!
+
+
+  TVector3 af_box[2][2] ;            //!
+  TVector3 af_mag[2][2] ;            //!
+  Bool_t gFringeField;               //!
+
+
+
+ ClassDef(R3BAladinFieldMap,1)
+
+};
+
+
+#endif
+
+#undef  _BACKWARD_BACKWARD_WARNING_H
+
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:250:17: error: member access into incomplete type 'R3BFieldPar'
+        fieldPar->SetParameters(magField);
+                ^
+G__FieldDict dictionary forward declarations' payload:8:7: note: forward declaration of 'R3BFieldPar'
+class R3BFieldPar;
+      ^
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:251:17: error: member access into incomplete type 'R3BFieldPar'
+        fieldPar->setChanged();
+                ^
+G__FieldDict dictionary forward declarations' payload:8:7: note: forward declaration of 'R3BFieldPar'
+class R3BFieldPar;
+      ^
+Error in <TInterpreter::AutoParse>: Error parsing payload code for class FairParRootFileIo with content:
+
+#line 1 "G__ParBaseDict dictionary payload"
+
+#ifndef G__VECTOR_HAS_CLASS_ITERATOR
+  #define G__VECTOR_HAS_CLASS_ITERATOR 1
+#endif
+
+#define _BACKWARD_BACKWARD_WARNING_H
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRCONTFACT_H
+#define FAIRCONTFACT_H
+
+#include "TNamed.h"                     // for TNamed
+
+#include "Rtypes.h"                     // for Bool_t, ClassDef, etc
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for TString
+
+class FairLogger;
+class FairParIo;
+class FairParSet;
+
+class FairContainer : public TNamed
+{
+  private:
+    FairContainer();
+    FairContainer(const FairContainer&);
+    FairContainer& operator=(const FairContainer&);
+
+  protected:
+    /** available contexts for this parameter container*/
+    TList* contexts;
+    /** actual context set by the user */
+    TString actualContext;
+    /** Fair Logger */
+    FairLogger*  fLogger;//!
+  public:
+    FairContainer( const char*, const char*, const char*);
+    ~FairContainer();
+    void addContext(const char*);
+    Bool_t setActualContext(const char* c);
+    const char* getDefaultContext();
+    const char* getActualContext() { return actualContext.Data(); }
+    void print();
+    TString getConcatName();
+    const char* getContext();
+    ClassDef(FairContainer,0) // class for list elements in class FairContFact
+};
+
+class FairContFact : public TNamed
+{
+  public:
+    FairContFact();
+    virtual ~FairContFact();
+    Bool_t addContext(const char* name);
+    void print();
+    FairParSet* getContainer(const char*);
+    virtual FairParSet* createContainer(FairContainer*) {return 0;}
+    virtual void activateParIo(FairParIo*) {}
+  protected:
+
+    TList* containers;   // all parameter containers managed by this factory
+    const char* getActualContext(const char* name) {
+      return (static_cast<FairContainer*>(containers->FindObject(name)))->getActualContext();
+    }
+    /** Fair Logger */
+    FairLogger*  fLogger;//!
+    ClassDef(FairContFact,0) // base class of all factories for parameter containers
+  private:
+    FairContFact(const FairContFact&);
+    FairContFact& operator=(const FairContFact&);
+
+
+};
+
+#endif  /* !FAIRCONTFACT_H */
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRDETPARASCIIFILEIO_H
+#define FAIRDETPARASCIIFILEIO_H
+
+#include "FairDetParIo.h"               // for FairDetParIo
+
+#include "Riosfwd.h"                    // for fstream
+#include "Rtypes.h"                     // for Text_t, Bool_t, etc
+#include "TString.h"                    // for TString
+
+#include <fstream>                      // for fstream
+
+class FairParSet;
+
+class FairDetParAsciiFileIo : public FairDetParIo
+{
+  protected:
+    TString fHeader;  //! header of container output in file
+    TString sepLine;  //! comment line
+    std::fstream* pFile;   //! pointer to ascii file
+// virtual Bool_t write(HDetector*) {return kTRUE;}
+    Bool_t findContainer(const Text_t* name);
+    Bool_t checkAllFound(Int_t*,Int_t);
+    void writeHeader(const Text_t*, const Text_t* context="",
+                     const Text_t* author="", const Text_t* description="");
+    void writeComment(FairParSet*);
+    void readComment(const Char_t*, FairParSet*);
+//  Bool_t readLabPositions(const Text_t*,HDetGeomPar*,Int_t*,Int_t,Int_t);
+//  Bool_t readVolumes(const Text_t*,HDetGeomPar*);
+//  void readTransform(HGeomTransform&);
+//  Bool_t readVolume(HGeomVolume*,HGeomShapes*,Text_t*);
+//  void writeTransform(const HGeomTransform&);
+//  void writeVolume(HGeomVolume*,HGeomShapes*);
+
+  public:
+    FairDetParAsciiFileIo(std::fstream* f);
+    virtual ~FairDetParAsciiFileIo() {}
+//  Bool_t read(HDetGeomPar*,Int_t*);
+//  Int_t writeFile(HDetGeomPar*);
+
+  private:
+
+    FairDetParAsciiFileIo& operator=(const FairDetParAsciiFileIo&);
+    FairDetParAsciiFileIo(const FairDetParAsciiFileIo&);
+
+    ClassDef(FairDetParAsciiFileIo,0) // Class for detector parameter I/O from ascii file
+};
+
+#endif  /* !FAIRDETPARASCIIFILEIO_H */
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRDETPARIO_H
+#define FAIRDETPARIO_H
+
+#include "TNamed.h"                     // for TNamed
+
+#include "Rtypes.h"                     // for Int_t, FairDetParIo::Class, etc
+
+class FairParSet;
+
+class FairDetParIo : public TNamed
+{
+  protected:
+    Int_t inputNumber; // input number (first or second input in runtime database)
+  public:
+    FairDetParIo();
+    virtual ~FairDetParIo() {;}
+
+    // sets the input number
+    void setInputNumber(Int_t n) {inputNumber=n;}
+
+    // returns the input number
+    Int_t getInputNumber() {return inputNumber;}
+
+    // initializes parameter container
+    virtual Bool_t init(FairParSet*) {return kFALSE;}
+
+    // writes parameter container to output
+    virtual Int_t write(FairParSet*) {return kFALSE;}
+
+    ClassDef(FairDetParIo,0)  // Base class for detector parameter IO
+};
+
+#endif  /* !HDETPARIO_H */
+
+
+
+
+
+
+
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRDETPARROOTFILEIO_H
+#define FAIRDETPARROOTFILEIO_H
+
+#include "FairDetParIo.h"               // for FairDetParIo
+
+#include "Rtypes.h"                     // for Int_t, Text_t, etc
+
+using std::fstream;
+
+class FairParRootFile;
+class FairParSet;
+class TObject;
+
+class FairDetParRootFileIo : public FairDetParIo
+{
+  protected:
+    FairParRootFile* pFile;    // pointer to parameter ROOT file
+  public:
+    FairDetParRootFileIo(FairParRootFile* f);
+    virtual ~FairDetParRootFileIo() {}
+    virtual Bool_t read(FairParSet*);
+    Int_t write(FairParSet*);
+//  Bool_t read(HDetGeomPar*,Int_t*);
+  protected:
+    Int_t findInputVersion(Text_t* contName);
+    Int_t getMaxVersion(Text_t* contName);
+    TObject* findContainer(Text_t* contName, Int_t version);
+  private:
+    FairDetParRootFileIo(const FairDetParRootFileIo&);
+    FairDetParRootFileIo& operator= (const FairDetParRootFileIo&);
+
+    ClassDef(FairDetParRootFileIo,0) // detector base class for parameter I/O from ROOT file
+};
+
+#endif  /* !FAIRDETPARROOTFILEIO_H */
+
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRGENERICPARASCIIFILEIO_H
+#define FAIRGENERICPARASCIIFILEIO_H
+
+#include "FairDetParAsciiFileIo.h"      // for FairDetParAsciiFileIo
+
+#include "Riosfwd.h"                    // for fstream
+#include "Rtypes.h"                     // for Int_t, Bool_t, etc
+
+#include <fstream>                      // for fstream
+
+class FairParGenericSet;
+class FairParSet;
+class TString;
+
+class FairGenericParAsciiFileIo : public FairDetParAsciiFileIo
+{
+  public:
+    FairGenericParAsciiFileIo(std::fstream* f=0);
+    ~FairGenericParAsciiFileIo() {}
+    Bool_t init(FairParSet*);
+    Int_t write(FairParSet*);
+  private:
+
+    ClassDef(FairGenericParAsciiFileIo,0) // I/O from Ascii file for parameter containers derived from FairParGenericSet
+    Bool_t readGenericSet(FairParGenericSet* pPar);
+    Int_t writeGenericSet(FairParGenericSet* pPar);
+
+    template <class type> const UChar_t* readData(type,const Char_t*,TString&,Int_t&);
+    template <class type> void writeData(type*,Int_t);
+};
+
+#endif  /* !FAIRGENERICPARASCIIFILEIO_H */
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRGENERICPARROOTFILEIO_H
+#define FAIRGENERICPARROOTFILEIO_H
+
+#include "FairDetParRootFileIo.h"       // for FairDetParRootFileIo
+
+#include "Rtypes.h"                    // for ClassDef macro
+
+class FairParRootFile;
+class FairParSet;
+
+class FairGenericParRootFileIo : public FairDetParRootFileIo
+{
+  public:
+    FairGenericParRootFileIo(FairParRootFile* f=0);
+    ~FairGenericParRootFileIo() {}
+    Bool_t init(FairParSet*);
+    ClassDef(FairGenericParRootFileIo,0) // I/O from ROOT file for parameter containers derived from FairParGenericSet
+};
+
+#endif  /* !FAIRGENERICPARROOTFILEIO_H */
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRPARASCIFILEIIO_H
+#define FAIRPARASCIFILEIIO_H
+
+#include "FairParIo.h"                  // for FairParIo
+
+#include "Riosfwd.h"                    // for fstream
+#include "Rtypes.h"                     // for Bool_t, Text_t, etc
+
+#include <fstream>                      // for fstream, etc
+
+class TList;
+
+class FairParAsciiFileIo : public FairParIo
+{
+  protected:
+    std::fstream* file;      // pointer to a file
+  public:
+    FairParAsciiFileIo();
+
+    // default destructor closes an open file and deletes list of I/Os
+    ~FairParAsciiFileIo();
+
+    // opens file
+    // if a file is already open, this file will be closed
+    // activates detector I/Os
+    Bool_t open(const Text_t* fname, const Text_t* status="in");
+
+    // concatenate files whose names are stored in the TList
+    // TList holds list od TObjStrings
+    // create file all.par in local working directory
+    // calls open to open the generated file all.par
+    Bool_t open(const TList* fnamelist, const Text_t* status="in");
+
+    // closes file
+    void close();
+
+    // returns kTRUE if file is open
+    Bool_t check() {
+      if (file) { return (file->rdbuf()->is_open()==1); }
+      else { return kFALSE; }
+    }
+
+    // prints information about the file and the detector I/Os
+    void print();
+
+    std::fstream* getFile();
+  private:
+    FairParAsciiFileIo(const FairParAsciiFileIo&);
+    FairParAsciiFileIo& operator=(const FairParAsciiFileIo&);
+
+    ClassDef(FairParAsciiFileIo,0) // Parameter I/O from ASCII files
+};
+
+#endif  /* !FAIRPARASCIIFILEIO_H */
+
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRPARGENERICSET_H
+#define FAIRPARGENERICSET_H
+
+#include "FairParSet.h"                 // for FairParSet
+
+#include "Rtypes.h"                     // for Bool_t, etc
+
+class FairParIo;
+class FairParamList;
+
+class FairParGenericSet : public FairParSet
+{
+  public:
+    FairParGenericSet(const char* name,const char* title,const char* context, Bool_t ownership=kFALSE)
+      : FairParSet(name,title,context,ownership) {}
+    virtual ~FairParGenericSet() {}
+    virtual void putParams(FairParamList*)=0;
+    virtual Bool_t getParams(FairParamList*)=0;
+    virtual void printParams();
+
+    Bool_t init(FairParIo* inp);
+    Int_t  write(FairParIo* output);
+
+   // DB add on
+    void fill(UInt_t) {};
+    void store(UInt_t) {};
+
+  protected:
+    FairParGenericSet()
+      : FairParSet() {}
+    ClassDef(FairParGenericSet,1) // Base class for generic-style parameter containers
+};
+
+#endif  /* !FAIRPARGENERICSET_H */
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRPARIO_H
+#define FAIRPARIO_H
+
+#include "TObject.h"                    // for TObject
+
+#include "Rtypes.h"                     // for Bool_t, Text_t, etc
+#include "TString.h"                    // for TString
+
+class FairDetParIo;
+class FairRtdbRun;
+class TList;
+
+class FairParIo : public TObject
+{
+  protected:
+    TList* detParIoList;  // list of detector I/Os
+    Bool_t autoWritable;  // flag indicating if automatic write is possible
+    TString filename;
+  public:
+    FairParIo();
+    virtual ~FairParIo();
+    virtual FairDetParIo* getDetParIo(const Text_t*);
+    virtual void setDetParIo(FairDetParIo*);
+    virtual void removeDetParIo(Text_t*);
+    void setInputNumber(Int_t);
+    virtual void close() {;}
+
+    // returns the filename
+    const char* getFilename() {return filename.Data();}
+
+    // creates input/output class for a special detector and stores pointer
+    // used only for Oracle input/output
+    // (code in  class OraIo)
+    virtual void setDetParIo(Text_t*) {;}
+
+    // prints information about input/output
+    virtual void print() {;}
+
+    // checks if the input/output is open
+    virtual Bool_t check() { return kFALSE; }
+
+    // reads versions of parameter containers for an event file
+    virtual void readVersions(FairRtdbRun*) {;}
+
+    // sets global file pointer in ROOT if input/output is a ROOT-file
+    // (code in FairParRootFileIo)
+    virtual void cd() {;}
+
+    // set and get for flag autoWritable
+    void setAutoWritable(Bool_t f=kTRUE) {autoWritable=f;}
+    Bool_t isAutoWritable() {return autoWritable;}
+
+  private:
+    FairParIo(const FairParIo&);
+    FairParIo& operator=(const FairParIo&);
+
+    ClassDef(FairParIo,0) // Base class for all parameter I/Os
+};
+
+#endif  /* !FAIRPARIO_H */
+
+
+
+
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRPARROOTFILEIO_H
+#define FAIRPARROOTFILEIO_H
+
+#include "FairParIo.h"                  // for FairParIo
+
+#include "Rtypes.h"                     // for Bool_t, Text_t, Int_t, etc
+#include "TFile.h"                      // for TFile
+#include "TNamed.h"                     // for TNamed
+
+#include <fstream>
+using std::fstream;
+
+class FairRtdbRun;
+class TKey;
+class TList;
+
+class FairParRootFile : public TNamed
+{
+  public:
+    FairRtdbRun* run;     //! pointer to current run in ROOT file
+    FairParRootFile(const Text_t* fname, Option_t* option="READ",
+                    const Text_t* ftitle="",Int_t compress=1);
+    FairParRootFile(TFile* f);
+    ~FairParRootFile();
+    FairRtdbRun* getRun() {return run;}
+    void readVersions(FairRtdbRun*);
+
+    Bool_t IsOpen() {return RootFile->IsOpen();}
+    void   cd() {RootFile->cd();}
+    Bool_t IsWritable() {return RootFile->IsWritable();}
+
+    TKey* GetKey(Text_t* t) { return RootFile->GetKey(t);}
+    TList* GetListOfKeys() { return RootFile->GetListOfKeys();}
+    void Close() {RootFile->Close();}
+
+  protected:
+    TFile* RootFile;
+
+  private:
+    FairParRootFile(const FairParRootFile&);
+    FairParRootFile& operator=(const FairParRootFile&);
+
+    ClassDef(FairParRootFile,0) // ROOT file for Parameter I/O
+
+};
+
+
+class FairParRootFileIo : public FairParIo
+{
+  protected:
+    FairParRootFile* file;  // pointer to ROOT file
+    Bool_t fMerging;
+  public:
+    FairParRootFileIo();
+    FairParRootFileIo(Bool_t merged);
+    ~FairParRootFileIo();
+    Bool_t open(const Text_t* fname, Option_t* option="READ",
+                const Text_t* ftitle="",Int_t compress=1);
+    Bool_t open(const TList* fnamelist, Option_t* option="READ",
+                const Text_t* ftitle="",Int_t compress=1);
+    void close();
+    void print();
+    FairParRootFile* getParRootFile();
+    void readVersions(FairRtdbRun*);
+    TList* getKeys();
+    Bool_t check() {
+      // returns kTRUE if file is open
+      if (file) { return file->IsOpen(); }
+      else { return kFALSE; }
+    }
+    void cd() {
+      // sets the global ROOT file pointer gFile
+      if (file) { file->cd(); }
+    }
+    /**
+    Open an existing root file for IO
+    */
+    Bool_t open(TFile* f);
+    void setMerging( Bool_t io ) { fMerging=io;}
+
+  private:
+    FairParRootFileIo(const FairParRootFileIo&);
+    FairParRootFileIo& operator=(const FairParRootFileIo&);
+
+    ClassDef(FairParRootFileIo,0) // Parameter I/O from ROOT files
+};
+
+#endif  /* !FAIRPARROOTFILEIO_H */
+
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRPARSET_H
+#define FAIRPARSET_H
+
+#include "TNamed.h"
+#include "Rtypes.h"                     // for Int_t, Bool_t, etc
+#include "TString.h"                    // for TString
+
+class FairLogger;
+class FairParIo;
+
+class FairParSet : public TObject
+{
+  protected:
+    TString fName;         //
+    TString fTitle;        //
+    TString detName;         //! name of the detector the container belongs to
+    Int_t versions[3];       //! versions of container in the 2 possible inputs
+    Bool_t status;           //! static flag
+    Bool_t changed;          //! flag is kTRUE if parameters have changed
+    Bool_t  owned;          //! if flag is KTRUE FairDB has the par. class ownership
+    TString paramContext;    // Context/purpose for parameters and conditions
+    TString author;          // Author of parameters
+    TString description ;    // Description of parameters
+    /** Fair Logger */
+    FairLogger*  fLogger;  //!
+
+  public:
+    FairParSet(const char* name="",const char* title="",const char* context="", Bool_t owner=kFALSE);
+    virtual ~FairParSet() {}
+
+    virtual const char* GetName() const {return static_cast<const char*>(fName.Data());}
+    virtual const char* GetTitle() const {return static_cast<const char*>(fTitle.Data());}
+
+    virtual Bool_t init();
+    virtual Bool_t init(FairParIo*) { return kFALSE; }
+    virtual Int_t write();
+    virtual Int_t write(FairParIo*) { return kFALSE; }
+    virtual void clear() {}
+    virtual void print();
+
+    const char* getDetectorName() {return detName.Data();}
+    void resetInputVersions();
+
+    void setInputVersion(Int_t v=-1,Int_t i=0) {
+      if (i>=0 && i<3) { versions[i]=v; }
+    }
+    Int_t getInputVersion(Int_t i) {
+      if (i>=0 && i<3) { return versions[i]; }
+      else { return 0; }
+    }
+
+    void setStatic(Bool_t flag=kTRUE) {status=flag;}
+    Bool_t isStatic() {return status;}
+
+    void setOwnership(Bool_t flag=kTRUE) {owned=flag;}
+    Bool_t isOwned() {return owned;}
+
+    void setChanged(Bool_t flag=kTRUE) {changed=flag;}
+    Bool_t hasChanged() {return changed;}
+
+    const char* getParamContext() const { return paramContext.Data(); }
+
+    void setAuthor(const char* s) {author=s;}
+    const char* getAuthor() const { return author.Data(); }
+
+    void setDescription(const char* s) {description=s;}
+    const char* getDescription() const { return description.Data(); }
+
+    void copyComment(FairParSet& r) {
+      author=r.getAuthor();
+      description=r.getDescription();
+    }
+
+
+    virtual void fill(UInt_t) {};
+    virtual void store(UInt_t) {};
+    
+
+    FairParSet& operator=(const FairParSet&);
+    FairParSet(const FairParSet&);
+
+    ClassDef(FairParSet,2) // Base class for all parameter containers
+};
+
+#endif  /* !FAIRPARSET_H */
+
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRPARAMLIST_H
+#define FAIRPARAMLIST_H
+
+#include "TNamed.h"                     // for TNamed
+
+#include "Rtypes.h"                     // for Text_t, Int_t, Bool_t, etc
+#include "TArrayC.h"                    // for TArrayC
+#include "TFile.h"                      // for TFile
+#include "TList.h"                      // for TList
+#include "TObject.h"                    // for TObject
+#include "TROOT.h"                      // for TROOT, gROOT
+#include "TSeqCollection.h"             // for TSeqCollection
+#include "TString.h"                    // for TString
+
+class FairLogger;
+class TArrayD;
+class TArrayF;
+class TArrayI;
+
+class FairParamObj : public TNamed
+{
+  protected:
+    UChar_t* paramValue;    // Pointer to binary array
+    Int_t arraySize;        // Size of binary array
+    TString paramType;      // Type of parameter value or class name
+    Bool_t basicType;       // kTRUE for C-types and C-type parameter arrays, kFALSE for classes
+    Int_t bytesPerValue;    // number of bytes per value
+    Int_t classVersion;     // Code version of classes stored as binary
+    UChar_t* streamerInfo;  // Pointer to binary array container the streamer info
+    Int_t streamerInfoSize; // Size of streamer info array
+  public:
+    FairParamObj(const Text_t* name="");
+    FairParamObj(FairParamObj&);
+    FairParamObj(const Text_t*,Int_t);
+    FairParamObj(const Text_t*,Bool_t);
+    FairParamObj(const Text_t*,UInt_t);
+    FairParamObj(const Text_t*,Float_t);
+    FairParamObj(const Text_t*,Double_t);
+    FairParamObj(const Text_t*,const Int_t*,const Int_t);
+    FairParamObj(const Text_t*,const UInt_t*,const Int_t);
+    FairParamObj(const Text_t*,const Float_t*,const Int_t);
+    FairParamObj(const Text_t*,const Double_t*,const Int_t);
+    FairParamObj(const Text_t*,const Text_t*);
+    FairParamObj(const Text_t*,const Char_t*,const Int_t);
+    FairParamObj(const Text_t*,const UChar_t*,const Int_t);
+    ~FairParamObj();
+    void setParamType(const Text_t* t);
+    UChar_t* setLength(Int_t l);
+    void setParamValue(UChar_t*,const Int_t);
+    void setClassVersion(const Int_t v) { classVersion=v; }
+    UChar_t* setStreamerInfoSize(Int_t);
+    void setStreamerInfo(UChar_t*,const Int_t);
+    UChar_t* getParamValue() { return paramValue; }
+    Bool_t isBasicType() { return basicType; }
+    const char* getParamType() { return paramType.Data(); }
+    Int_t getBytesPerValue() { return bytesPerValue; }
+    Int_t getClassVersion() { return classVersion; }
+    Int_t getLength() { return arraySize; }
+    Int_t getNumParams();
+    UChar_t* getStreamerInfo() { return streamerInfo; }
+    Int_t getStreamerInfoSize() { return streamerInfoSize; }
+    void print();
+  protected:
+    template <class type> void printData(type*,Int_t);
+
+  private:
+    FairParamObj& operator=(const FairParamObj&);
+
+    ClassDef(FairParamObj,0) // Class for binary parameter object (name + binary array)
+};
+
+
+class FairParamList : public TObject
+{
+  protected:
+    TList* paramList;      // List for parameters stored as string
+    FairLogger* fLogger;  // FairRoot logging mechanism
+    class FairParamTFile : public TFile
+    {
+      public:
+        FairParamTFile() {
+          // Create StreamerInfo index
+          Int_t lenIndex = gROOT->GetListOfStreamerInfo()->GetSize()+1;
+          if (lenIndex < 5000) { lenIndex = 5000; }
+          fClassIndex = new TArrayC(lenIndex);
+        }
+        ~FairParamTFile() {
+          delete fClassIndex;
+          fClassIndex=0;
+        }
+    };
+  public:
+    FairParamList();
+    ~FairParamList();
+    void add(FairParamObj&);
+    void add(const Text_t*,const Text_t*);
+    void add(const Text_t*,Int_t);
+    void add(const Text_t*,Bool_t);
+    void add(const Text_t*,UInt_t);
+    void add(const Text_t*,Float_t);
+    void add(const Text_t*,Double_t);
+    void add(const Text_t*,TArrayI&);
+    void add(const Text_t*,TArrayC&);
+    void add(const Text_t*,TArrayF&);
+    void add(const Text_t*,TArrayD&);
+    void add(const Text_t*,const UChar_t*,const Int_t);
+    void add(const Text_t*,const Int_t*,const Int_t);
+    void add(const Text_t*,const Float_t*,const Int_t);
+    void add(const Text_t*,const Double_t*,const Int_t);
+    void addObject(const Text_t*,TObject*);
+    Bool_t fill(const Text_t*,Text_t*,const Int_t);
+    Bool_t fill(const Text_t*,Int_t*,const Int_t nValues=1);
+    Bool_t fill(const Text_t*,Bool_t*,const Int_t nValues=1);
+    Bool_t fill(const Text_t*,UInt_t*,const Int_t nValues=1);
+    Bool_t fill(const Text_t*,Float_t*,const Int_t nValues=1);
+    Bool_t fill(const Text_t*,Double_t*,const Int_t nValues=1);
+    Bool_t fill(const Text_t*,UChar_t*,const Int_t nValues=1);
+    Bool_t fill(const Text_t*,TArrayI*);
+    Bool_t fill(const Text_t*,TArrayC*);
+    Bool_t fill(const Text_t*,TArrayF*);
+    Bool_t fill(const Text_t*,TArrayD*);
+    Bool_t fillObject(const Text_t*,TObject*);
+    void print();
+    FairParamObj* find(const Text_t* name) {
+      return static_cast<FairParamObj*>(paramList->FindObject(name));
+    }
+    TList* getList() { return paramList; }
+  private:
+    FairParamList(const FairParamList&);
+    FairParamList& operator=(const FairParamList&);
+
+    ClassDef(FairParamList,3) // Class for lists of parameters (of type FairParamObj)
+};
+
+#endif  /* !FAIRPARAMLIST_H */
+
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRRTDBRUN_H
+#define FAIRRTDBRUN_H
+
+#include "TNamed.h"                     // for TNamed
+
+#include "Riosfwd.h"                    // for fstream
+#include "Rtypes.h"                     // for Int_t, Text_t, UInt_t, etc
+#include "TString.h"                    // for TString
+
+#include <stdio.h>                      // for sprintf, sscanf
+#include <fstream>                      // for fstream
+
+class TList;
+using std::fstream;
+
+class FairParVersion : public TNamed
+{
+  protected:
+    Int_t inputVersions[3]; //! version of the parameter container in the 2 possible inputs
+    Int_t rootVersion;      // version of the parameter container in the ROOT output file
+  public:
+    FairParVersion() : TNamed(),rootVersion(0) {}
+    FairParVersion(Text_t* name);
+    ~FairParVersion() {}
+    void setInputVersion(Int_t v=-1,Int_t i=0) {
+      if (i>=0 && i<3) { inputVersions[i]=v; }
+    }
+    Int_t getInputVersion(Int_t i) {
+      if (i>=0 && i<3) { return inputVersions[i]; }
+      else { return -1; }
+    }
+    void resetInputVersions() {
+      for(Int_t i=0; i<3; i++) {inputVersions[i]=-1;}
+    }
+    void setRootVersion(Int_t v) {rootVersion=v;}
+    Int_t getRootVersion() {return rootVersion;}
+    ClassDef(FairParVersion,1) // Class for parameter versions
+};
+
+class FairRtdbRun : public TNamed
+{
+  protected:
+    TList* parVersions;   // List of container names with the versions
+    TString refRun;       //! name of the reference run for initialization
+  public:
+    FairRtdbRun();
+    FairRtdbRun(const Text_t* name,const Text_t* refName="");
+    FairRtdbRun(Int_t r,Int_t rr=-1);
+    FairRtdbRun(FairRtdbRun& run);
+    ~FairRtdbRun();
+    inline UInt_t getRunId(void);
+    void addParVersion(FairParVersion* pv);
+    FairParVersion* getParVersion(const Text_t* name);
+    TList* getParVersions() {return parVersions;}
+    const Text_t* getRefRun() {return refRun.Data();}
+    void setRefRun(Text_t* s) {refRun=s;}
+    inline void setRefRun(Int_t r);
+    void resetInputVersions();
+    void resetOutputVersions();
+    void print();
+    void write(std::fstream&);
+
+  private:
+    FairRtdbRun& operator=(const FairRtdbRun&);
+
+    ClassDef(FairRtdbRun,1) // Class for parameter version management of a run
+};
+
+// -------------------- inlines ---------------------------
+
+inline UInt_t FairRtdbRun::getRunId(void)
+{
+  UInt_t r;
+  sscanf(GetName(),"%i",&r);
+  return r;
+}
+
+inline void FairRtdbRun::setRefRun(Int_t r)
+{
+  if (r==-1) { refRun=""; }
+  else {
+    char name[255];
+    sprintf(name,"%i",r);
+    refRun=name;
+  }
+}
+
+#endif  /* !FAIRRTDBRUN_H */
+
+/********************************************************************************
+ *    Copyright (C) 2014 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    *
+ *                                                                              *
+ *              This software is distributed under the terms of the             * 
+ *         GNU Lesser General Public Licence version 3 (LGPL) version 3,        *  
+ *                  copied verbatim in the file "LICENSE"                       *
+ ********************************************************************************/
+#ifndef FAIRRUNTIMEDB_H
+#define FAIRRUNTIMEDB_H
+
+#include "TObject.h"                    // for TObject
+
+#include "Rtypes.h"                     // for Bool_t, Int_t, Text_t, etc
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for TString
+
+class FairContFact;
+class FairLogger;
+class FairParIo;
+class FairParSet;
+class FairRtdbRun;
+
+static TList contFactories;    //! list of container factories
+
+class FairRuntimeDb : public TObject
+{
+  private:
+    static FairRuntimeDb* gRtdb; //!
+
+  protected:
+    FairRuntimeDb(void);
+    TList* containerList;    // list of parameter containers
+    TList* runs;             // list of runs
+    FairParIo* firstInput;    // first (prefered) input for parameters
+    FairParIo* secondInput;   // second input (used if not found in first input)
+    FairParIo* output;        // output for parameters
+    FairRtdbRun* currentRun;  // Current run
+    TString currentFileName; // Name of current event file
+    Bool_t versionsChanged;  // flag for write of list of runs (set kTRUE by each write)
+    Bool_t isRootFileOutput; // flag indicating that the output is a ROOT file
+    /** Fair Logger */
+    FairLogger*  fLogger;  //!
+
+    /**
+     * Select which IO type to use.
+     */
+    typedef enum {
+      UNKNOWN_Type    = 0,
+      AsciiFileOutput = 1, // Ascii in-out-put
+      RootFileOutput  = 2, // Root Files
+      RootTSQLOutput  = 3  // Use a TSQL db
+    } ParamIOType;
+    ParamIOType ioType;//IO Type
+
+  public:
+    static FairRuntimeDb* instance(void);
+    ~FairRuntimeDb(void);
+
+    Bool_t addParamContext(const char*);
+    void printParamContexts();
+    void addContFactory(FairContFact*);
+    FairContFact* getContFactory(const Text_t*);
+
+    Bool_t addContainer(FairParSet*);
+    FairParSet* getContainer(const Text_t*);
+    FairParSet* findContainer(const char*);
+    void removeContainer(Text_t*);
+    void removeAllContainers(void);
+    Bool_t initContainers(Int_t runId,Int_t refId=-1,const Text_t* fileName="");
+    void setContainersStatic(Bool_t f=kTRUE);
+    Bool_t writeContainers(void);
+    Bool_t writeContainer(FairParSet*,FairRtdbRun*,FairRtdbRun* refRun=0);
+
+    FairRtdbRun* addRun(Int_t runId,Int_t refId=-1);
+    FairRtdbRun* getRun(Int_t);
+    FairRtdbRun* getRun(Text_t*);
+    FairRtdbRun* getCurrentRun(void) {return currentRun;}
+    Text_t const* getCurrentFileName() {return currentFileName.Data();}
+    void clearRunList(void);
+
+    void removeRun(Text_t*);
+
+    Bool_t setInputVersion(Int_t run,Text_t* container,
+                           Int_t version,Int_t inputNumber);
+    Bool_t setRootOutputVersion(Int_t run,Text_t* container,Int_t version);
+    void setVersionsChanged(Bool_t f=kTRUE) {versionsChanged=f;}
+    void resetInputVersions(void);
+    void resetOutputVersions(void);
+    void resetAllVersions(void);
+
+    Bool_t readAll(void);
+    void writeVersions(void);
+    void saveOutput(void);
+
+    Bool_t setFirstInput(FairParIo*);
+    Bool_t setSecondInput(FairParIo*);
+    Bool_t setOutput(FairParIo*);
+    FairParIo* getFirstInput(void);
+    FairParIo* getSecondInput(void);
+    FairParIo* getOutput(void);
+    void closeFirstInput(void);
+    void closeSecondInput(void);
+    void closeOutput(void);
+    void activateParIo(FairParIo*);
+    TList* getListOfContainers() {return containerList;}
+    void print(void);
+
+    Int_t findOutputVersion(FairParSet*);
+
+  private:
+    FairRuntimeDb(const FairRuntimeDb& M);
+    FairRuntimeDb& operator= (const  FairRuntimeDb&) {return *this;}
+    Bool_t initContainers(void);
+
+    ClassDef(FairRuntimeDb,0) // Class for runtime database
+};
+
+#endif  /* !FAIRRUNTIMEDB_H */
+
+#undef  _BACKWARD_BACKWARD_WARNING_H
+
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:254:37: error: allocation of incomplete type 'FairParRootFileIo'
+    FairParRootFileIo* parOut = new FairParRootFileIo(kParameterMerged);
+                                    ^~~~~~~~~~~~~~~~~
+G__ParBaseDict dictionary forward declarations' payload:17:85: note: forward declaration of 'FairParRootFileIo'
+class __attribute__((annotate(R"ATTRDUMP(Parameter I/O from ROOT files)ATTRDUMP"))) FairParRootFileIo;
+                                                                                    ^
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:255:11: error: member access into incomplete type 'FairParRootFileIo'
+    parOut->open(parFile.Data());
+          ^
+G__ParBaseDict dictionary forward declarations' payload:17:85: note: forward declaration of 'FairParRootFileIo'
+class __attribute__((annotate(R"ATTRDUMP(Parameter I/O from ROOT files)ATTRDUMP"))) FairParRootFileIo;
+                                                                                    ^
+In file included from input_line_8:1:
+/u/mheil/R3BRoot/macros/r3b/16O/run_sim.C:256:21: error: cannot initialize a parameter of type 'FairParIo *' with an lvalue of type 'FairParRootFileIo *'
+    rtdb->setOutput(parOut);
+                    ^~~~~~
+/cvmfs/fairroot.gsi.de/fairroot/v-17.03_fairsoft-mar17_root6/include/FairRuntimeDb.h:97:32: note: passing argument to parameter here
+    Bool_t setOutput(FairParIo*);
+                               ^

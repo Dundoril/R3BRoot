@@ -1,0 +1,157 @@
+
+Thread 7 (Thread 0x7f1ac62eb700 (LWP 15039)):
+#0  0x00007f1ae3499aed in poll () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007f1ac8b79100 in master_thread_run (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12647
+#2  master_thread (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12714
+#3  0x00007f1ae376d064 in start_thread (arg=0x7f1ac62eb700) at pthread_create.c:309
+#4  0x00007f1ae34a262d in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:111
+
+Thread 6 (Thread 0x7f1ac5aea700 (LWP 15040)):
+#0  pthread_cond_wait
+
+GLIBC_2.3.2 () at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007f1ac8b81b32 in consume_socket (sp=0x7f1ab8000d68, ctx=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12326
+#2  worker_thread_run (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12393
+#3  worker_thread (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12467
+#4  0x00007f1ae376d064 in start_thread (arg=0x7f1ac5aea700) at pthread_create.c:309
+#5  0x00007f1ae34a262d in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:111
+
+Thread 5 (Thread 0x7f1ac52e9700 (LWP 15041)):
+#0  pthread_cond_wait
+
+GLIBC_2.3.2 () at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007f1ac8b81b32 in consume_socket (sp=0x7f1ab0000d68, ctx=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12326
+#2  worker_thread_run (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12393
+#3  worker_thread (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12467
+#4  0x00007f1ae376d064 in start_thread (arg=0x7f1ac52e9700) at pthread_create.c:309
+#5  0x00007f1ae34a262d in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:111
+
+Thread 4 (Thread 0x7f1ac4ae8700 (LWP 15042)):
+#0  pthread_cond_wait
+
+GLIBC_2.3.2 () at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007f1ac8b81b32 in consume_socket (sp=0x7f1ab4000d68, ctx=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12326
+#2  worker_thread_run (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12393
+#3  worker_thread (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12467
+#4  0x00007f1ae376d064 in start_thread (arg=0x7f1ac4ae8700) at pthread_create.c:309
+#5  0x00007f1ae34a262d in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:111
+
+Thread 3 (Thread 0x7f1abffff700 (LWP 15043)):
+#0  pthread_cond_wait
+
+GLIBC_2.3.2 () at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007f1ac8b81b32 in consume_socket (sp=0x7f1aa8000d68, ctx=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12326
+#2  worker_thread_run (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12393
+#3  worker_thread (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12467
+#4  0x00007f1ae376d064 in start_thread (arg=0x7f1abffff700) at pthread_create.c:309
+#5  0x00007f1ae34a262d in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:111
+
+Thread 2 (Thread 0x7f1abf7fe700 (LWP 15044)):
+#0  pthread_cond_wait
+
+GLIBC_2.3.2 () at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007f1ac8b81b32 in consume_socket (sp=0x7f1aac000d68, ctx=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12326
+#2  worker_thread_run (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12393
+#3  worker_thread (thread_func_param=0x6815e20) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/net/http/civetweb/civetweb.c:12467
+#4  0x00007f1ae376d064 in start_thread (arg=0x7f1abf7fe700) at pthread_create.c:309
+#5  0x00007f1ae34a262d in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:111
+
+Thread 1 (Thread 0x7f1ae4b7d940 (LWP 15014)):
+#0  0x00007f1ae3473b89 in __libc_waitpid (pid=15053, stat_loc=stat_loc
+entry=0x7fff176f47c0, options=options
+entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007f1ae33fb12b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00007f1ae44747e4 in Exec (shellcmd=<optimized out>, this=<optimized out>) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/core/unix/src/TUnixSystem.cxx:2118
+#3  TUnixSystem::StackTrace (this=0x102b8e0) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/core/unix/src/TUnixSystem.cxx:2405
+#4  0x00007f1acd2d5f0f in FairLogger::LogFatalMessage (this=<optimized out>, strm=...) at /home/uhlig/fairroot/source/v-17.03/fairtools/FairLogger.cxx:576
+#5  0x00007f1acd2d6064 in FairLogger::endl (strm=...) at /home/uhlig/fairroot/source/v-17.03/fairtools/FairLogger.cxx:503
+#6  0x00007f1acd2d36de in operator<< (__pf=0x7f1acd2d6010 <FairLogger::endl(std::ostream&)>, this=<optimized out>) at /usr/include/c++/4.9/ostream:113
+#7  FairLogger::operator<< (this=0x27b7c90, manip=0x7f1acd2d6010 <FairLogger::endl(std::ostream&)>) at /home/uhlig/fairroot/source/v-17.03/fairtools/FairLogger.cxx:470
+#8  0x00007f1acd2d434f in FairLogger::Log (this=0x27b7c90, level=level
+entry=FATAL, file=file
+entry=0x7f1acd5e2600 "/home/uhlig/fairroot/source/v-17.03/base/steer/FairTask.cxx", line=line
+entry=0x7f1acd5e60ac "67", func=func
+entry=0x7f1acd5e26bf <FairTask::InitTask()::__FUNCTION__> "InitTask", format=format
+entry=0x7f1acd5e2640 "Initialization of Task %s failed fatally", arglist=0x7fff176f6a28) at /home/uhlig/fairroot/source/v-17.03/fairtools/FairLogger.cxx:193
+#9  0x00007f1acd2d455b in FairLogger::Fatal (this=<optimized out>, file=file
+entry=0x7f1acd5e2600 "/home/uhlig/fairroot/source/v-17.03/base/steer/FairTask.cxx", line=line
+entry=0x7f1acd5e60ac "67", func=func
+entry=0x7f1acd5e26bf <FairTask::InitTask()::__FUNCTION__> "InitTask", format=format
+entry=0x7f1acd5e2640 "Initialization of Task %s failed fatally") at /home/uhlig/fairroot/source/v-17.03/fairtools/FairLogger.cxx:72
+#10 0x00007f1acd57936f in FairTask::InitTask (this=0x745dee0) at /home/uhlig/fairroot/source/v-17.03/base/steer/FairTask.cxx:67
+#11 0x00007f1acd5792ab in FairTask::InitTasks (this=<optimized out>) at /home/uhlig/fairroot/source/v-17.03/base/steer/FairTask.cxx:137
+#12 0x00007f1acd57932c in FairTask::InitTask (this=<optimized out>) at /home/uhlig/fairroot/source/v-17.03/base/steer/FairTask.cxx:71
+#13 0x00007f1acd57d107 in FairRunOnline::Init (this=0x72b10e0) at /home/uhlig/fairroot/source/v-17.03/base/steer/FairRunOnline.cxx:239
+#14 0x00007f1ae4b01c89 in ?? ()
+#15 0x00000000070acca8 in ?? ()
+#16 0x00000000070acbc0 in ?? ()
+#17 0x00000000010e1850 in ?? ()
+#18 0x00007fff176f6e80 in ?? ()
+#19 0x00000000070acbc0 in ?? ()
+#20 0x00000000010e1850 in ?? ()
+#21 0x00007fff176f6e80 in ?? ()
+#22 0x00007f1ae0a96d82 in clang::Sema::CheckFunctionDeclaration (this=0x7fff1770c990, S=0x15, NewFD=0x7f1acdf64920 <R3BUcesbSource::R3BUcesbSource(TString const&, TString const&, TString const&, EXT_STR_h101_t*, unsigned long)>, Previous=..., IsExplicitSpecialization=<optimized out>) at /home/uhlig/fairsoft/source/mar17_root6/tools/root/interpreter/llvm/src/tools/clang/lib/Sema/SemaDecl.cpp:8899
+#23 0x00000000072b10e0 in ?? ()
+#24 0x000000000747c5e0 in ?? ()
+#25 0x000000000747c5e0 in ?? ()
+#26 0x000000000745dee0 in ?? ()
+#27 0x000000000745dee0 in ?? ()
+#28 0x00007f1acd569a10 in ?? () at /usr/include/c++/4.9/ostream:535 from /cvmfs/fairroot.gsi.de/fairroot/v-17.03_fairsoft-mar17_root6/lib/libBase.so.17
+#29 0x00000000072b10e0 in ?? ()
+#30 0x00000000072b10e0 in ?? ()
+#31 0x0000000101000002 in ?? ()
+#32 0x00000000027b8840 in ?? ()
+#33 0x00000000027db910 in ?? ()
+#34 0x00000000027b8840 in ?? ()
+#35 0x00000000027e0ba0 in ?? ()
+#36 0x00000000027b8840 in ?? ()
+#37 0x00000000027b8840 in ?? ()
+#38 0x0100000002cc3250 in ?? ()
+#39 0x00000000027b8840 in ?? ()
+#40 0x0100000000000000 in ?? ()
+#41 0x00000000073cf600 in ?? ()
+#42 0x00000000073b6260 in ?? ()
+#43 0x00000000073b6260 in ?? ()
+#44 0x00007f1ae47a99c0 in ?? () from /cvmfs/fairroot.gsi.de/fairsoft/mar17_root6/lib/root/libRint.so.6.08
+#45 0x0000000006828d40 in ?? ()
+#46 0x0000000006828d40 in ?? ()
+#47 0x0000000006828d40 in ?? ()
+#48 0x0000000006828d40 in ?? ()
+#49 0x00000000073cf600 in ?? ()
+#50 0x00000000073cf600 in ?? ()
+#51 0x00000000027b8840 in ?? ()
+#52 0x00000000072b10e0 in ?? ()
+#53 0x00000000072cce60 in ?? ()
+#54 0x00000000072cce60 in ?? ()
+#55 0x00007fff1770c7b8 in ?? ()
+#56 0x00000000072b10e0 in ?? ()
+#57 0x00007f1acd569520 in ?? () from /cvmfs/fairroot.gsi.de/fairroot/v-17.03_fairsoft-mar17_root6/lib/libBase.so.17
+#58 0x00000000072b10e0 in ?? ()
+#59 0x00000000072b10e0 in ?? ()
+#60 0x00000000072b10e0 in ?? ()
+#61 0x00000000072b10e0 in ?? ()
+#62 0x00000000072b10e0 in ?? ()
+#63 0x00000000072db390 in ?? ()
+#64 0x00007f1ae0406170 in ?? () from /cvmfs/fairroot.gsi.de/fairsoft/mar17_root6/lib/root/libCling.so
+#65 0x00000000072dab40 in ?? ()
+#66 0x00000000072dab40 in ?? ()
+#67 0x00000000072d3ab0 in ?? ()
+#68 0x00000000072d3ab0 in ?? ()
+#69 0x00000000072db390 in ?? ()
+#70 0x00007f1ae0406170 in ?? () from /cvmfs/fairroot.gsi.de/fairsoft/mar17_root6/lib/root/libCling.so
+#71 0x00000000072c5ac0 in ?? ()
+#72 0x00000000072c5ac0 in ?? ()
+#73 0x00000000072d3ab0 in ?? ()
+#74 0x00000000072d3ab0 in ?? ()
+#75 0x00000000072d3ab0 in ?? ()
+#76 0x00000000072d3ab0 in ?? ()
+#77 0x00007f1acdf64920 in ?? () at /usr/include/c++/4.9/ext/atomicity.h:68 from /u/mheil/build/lib/libR3Bsource.so.SOVERSION
+#78 0x00007fff1770c770 in ?? ()
+#79 0x00000000072d3ab0 in ?? ()
+#80 0x00007f1ae43ae660 in ?? () at /home/uhlig/fairsoft/source/mar17_root6/tools/root/core/base/src/TString.cxx:98 from /cvmfs/fairroot.gsi.de/fairsoft/mar17_root6/lib/root/libCore.so.6.08
+#81 0x00007f1ae4b85330 in ?? ()
+#82 0x00007f1ae4b7a0a9 in ?? ()
+#83 0x00007f1ae43b3750 in ?? () at /home/uhlig/fairsoft/source/mar17_root6/tools/root/core/base/src/TString.cxx:2343 from /cvmfs/fairroot.gsi.de/fairsoft/mar17_root6/lib/root/libCore.so.6.08
+#84 0x000000c8006f6ec0 in ?? ()
+#85 0x00007fff176f6ec0 in ?? ()
+#86 0x0000000000000000 in ?? ()

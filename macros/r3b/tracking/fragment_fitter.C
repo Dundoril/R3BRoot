@@ -3,19 +3,26 @@ void fragment_fitter()
 {
     TString inFile = "sim.root";
     TString parFile = "par.root";
+    TString digiFile = "digi.root";
     TString outFile = "tracking.root";
     
     // Create analysis run -----------------------------------------------------
     FairRunAna* run = new FairRunAna();
-    run->SetInputFile(inFile.Data());
+    FairFileSource* source = new FairFileSource(inFile);
+    source->AddFriend(digiFile);
+    run->SetSource(source);
     run->SetOutputFile(outFile.Data());
     // -------------------------------------------------------------------------
     
     // Runtime DataBase info ---------------------------------------------------
     FairRuntimeDb* rtdb = run->GetRuntimeDb();
-    FairParRootFileIo* parIo1 = new FairParRootFileIo();
+    Bool_t kParameterMerged = kTRUE;
+    FairParRootFileIo* parIo1 = new FairParRootFileIo(kParameterMerged);
     parIo1->open(parFile.Data());
     rtdb->setFirstInput(parIo1);
+    FairParAsciiFileIo* parIo2 = new FairParAsciiFileIo();
+    parIo2->open("setup.par", "in");
+    rtdb->setSecondInput(parIo2);
     // -------------------------------------------------------------------------
 
     // Propagation task --------------------------------------------------------
@@ -26,6 +33,7 @@ void fragment_fitter()
     // Initialize --------------------------------------------------------------
     run->Init();
     FairLogger::GetLogger()->SetLogScreenLevel("INFO");
+
     // -------------------------------------------------------------------------
     
     TStopwatch timer;

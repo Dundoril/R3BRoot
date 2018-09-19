@@ -1,0 +1,315 @@
+Unpacker:
+
+Runs 001-024: ucesb_dir + "/../upexps/jun16U/jun16U"
+Runs 025-103: ucesb_dir + "/../upexps/jun16Xe/jun16Xe"
+Runs 105-158: ucesb_dir + "/../upexps/jun16Xe2/jun16Xe2"
+Runs 160-230: ucesb_dir + "/../upexps/jun16C/jun16C"
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+U beam 
+
+run sheets in elog.gsi.de/S40x
+
+05.06.2016
+run001-003: Playing with position on ROLU and setting up CFD for LOS.
+run004: First data taking after setting up LOS and ROLU.
+run005: With detector (CsI crystall from Munich group)in beam. Beam should be stopped before ToFD.
+run006: Detektor in front of ToF wall removed. Rate on LOS 2937 per spill. Spill length 0.8 s.
+HV of all ToFD paddle 600 V (since beginning of beam)
+HV LOS1: 670 V
+HV LOS2: 650 V
+HV LOS3: 690 V
+HV LOS4: 700 V
+HV ROLU: 400 V all channels
+run007: TofD plane 1 and 2 have now a threshold of 180 (before 190)
+run008: With higher rate of about 15k per spill. Sweep of horizontal axis at the center of the detector.
+run009: Sweep horizontally 20 cm above center.
+run010: Sweep horizontally with beam 20 below center.
+run011: Sweep vewrtically at center (paddle 3 and 4)
+run012: Sweep vertically at beam right postion (paddle 1 and 2)
+
+06.06.2016
+run013: Run with pulser on FQT Frontend (all channels).
+run014: Run with 5 mm thick plastic of Chiara in beam.
+run015: Swapped cable of 1.6.2 with 1.1.2 of TofD detector. Califa Crystal in beam. Horizontal sweep of detector in middle position.
+No beam on ToFD, Califa crystal stopped it.
+
+The cables of Plane 1 were wrong. We swapped:
+1.1.2 - 1.6.2
+1.2.2 - 1.5.2
+1.3.2 - 1.4.2
+
+We have now Karsten's scope in the cave.
+Channel 1: Los 2
+Channel 2: ToFD 2.3.2
+Channel 3: Los 4
+Channel 4: TofD 2.3.1
+Since we have split the Los signals we increase the voltage for the corresponding channels.
+Los 2: 650 V -> 750 V
+Los 4: 700 V -> 800 V
+
+run016: Now CsI crystal is out but 1 mm of diamond is in. In addition 5 mm of plastic. Scope is looking at channels TofD 2.3.1 and 2.3.2.
+run017: As before. Scope is looking at channels TofD 2.3.1 and 2.3.2.
+run018: Scope still in, beam on paddle 2 to make a fit of the PMT saturation (paddle 1 on plane 1 and 2)
+run019: Scope is out, all channels connected again, HV of Los channels set back to old values. Horizontal sweep run at middle of ToFD.
+run020: Swapped cable 1.3.2 and 1.4.2 again. Horizontal sweep again but with higher rate of 20 kHz.
+run021: Moved the detector down by 20 cm. Horizontal sweep.
+run022: Vertical sweep on paddle 2.
+
+08.06.2016
+run023: Starting from this run the cabling is proper. Cosmic run, all PMs at 1000V.
+run024: Another, longer cosmic run, all PMs at 1000V.
+
+
+--------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Xe beam 
+
+run sheets in elog.gsi.de/Test-beam-16
+
+******* FQT/VFTX2 for planes 1 and 2, FQT/TAMEX3 for planes 3 and 4 *******
+14.06.2016
+run025: First beam with 124Xe.
+run026: Horizontal sweep of ToFD at y=0. Bar 6 was not covered.
+run027: Horizontal sweep of ToFD at y=+20. 
+run028: Horizontal sweep of ToFD at y=-20. (sweep not complete)
+run029: Beam on paddle 1, few counts only. rolu 10x10 mm²; ROLU without offset; 1MHz pulser was tunning along
+
+1MHz pulser running during Run029 to Run030 File 132 
+LOS read-out: MCFD and PADI (outputs defined as plane 5, paddles 1 and 2, PMs 1 and 2: right=5.1.1, left: 5.1.2, up: 5.2.1, down: 5.2.2)
+run030: beam was focused and centered on ROLU. rolu 10x10 mm²; pixel run; 1MHz pulser was tunning along
+run031: rolu 10x10 mm²; pixel run.
+run032: rolu 10x10 mm²; pixel run (long run).
+run033: rolu 10x10 mm²; no pixel inside; beam re-aligned.
+run034: rolu 10x10 mm²
+run035: rolu 10x10 mm²
+Beam refocused (elog entry 32)
+
+15.06.2016
+run037: rolu 5x5 mm²
+run038: Long run. rolu 5x5 mm²
+run039: Horizontal sweep of ToFD at y=0. rolu 5x5 mm²
+
+From this point on, LOS read-out only via MCFD.
+
+run041: Vertical sweep on paddle 1 of TofD. rolu 5x5 mm²
+run042: vertical sweep on paddle 2 and 3. rolu 5x5 mm²
+run043: vertical sweep on paddle 3 and 4. rolu 5x5 mm²
+run044: Vertical sweep on paddle 4 and 5 (not complete). 
+
+run046: From this run on we have 700 V on all ToFD channels (before 600 V). rolu 1x1 mm²
+run047: rolu 2x2 mm² 
+run048: rolu 4x4 mm²
+run049: rolu 8x8 mm²
+run050: rolu 10x10 mm²
+
+16.06.2016 
+run051: Long run. Damage of LOS3 PMT. rolu 5x5 mm²
+run052: Long run. rolu 5x5 mm²
+run053: Partly recover of LOS3 signal by increasing the voltage from ~700 V to 1500 V. rolu 5x5 mm²
+run054: Horizonal sweep of ToFD at y=0. Adjusting MCFD's settings. rolu 5x5 mm²
+run055: Horizontal sweep of ToFD at y=+20. Adjusting MCFD's settings. rolu 5x5 mm²
+run056: Horizontal sweep of ToFD at y=-20. Adjusting MCFD's settings. rolu 5x5 mm²
+run057: Vertical sweep of all ToFD bars. Adjusting MCFD's settings. rolu 5x5 mm²
+run058: Beam centered on TOFD. Long run. rolu 5x5 mm². With new MCFD's settings (entry ID 79): 
+* HV:
+- LOS1 695 V
+- LOS2 700 V
+- LOS3 780 V
+- LOS4 1500 V
+* MCFD:
+- Threshold = 50
+- Gain = 3
+- Fraction = 20
+- Other parameters as before (see entry 51)
+
+17.06.2016
+run064: Vertical sweep of all ToFD bars. rolu 5x5 mm²
+run066: Vertical sweep of all ToFD bars. rolu 5x5 mm²
+******* FQT/VFTX2 for planes 3 and 4, FQT/TAMEX3 for planes 1 and 2 *******
+run067: long run for Actar. rolu 5x5 mm²
+
+New HV settings for LOS:
+Los1: 695 V
+Los2: 700 V
+Los3: 780 V
+Los4: 1350 V
+
+18.06.2016
+run068: Long run for Actar. rolu 5x5 mm²
+run069: Partially high beam rate. rolu 5x5 mm²
+
+Actar dismounted
+19.06.2016
+run070: First run after re-arrangement of beam line. rolu 5x5 mm²
+20.06.2016
+run071: Long horizontal sweep on ToFD at y=0. rolu 5x5 mm²
+run074: Beam on bar 6 of ToFD. rolu 5x5 mm²
+run075: Offset ROLU: 2 mm down. rolu 5x5 mm²
+run076: Horizontal sweep on ToFD at y=-30 cm. rolu 5x5 mm²
+run080: Horizontal sweep at y=+30cm ??? rolu 5x5 mm²
+run081: Horizontal sweep at y=+30cm ??? rolu 5x5 mm²
+run082:
+run083: Very long run. rolu 5x5 mm²
+
+We cabled both PMTs of paddle 3 of the ToFD to Karsten's scope.
+
+run082: Vertical sweep at paddle 6. rolu 5x5 mm²
+run083: HV module of plane 3 and of the TofD detector is broken.  rolu 5x5 mm²
+
+21.06.2016
+run085: rolu 25x25 mm²
+run086: rolu 25x25 mm²
+run087: rolu 25x25 mm²
+run088: rolu 25x25 mm²
+run089: Vertical sweep at paddle 5. rolu 25x25 mm²
+run090: Vertical sweep at paddle 1. rolu 25x25 mm²
+run091: Vertical ToFD sweep on paddle 1. rolu 25x25 mm²
+run092: Again Vertical ToFD sweep on paddle 1 and 2. rolu 25x25 mm²
+
+run097: Horizontal sweep at y=0 on Tofd. rolu 25x25 mm²
+run098: Longer run on the first ToFD paddles (black wrapping). Many peaks visible, inhomogenous matter. rolu 25x25 mm²
+
+22.06.2016
+Tests with different thresholds:
+run100: Horizontal sweep on ToFD at y=0. From this run on we have changed HV values for ToFD. rolu 25x25 mm²
+run101: Sweep on ToFD at y=0. rolu 25x25 mm²
+run102: Sweep on ToFD at y=0. Changed all thresholds of FQT from 180 to 100. rolu 25x25 mm²
+run103: Horizontal sweep of ToFD at y=0. Set threshold of all FQT channels from 100 to 50. rolu 25x25 mm²
+
+
+******* PADI/TAMEX2 for planes 1 and 2, FQT/TAMEX3 for planes 3 and 4 *******
+And all thresholds of FQT set back to 180. New cabling scheme to avoid cross talk.
+Use unpacker ...Xe2
+
+run105: Horizontal sweep at y=0. rolu 25x25 mm²
+run107: Horizontal sweep at y=0. Pulser was on. rolu 25x25 mm²
+run108: rolu 25x25 mm²
+run109: Horizontal sweep at y=0. rolu 25x25 mm²
+run110: Horizontal sweep at y=20.  (Plane  4 Bar 2 veff  13.3333) rolu 25x25 mm²
+run111: Longer run on paddle 2. rolu 25x25 mm²
+run119: Vertical sweep of all paddles. In the middle of this run the intensity was increased from 10 kHz to 100 kHz. rolu 25x25 mm²
+run121: Vertical sweep on all paddles. Maybe two channels without HV until run132. rolu 25x25 mm²
+run122: Vertical sweep on all paddles. Rate was reduced from 1.2 M to 100 k per spill. rolu 25x25 mm²
+run124: Vertical sweep on paddle 2. rolu 25x25 mm²
+run126: Higher rate. rolu 25x25 mm²
+run129: About 100 kHz rate. rolu 25x25 mm²
+
+
+
+run133: New HV values, now all channels with 600 V. rolu 25x25 mm²
+run137: Horizontal sweep at y=0. (ROLU 25x25mm²)
+run138: Horizontal sweep at y=20.  (ROLU 25x25mm²)
+run139: Vertical sweeep of all paddles.  (ROLU 25x25mm²)
+run140: Longer run on paddle ?  (ROLU 25x25mm²)
+run142: Longer run on paddle 2 (ROLU 5x5mm²) 
+
+The runs 143 to 149 were taken by the Cherenkov detector group in the night. They are all short runs. rolu 5x5 mm²
+
+run151: New HV values for paddles: 4.4.1: 600->550V, 4.4.2: 600->550V, 4.5.1: 600->500V, 4.5.2: 600->530V, 4.6.1: 600->700V; rolu rolu 33.2x34 mm²
+run152: rolu compeletly open
+run153: rolu 5x5 mm²
+run154: Horizontal sweep at y=0. rolu 5x5 mm²
+run155: Horizontal sweep at y=20. rolu 5x5 mm²
+run157: Vertical sweep of all paddles. rolu 5x5 mm²
+run158: Longer run on paddle 2. rolu 5x5 mm²
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Carbon beam
+
+run sheets in elog.gsi.de/Test-beam-16
+
+run160: rolu 5x5 mm²; unpacker complain: gsi_febex.spec:19: Error while reading trig_length from buffer.
+run161: Small sweep run on ToFD for setting up HV of all channels. rolu 5x5 mm²
+Increased the HV of all ToFD channels from 600 V to 700 V. rolu 5x5 mm²
+run162: Sweep run on ToFD with new HV settings of 700 V each. rolu 5x5 mm²
+run163: Sweep run on ToFD, now with 800 V on all PMTs. rolu 5x5 mm²
+run164: Sweep on ToFD now with 900 V on each PMT. rolu 5x5 mm²
+New HV settings for LOS:
+LOS1: 1000 V
+LOS2: 1000 V
+LOS3: 1100 V
+LOS4: 920 V
+run165: Now, the voltage for ToFD seems to be fine (900 V). Horizontal sweep on y=0. rolu 5x5 mm²
+run166: Horizontal sweep of ToFD at y=20 cm. rolu 5x5 mm²
+run167: Vertical sweep on all paddles of ToFD. rolu 5x5 mm²
+run168: Run on paddle 2 of TofD. The finger detector is from now on in the beam. rolu 5x5 mm²
+run169: Run on paddle 2 of ToFD. rolu 5x5 mm²
+run170: optimization of LOS and ROLU. KY2 kicker slightly re-adjusted. rolu 5x5 mm²
+run171: after adjustment of LOS and ROLU voltages. rolu 5x5 mm²
+run172: Continue run on paddle 2 of ToFD. rolu 5x5 mm²
+run173: Beam blown up for Si ToF detector. rolu 15x15 mm². 
+run174: rolu 15x15 mm². 
+run175: Rolu Window: Horizontal: 15 mm       Vertical: 15+3 mm
+run178: rolu 5x5 mm².
+run179: rolu 5x5 mm².
+run180: rolu 5x5 mm².
+run181: rolu 5x5 mm².
+run182: Cherenkov was put out of the beamline. Run stopped due to FEBEX-errors in the main DAQ. rolu 5x5 mm².
+run183:
+run184: Problems with FEBEX and Tamex.
+run185: DAQ testing.
+run186: New run after problems with DAQ are solved (see entry ID 316).
+run187: New thresholds for TOFD. Set all FQT/TAMEX3 channels from 180 to 190.
+run189: Setting of SiPD.
+run190: The same.
+Now all channels of ToFD have 1000 V (before 900).
+run191: Full DAQ; testing to see if FIBER DAQ can stay in main DAQ. Beam broadened and ROLU moved starting from file 2734.
+
+We increased the HV of LOS and ROLU:
+LOS1: 1100 V
+LOS2: 1100 V
+LOS3: 1200 V
+LOS4: 1020 V
+ROLU1: 600 V 
+ROLU2: 600 V
+ROLU3: 600 V
+ROLU4: 600 V
+
+run192: rolu open: 33.2x34 mm².
+run194: Horizontal sweep on Tofd at y=0. Rolu open.
+run195: Horizontal sweep on Tofd at y=+20. Rolu open.
+run196: Vertical sweep on all ToFD paddles. Rolu open.
+run197: Former sweep was not complete. Vertical sweep on all paddles again. Rolu open.
+run198: rolu open.
+run199: Again the attempt to sweep all TofD paddles vertically. Rolu open.
+run200: Longer run on the center of the ToFD. Rolu open.
+run201: Run on paddle 5 of ToFD. Rolu open.
+run202: rolu open.
+run203: rolu open.
+run204: rolu open.
+run205: Threshold for all ToFD/Tamex 3 channels set to 170 (before 190). Rolu open.
+run206: With threshold 160 for all ToFD/TAMEX3 channels. Rolu open.
+run207: Now with threshold 150 for all TOFD/Tamex3 channels. Rolu open.
+run208: rolu open.
+run209: New run with ToFD thresholds of 190 for all ToFD/TAMEX3 channels. Rolu open.
+run210-215: TUD detectors tunning. rolu 5x5 mm².
+run216-218: TUD detectors tunnig. Rolu open.
+run219-230: TUD detectors testing. rolu open.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

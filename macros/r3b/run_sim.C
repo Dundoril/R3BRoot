@@ -11,8 +11,8 @@ void run_sim()
     TString generator1 = "box";
     TString generator2 = "ascii";
     TString generator3 = "r3b";
-    TString generator = generator1;
-    TString inputFile = "";
+    TString generator = generator2;
+    TString inputFile = "evt_gen_16O_300AMeV_1MeV.dat";
 
     Int_t nEvents = 1;
     Bool_t storeTrajectories = kTRUE;
@@ -78,22 +78,31 @@ void run_sim()
     run->AddModule(califa);
     
     // Fi4 detector
-    run->AddModule(new R3BFi4("fi4_v17a.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*16.7)*100, 0.069976, 513.649524+100.}, {"" ,-90.,16.7,90.}));
+    // run->AddModule(new R3BFi4("fi4_v17a.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*16.7)*100, 0.069976, 513.649524+100.}, {"" ,-90.,16.7,90.}));
 
     // Fi6 detector
-    run->AddModule(new R3BFi6("fi6_v17a.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*16.7)*500, 0.069976, 513.649524+500.}, {"" ,-90.,16.7,90.}));
+    // run->AddModule(new R3BFi6("fi6_v17a.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*16.7)*500, 0.069976, 513.649524+500.}, {"" ,-90.,16.7,90.}));
 
     // Fi5 detector
-    run->AddModule(new R3BFi5("fi5_v17a.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*16.7)*300, 0.069976, 513.649524+300.}, {"" ,-90.,16.7,90.}));
+    // run->AddModule(new R3BFi5("fi5_v17a.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*16.7)*300, 0.069976, 513.649524+300.}, {"" ,-90.,16.7,90.}));
 
+    // Fi10 detector
+    run->AddModule(new R3BFi10("fi10_16O.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*18.0)*100, 0.069976, 513.649524+300.}, {"" ,-90.,18.0,90.}));
+
+    // Fi11 detector
+    // run->AddModule(new R3BFi11("fi11_16O.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*18.0)*100, 0.069976, 513.649524+400.}, {"" ,-90.,18.0,90.}));
+
+    // Gfi
+    // run->AddModule(new R3BFi11("fi11_16O.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*18.0)*100, 0.069976, 513.649524+600.}, {"" ,-90.,18.0,90.}));
+    
     // sfi detector
-    run->AddModule(new R3Bsfi("sfi_v17a.geo.root", {0, 0, -200}));
+    // run->AddModule(new R3Bsfi("sfi_v17a.geo.root", {0, 0, -200}));
 
     // Tof
-    run->AddModule(new R3BTof("tof_v17a.geo.root", { -417.359574, 2.400000, 960.777114 }, { "", -90., +31., 90. }));
+    // run->AddModule(new R3BTof("tof_v17a.geo.root", { -417.359574, 2.400000, 960.777114 }, { "", -90., +31., 90. }));
 
     // dTof
-    run->AddModule(new R3BdTof("dtof_v17a.geo.root", { -155.824045+(2.7*10)*TMath::Cos(16.7*TMath::DegToRad()), 0.523976, 761.870346 }, { "", -90., +16.7, 90. }));
+    run->AddModule(new R3BdTof("dtof_v17a.geo.root", { -155.824045+(2.7*10)*TMath::Cos(18.0*TMath::DegToRad()), 0.523976, 761.870346 }, { "", -90., +18.0, 90. }));
 
     // NeuLAND
     // run->AddModule(new R3BNeuland("neuland_test.geo.root", { 0., 0., 1400. + 12 * 5. }));

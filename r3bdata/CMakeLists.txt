@@ -25,11 +25,12 @@ ${R3BROOT_SOURCE_DIR}/r3bdata/startrackData
 ${R3BROOT_SOURCE_DIR}/r3bdata/landData  
 ${R3BROOT_SOURCE_DIR}/r3bdata/losData
 ${R3BROOT_SOURCE_DIR}/r3bdata/mfiData
-${R3BROOT_SOURCE_DIR}/r3bdata/fi4Data
+${R3BROOT_SOURCE_DIR}/r3bdata/fibData
 ${R3BROOT_SOURCE_DIR}/r3bdata/pspData
 ${R3BROOT_SOURCE_DIR}/r3bdata/neulandData
 ${R3BROOT_SOURCE_DIR}/r3bdata/actarData
 ${R3BROOT_SOURCE_DIR}/r3bdata/strawtubesData
+${R3BROOT_SOURCE_DIR}/r3bdata/ptofData
 )
 
 include_directories( ${INCLUDE_DIRECTORIES})
@@ -45,6 +46,7 @@ link_directories( ${LINK_DIRECTORIES})
 set(SRCS
 R3BMCStack.cxx
 R3BMCTrack.cxx
+R3BHit.cxx
 xballData/R3BXBallPoint.cxx
 xballData/R3BXBallCrystalHit.cxx
 xballData/R3BXBallCrystalHitSim.cxx
@@ -113,11 +115,19 @@ losData/R3BLosCalData.cxx
 losData/R3BLosHitData.cxx
 neulandData/R3BPaddleTamexMappedData.cxx
 tofData/R3BPaddleCalData.cxx
-fi4Data/R3BFi4MappedItem.cxx
-fi4Data/R3BFi4CalItem.cxx
-fi4Data/R3BFi4HitItem.cxx
 tofData/R3BTofdHitData.cxx
-fi4Data/R3BFi4Point.cxx
+ptofData/R3BPtofHit.cxx
+fibData/R3BBunchedFiberCalData.cxx
+fibData/R3BBunchedFiberHitData.cxx
+fibData/R3BBunchedFiberMappedData.cxx
+fibData/R3BFi4Point.cxx
+fibData/R3BFi4CalItem.cxx
+fibData/R3BFi4HitItem.cxx
+fibData/R3BFibMappedData.cxx
+fibData/R3BFibCalData.cxx
+fibData/R3BFibPoint.cxx
+#fibData/R3BFibDigitizer.cxx
+#fibData/R3BFibHitItem.cxx
 )
 
 

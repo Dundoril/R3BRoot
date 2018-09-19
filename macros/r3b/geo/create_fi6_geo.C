@@ -1,3 +1,7 @@
+#include "TGeoManager.h"
+
+TGeoManager* gGeoMan;
+
 void create_fi6_geo(const char* geoTag)
 {
 

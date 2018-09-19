@@ -1,0 +1,1239 @@
+sfiebiger@ap59:~/r3broot/R3BRoot/R3BRoot_michael/macros/r3b/16O_sf$ r3b
+System during compilation: Ubuntu 18.04.1 LTS
+                           x86_64
+System now               : Ubuntu 18.04.1 LTS
+                           x86_64
+sfiebiger@ap59:~/r3broot/R3BRoot/R3BRoot_michael/macros/r3b/16O_sf$ root -l -q run_sim.C
+
+Processing run_sim.C...
+[INFO   ] FairRootManager::OpenOutFile("sim.root")
+[INFO   ] Media file used: /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/media_r3b.geo
+Warning in <TClass::Init>: no dictionary for class R3BFibPoint is available
+Error in <TClonesArray::SetClass>: R3BFibPoint does not inherit from TObject
+Error in <TClonesArray::SetClass>: R3BFibPoint does not inherit from TObject
+Warning in <TClass::Init>: no dictionary for class R3BFi7Point is available
+Error in <TClonesArray::SetClass>: R3BFi7Point does not inherit from TObject
+Warning in <TClass::Init>: no dictionary for class R3BFi8Point is available
+Error in <TClonesArray::SetClass>: R3BFi8Point does not inherit from TObject
+Error in <TClonesArray::SetClass>: R3BFibPoint does not inherit from TObject
+Error in <TClonesArray::SetClass>: R3BFibPoint does not inherit from TObject
+[INFO   ] R3BCalifa::SetNonUniformity to 1 %
+[INFO   ] New Ion FairIon1 Z=8  A=16  Charge=8  Mass=15.0123520 GeV  
+[INFO   ] ==============  FairRunSim: Initialising simulation run ==============
+Info in <TGeoManager::TGeoManager>: Geometry FAIRGeom, FAIR geometry created
+[INFO   ] FairGeoMedia: Read media 
+
+************************************************************* 
+     initialisation for run id 1533104222
+************************************************************* 
+[INFO   ] Create visualisation manager 
+-I- R3BGladFieldMap: Reading field map from ASCII file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/field/magField/R3B/R3BGladMap.dat
+-I- R3BGladFieldMap: 136125 entries to read... 100 %    136125 read
+[WARNING] FairField::FillParContainer Should be implemented in User class
+Loading Geant4 libraries (using geant4-config) ...
+31
+Loading VGM libraries ... 
+Loading g4root library ...
+Loading geant4vmc library ...
+Loading mtroot library ...
+[g4Config]: Creating TGeant4 VirtualMC ...
+
+=============================================================
+ Geant4 Virtual Monte Carlo 
+ Version 3.3 ( 15 January 2016 )
+ WWW : http://root.cern.ch/drupal/content/geant4-vmc
+=============================================================
+
+Info in <TGeoManager::SetTopVolume>: Top volume is cave. Master volume is cave
+Info in <TGeoNavigator::BuildCache>: --- Maximum geometry depth set to 100
+[INFO   ] R3BModule: Constructing LeadTarget (which is a R3BTarget) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/target_LeadTarget.geo.root ...
+[INFO   ] R3BModule: Constructing Glad Magnet (which is a R3BGladMagnet) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/glad_v17_flange.geo.root ...
+[INFO   ] R3BDetector: Constructing R3BFI3a (which is a R3BFi3a) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/fi3a_16O.geo.root ...
+[INFO   ] R3BDetector: Constructing R3BFI3b (which is a R3BFi3b) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/fi3b_16O.geo.root ...
+[INFO   ] Constructing FI7 geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/fi7_16O.geo.root
+[INFO   ] R3BDetector: Constructing R3BFi7 (which is a R3BFi7) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/fi7_16O.geo.root ...
+[INFO   ] Constructing FI8 geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/fi8_16O.geo.root
+[INFO   ] R3BDetector: Constructing R3BFi8 (which is a R3BFi8) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/fi8_16O.geo.root ...
+[INFO   ] R3BDetector: Constructing R3BFI10 (which is a R3BFi10) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/fi10_16O.geo.root ...
+[INFO   ] R3BDetector: Constructing R3BFI11 (which is a R3BFi11) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/fi11_16O.geo.root ...
+[INFO   ] R3BDetector: Constructing R3BdTof (which is a R3BdTof) geometry from ROOT file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/geometry/dtof_16O.geo.root ...
+Info in <TGeoManager::CheckGeometry>: Fixing runtime shapes...
+Info in <TGeoManager::CheckGeometry>: ...Nothing to fix
+Info in <TGeoManager::CloseGeometry>: Counting nodes...
+Info in <TGeoManager::Voxelize>: Voxelizing...
+Info in <TGeoManager::CloseGeometry>: Building cache...
+Info in <TGeoManager::CountLevels>: max level = 3, max placements = 1024
+Info in <TGeoManager::CloseGeometry>: 6185 nodes/ 48 volume UID's in FAIR geometry
+Info in <TGeoManager::CloseGeometry>: ----------------modeler ready----------------
+Info in <TObject::SetNavigator>: TG4RootNavigator created and registered to G4TransportationManager
+isMaster=1
+Running TVirtualMCApplication::ConstructGeometry
+*************************************************************
+ Geant4 version Name: geant4-10-02-patch-01    (26-February-2016)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+Info in <TObject::Initialize>: Creating G4 hierarchy ...
+Info in <TGeoManager::ConvertReflections>: Converting reflections in: FAIRGeom - FAIR geometry ...
+Info in <TGeoManager::ConvertReflections>: Done
+===> GEANT4 materials created and mapped to TGeo ones...
+===> GEANT4 physical volumes created and mapped to TGeo hierarchy...
+### INFO: TG4RootDetectorConstruction::Construct() finished
+TG4PostDetConstruction::Initialize
+G4 Stat: instantiated 49 logical volumes 
+                      3116 physical volumes
+Info in <TObject::ConnectToG4>: ROOT detector construction class connected to G4RunManager
+Adding HadronPhysicsList QGSP_INCLXX_HP
+G4PhysListFactory::GetReferencePhysList <QGSP_INCLXX_HP>  EMoption= 0
+<<< Geant4 Physics List simulation engine: QGSP_INCLXX_HP 1.0 (based on INCLXXPhysicsListHelper)
+
+*=====================================================================
+*                                                                     
+*   The Physics list QGSP_INCLXX_HP is an experimental physics list !   
+*                                                                      
+*   Please  report your use case for, and your experience with this    
+*    physics list on the Geant4 User Forum dedicated to physics lists: 
+*  http://hypernews.slac.stanford.edu/HyperNews/geant4/get/phys-list.html
+*                                                                      
+*=====================================================================*
+
+<<< Reference Physics List QGSP_INCLXX_HP is built
+
+Adding SpecialPhysicsList stepLimiter+specialCuts
+Visualization Manager instantiating with verbosity "warnings (3)"...
+[g4Config]: Processing additional Geant4 macro file /home/sfiebiger/r3broot/R3BRoot/R3BRoot_michael/gconfig/g4config.in
+***** COMMAND NOT FOUND </process/msc/inactivate> *****
+
+***** Batch is interrupted!! *****
+[SetCuts]: Setting Cuts ...
+Got FairRootManager existing
+TG4RootDetectorConstruction::ConstructSDandField
+TG4PostDetConstruction::InitializeSDandField
+[INFO   ] FairMCApplication::InitGeometry: 0
+[INFO   ] R3BFi3a: initialisation
+[INFO   ] -I- R3BFi3a: Adding customized Physics cut ... 
+[INFO   ] R3BFi3b: initialisation
+[INFO   ] -I- R3BFi3b: Adding customized Physics cut ... 
+[INFO   ] R3BFi7: initialisation
+[INFO   ] -I- R3BFi7: Adding customized Physics cut ... 
+[INFO   ] R3BFi8: initialisation
+[INFO   ] -I- R3BFi8: Adding customized Physics cut ... 
+[INFO   ] R3BFi10: initialisation
+[INFO   ] -I- R3BFi10: Adding customized Physics cut ... 
+[INFO   ] R3BFi11: initialisation
+[INFO   ] -I- R3BFi11: Adding customized Physics cut ... 
+[INFO   ] R3BdTof: initialisation
+[INFO   ] -I- R3BdTof: Adding customized Physics cut ... 
+++++  TG4Warning:  ++++
+    TG4PhysicsManager::Gstpar:
+    STRA parameter is supported via /mcPhysics/emModel commands.
+    Setting via Gstpar is ignored.
++++++++++++++++++++++++
+
+[INFO   ] -I- R3BdTof: plasticFormTOF Medium Id 7 Energy Cut-Off : 0.001 GeV
+[INFO   ] Simulation RunID: 1533104222
+Error in <TTree::Bronch>: TClonesArray with no dictionary defined in branch: cbmroot.R3BFI3a.Fi3aPoint
+Error in <TTree::Bronch>: TClonesArray with no dictionary defined in branch: cbmroot.R3BFI3b.Fi3bPoint
+Error in <TTree::Bronch>: TClonesArray with no dictionary defined in branch: cbmroot.R3BFi7.FI7Point
+Error in <TTree::Bronch>: TClonesArray with no dictionary defined in branch: cbmroot.R3BFi8.FI8Point
+Error in <TTree::Bronch>: TClonesArray with no dictionary defined in branch: cbmroot.R3BFI10.Fi10Point
+Error in <TTree::Bronch>: TClonesArray with no dictionary defined in branch: cbmroot.R3BFI11.Fi11Point
+Global magnetic field created with stepper ClassicalRK4
+### INFO: TG4RootDetectorConstruction::ConstructSDandField finished
+
+================================================================================
+                                 INCL++ WARNING                                 
+INCL++/G4ExcitationHandler uses its own level-density parameter for fission
+================================================================================
+
+
+================================================================================
+                                 INCL++ WARNING                                 
+INCL++/G4ExcitationHandler uses its own level-density parameter for fission
+================================================================================
+
+
+================================================================================
+                                 INCL++ WARNING                                 
+INCL++/G4ExcitationHandler uses its own level-density parameter for fission
+================================================================================
+
+/home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic
+@@@ G4ParticleHPInelasticData instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic/CrossSection/6_nat_Carbon
+
+================================================================================
+                                 INCL++ WARNING                                 
+INCL++/G4ExcitationHandler uses its own level-density parameter for fission
+================================================================================
+
+
+================================================================================
+                                 INCL++ WARNING                                 
+INCL++/G4ExcitationHandler uses its own level-density parameter for fission
+================================================================================
+
+
+================================================================================
+                                 INCL++ WARNING                                 
+INCL++/G4ExcitationHandler uses its own level-density parameter for fission
+================================================================================
+
+
+================================================================================
+                                 INCL++ WARNING                                 
+INCL++/G4ExcitationHandler uses its own level-density parameter for fission
+================================================================================
+
+
+================================================================================
+                                 INCL++ WARNING                                 
+INCL++/G4ExcitationHandler uses its own level-density parameter for fission
+================================================================================
+
+### Hadron physics constructed. 
+### Processes mapped to VMC controls ok.
+### Step limiter physics constructed.
+### Special Cuts constructed. 
+### User particles physics constructed. 
+### Processes mapped to VMC codes ok.
+TGEmModelPhysics::ConstructProcess 
+No EM models are defined.
+Available UI session types: [ GAG, tcsh, csh ]
+[INFO   ] Add Ion: FairIon1 with PDG 1000080160
+Converting VMC cuts in regions
+Number of added regions: 5
+
+**********************************************
+    GEANT4 Geometry statistics: 
+             49 logical volumes
+           3116 physical volumes
+              8 materials
+              7 user limits
+             48 sensitive detectors
+**********************************************
+
+[INFO   ] Monte Carlo Engine Initialisation with: TGeant4
+[INFO   ] create R3BFieldPar container R3BFieldPar
+Warning in <TClass::Init>: no dictionary for class R3BFi3 is available
+[INFO   ] ***  FairBaseParSet written to ROOT file   version: 178  
+[INFO   ] ***  FairGeoParSet written to ROOT file   version: 178  
+[INFO   ] ***  R3BGeoPassivePar written to ROOT file   version: 178  
+[INFO   ] ***  R3BFieldPar written to ROOT file   version: 178  
+--------------------------------------------------------------------------------
+--------------  actual containers in runtime database  -------------------------
+FairBaseParSet                                 class for parameter io
+FairGeoParSet                                  class for Geo parameter
+R3BGeoPassivePar                               Passive Geometry Parameters
+R3BFieldPar                                    Field parameter container
+--------------  runs, versions  ------------------------------------------------
+run id
+  container                                        1st-inp    2nd-inp    output
+run: 1533104222
+  FairBaseParSet                                1533104222         -1        178
+  FairGeoParSet                                 1533104222         -1        178
+  R3BGeoPassivePar                              1533104222         -1        178
+  R3BFieldPar                                           -1         -1        178
+--------------  input/output  --------------------------------------------------
+first input: none
+second input: none
+output:
+OBJ: FairParRootFile	par.root	 : 0 at: 0x563f54f10f20
+Root file I/O par.root is open
+detector I/Os:  FairGenericParIo
+
+phot:   for  gamma    SubType= 12  BuildTable= 0
+      LambdaPrime table from 200 keV to 10 TeV in 54 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PhotoElectric :  Emin=        0 eV    Emax=       10 TeV   AngularGenSauterGavrila  FluoActive
+
+compt:   for  gamma    SubType= 13  BuildTable= 1
+      Lambda table from 100 eV  to 1 MeV, 7 bins per decade, spline: 1
+      LambdaPrime table from 1 MeV to 10 TeV in 49 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina :  Emin=        0 eV    Emax=       10 TeV
+
+conv:   for  gamma    SubType= 14  BuildTable= 1
+      Lambda table from 1.022 MeV to 10 TeV, 20 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        BetheHeitler :  Emin=        0 eV    Emax=       80 GeV
+     BetheHeitlerLPM :  Emin=       80 GeV   Emax=       10 TeV
+
+msc:   for e-    SubType= 10
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 MeV  Table with 42 bins Emin=    100 eV    Emax=    100 MeV
+        WentzelVIUni :  Emin=      100 MeV   Emax=       10 TeV  Table with 35 bins Emin=    100 MeV   Emax=     10 TeV
+
+eIoni:   for  e-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=       10 TeV
+
+eBrem:   for  e-    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  HighEnergyThreshold(GeV)= 10000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   DipBustGen
+            eBremLPM :  Emin=        1 GeV   Emax=       10 TeV   DipBustGen
+
+CoulombScat:   for  e-, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from 100 MeV to 10 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=      100 MeV   Emax=       10 TeV
+
+msc:   for e+    SubType= 10
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 MeV  Table with 42 bins Emin=    100 eV    Emax=    100 MeV
+        WentzelVIUni :  Emin=      100 MeV   Emax=       10 TeV  Table with 35 bins Emin=    100 MeV   Emax=     10 TeV
+
+eIoni:   for  e+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=       10 TeV
+
+eBrem:   for  e+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  HighEnergyThreshold(GeV)= 10000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   DipBustGen
+            eBremLPM :  Emin=        1 GeV   Emax=       10 TeV   DipBustGen
+
+annihil:   for  e+, integral: 1     SubType= 5  BuildTable= 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  e+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from 100 MeV to 10 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=      100 MeV   Emax=       10 TeV
+
+msc:   for proton    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+hBrems:   for  proton    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=       10 TeV
+
+hPairProd:   for  proton    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      Sampling table 13x1001; from 7.50618 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  proton, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of anti_proton
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for GenericIon    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV
+
+ionIoni:   for  GenericIon    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.01, dRoverRange= 0.1, integral: 1, fluct: 1, linLossLimit= 0.02
+      Stopping Power data for 17 ion/material pairs 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+msc:   for alpha    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+ionIoni:   for  alpha    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.01, dRoverRange= 0.1, integral: 1, fluct: 1, linLossLimit= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon :  Emin=        0 eV    Emax=   7.9452 MeV
+          BetheBloch :  Emin=   7.9452 MeV   Emax=       10 TeV
+
+msc:   for anti_proton    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  anti_proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+hBrems:   for  anti_proton    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=       10 TeV
+
+hPairProd:   for  anti_proton    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      Sampling table 13x1001; from 7.50618 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  anti_proton, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 10 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for kaon+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  kaon+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=       10 TeV
+
+hBrems:   for  kaon+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=       10 TeV
+
+hPairProd:   for  kaon+    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      Sampling table 14x1001; from 3.94942 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  kaon+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 10 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for kaon-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  kaon-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=       10 TeV
+
+hBrems:   for  kaon-    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=       10 TeV
+
+hPairProd:   for  kaon-    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      Sampling table 14x1001; from 3.94942 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  kaon-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of kaon+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for mu+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+muIoni:   for  mu+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=       10 TeV
+
+muBrems:   for  mu+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=       10 TeV
+
+muPairProd:   for  mu+    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      Sampling table 17x1001; from 1 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  mu+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 10 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for mu-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+muIoni:   for  mu-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=       10 TeV
+
+muBrems:   for  mu-    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=       10 TeV
+
+muPairProd:   for  mu-    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      Sampling table 17x1001; from 1 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  mu-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of mu+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=       10 TeV
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Elastic/CrossSection/6_nat_Carbon
+/home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Inelastic
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 13 is not found and NeutronHP will use /home/system/geant4/10.03-16.04-x86_64/share/Geant4-10.3.0/data/G4NDL4.5/Capture/CrossSection/6_nat_Carbon
+
+msc:   for pi+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  pi+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=       10 TeV
+
+hBrems:   for  pi+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=       10 TeV
+
+hPairProd:   for  pi+    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      Sampling table 16x1001; from 1.11656 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  pi+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 10 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for pi-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  pi-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=       10 TeV
+
+hBrems:   for  pi-    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=       10 TeV
+
+hPairProd:   for  pi-    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV, 7 bins per decade, spline: 1
+      Sampling table 16x1001; from 1.11656 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+CoulombScat:   for  pi-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of pi+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=       10 TeV
+
+====================================================================
+                  HADRONIC PROCESSES SUMMARY (verbose level 1)
+
+---------------------------------------------------
+                           Hadronic Processes for GenericIon
+
+  Process: ionInelastic
+        Model:           INCL++ v5.2.9.5: 0 eV /n ---> 54 GeV/n
+        Model:                      FTFP: 53.9 GeV/n ---> 1 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: He3Inelastic
+        Model:           INCL++ v5.2.9.5: 0 eV /n ---> 9 GeV/n
+        Model:                      FTFP: 8.9 GeV/n ---> 1 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: alphaInelastic
+        Model:           INCL++ v5.2.9.5: 0 eV /n ---> 12 GeV/n
+        Model:                      FTFP: 11.9 GeV/n ---> 1 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_He3Inelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_alphaInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_deuteronInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_neutron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_neutronInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_proton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_protonInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_tritonInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: dInelastic
+        Model:           INCL++ v5.2.9.5: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 5.9 GeV/n ---> 1 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e+
+
+  Process: positronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e-
+
+  Process: electronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for gamma
+
+  Process: photonNuclear
+        Model:            BertiniCascade: 0 eV  ---> 3.5 GeV
+        Model:           TheoFSGenerator: 3 GeV ---> 100 TeV
+     Cr_sctns:            PhotoNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: kaon+Inelastic
+        Model:                      QGSP: 14 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 15 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:  ChipsKaonPlusInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:  ChipsKaonPlusInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: kaon-Inelastic
+        Model:                      QGSP: 14 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 15 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns: ChipsKaonMinusInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns: ChipsKaonMinusInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: lambdaInelastic
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+        Model:                      FTFP: 2 GeV ---> 100 TeV
+     Cr_sctns:   ChipsHyperonInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu+
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu-
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+  Process: muMinusCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for neutron
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 19.5 MeV ---> 100 TeV
+        Model:          NeutronHPElastic: 0 eV  ---> 20 MeV
+     Cr_sctns:        NeutronHPElasticXS: 0 eV  ---> 20 MeV
+     Cr_sctns:        G4NeutronElasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: neutronInelastic
+        Model:                      QGSP: 15 GeV ---> 100 TeV
+        Model:           INCL++ v5.2.9.5: 19.9 MeV ---> 20 GeV
+        Model:        NeutronHPInelastic: 0 eV  ---> 20 MeV
+     Cr_sctns:      NeutronHPInelasticXS: 0 eV  ---> 20 MeV
+     Cr_sctns:      G4NeutronInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: nCapture
+        Model:          NeutronHPCapture: 0 eV  ---> 20 MeV
+        Model:               nRadCapture: 19.9 MeV ---> 100 TeV
+     Cr_sctns:        NeutronHPCaptureXS: 0 eV  ---> 20 MeV
+     Cr_sctns:        G4NeutronCaptureXS: 0 eV  ---> 100 TeV
+     Cr_sctns:        NeutronHPCaptureXS: 0 eV  ---> 20 MeV
+     Cr_sctns:          GheishaCaptureXS: 0 eV  ---> 100 TeV
+
+  Process: nFission
+        Model:          NeutronHPFission: 0 eV  ---> 20 MeV
+        Model:                G4LFission: 19.9 MeV ---> 2.88022e+295 J  
+     Cr_sctns:        NeutronHPFissionXS: 0 eV  ---> 20 MeV
+     Cr_sctns:          GheishaFissionXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for pi+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 1.0001 GeV
+        Model:           hElasticGlauber: 1 GeV ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: pi+Inelastic
+        Model:                      QGSP: 15 GeV ---> 100 TeV
+        Model:           INCL++ v5.2.9.5: 0 eV  ---> 20 GeV
+     Cr_sctns:   G4PiNuclearCrossSection: 0 eV  ---> 99.9 TeV
+     Cr_sctns:      G4CrossSectionPairGG: 0 eV  ---> 100 TeV
+                         G4CrossSectionPairGG: G4PiNuclearCrossSection cross sections 
+                           below 91 GeV, Glauber-Gribov above 
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for pi-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 1.0001 GeV
+        Model:           hElasticGlauber: 1 GeV ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: pi-Inelastic
+        Model:                      QGSP: 15 GeV ---> 100 TeV
+        Model:           INCL++ v5.2.9.5: 0 eV  ---> 20 GeV
+     Cr_sctns:   G4PiNuclearCrossSection: 0 eV  ---> 99.9 TeV
+     Cr_sctns:      G4CrossSectionPairGG: 0 eV  ---> 100 TeV
+                         G4CrossSectionPairGG: G4PiNuclearCrossSection cross sections 
+                           below 91 GeV, Glauber-Gribov above 
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for proton
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:      ChipsProtonElasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: protonInelastic
+        Model:                      QGSP: 15 GeV ---> 100 TeV
+        Model:                     PRECO: 0 eV  ---> 2 MeV
+        Model:           INCL++ v5.2.9.5: 1 MeV ---> 20 GeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: tInelastic
+        Model:           INCL++ v5.2.9.5: 0 eV /n ---> 9 GeV/n
+        Model:                      FTFP: 8.9 GeV/n ---> 1 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+================================================================
+
+========= Table of registered couples ==============================
+
+Index : 0     used in the geometry : Yes
+ Material : vacuum
+ Range cuts        :  gamma  1 mm     e-  1000 km     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : vacuum
+ Range cuts        :  gamma  1 mm     e-  1000 km     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 100 keV
+ Region(s) which use this couple : 
+    RegionWithDefaultCuts
+
+Index : 2     used in the geometry : Yes
+ Material : lead
+ Range cuts        :  gamma  1 mm     e-  1000 km     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  101.843 keV    e-  10 GeV    e+  1.27862 MeV proton 100 keV
+ Region(s) which use this couple : 
+    RegionWithDefaultCuts
+
+Index : 3     used in the geometry : Yes
+ Material : copper
+ Range cuts        :  gamma  2.1 cm     e-  1000 km     e+  1000 km  proton 1000 km 
+ Energy thresholds :  gamma  99.4755 keV    e-  10 GeV    e+  10 GeV proton 100 TeV
+ Region(s) which use this couple : 
+    copper
+
+Index : 4     used in the geometry : Yes
+ Material : iron
+ Range cuts        :  gamma  2.8 cm     e-  1000 km     e+  1000 km  proton 1000 km 
+ Energy thresholds :  gamma  99.4755 keV    e-  10 GeV    e+  10 GeV proton 100 TeV
+ Region(s) which use this couple : 
+    iron
+
+Index : 5     used in the geometry : Yes
+ Material : aluminium
+ Range cuts        :  gamma  12 cm     e-  1000 km     e+  1000 km  proton 1000 km 
+ Energy thresholds :  gamma  94.2689 keV    e-  10 GeV    e+  10 GeV proton 100 TeV
+ Region(s) which use this couple : 
+    aluminium
+
+Index : 6     used in the geometry : Yes
+ Material : plasticForGFI
+ Range cuts        :  gamma  33 cm     e-  1000 km     e+  1000 km  proton 1000 km 
+ Energy thresholds :  gamma  93.0104 keV    e-  10 GeV    e+  10 GeV proton 100 TeV
+ Region(s) which use this couple : 
+    plasticForGFI
+
+Index : 7     used in the geometry : Yes
+ Material : plasticFormTOF
+ Range cuts        :  gamma  1.1 m      e-  1000 km     e+  1000 km  proton 1000 km 
+ Energy thresholds :  gamma  990.463 keV    e-  10 GeV    e+  10 GeV proton 100 TeV
+ Region(s) which use this couple : 
+    plasticFormTOF
+
+====================================================================
+
+### Run 0 start.
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 0
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 1
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 2
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 3
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 4
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 5
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 6
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 7
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 8
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+[INFO   ] FairIonGenerator: Generating 1 ions of type FairIon1 (PDG code 1000080160)
+[INFO   ]     Momentum (0, 0, 22.4) Gev from vertex (0, 0, -300) cm
+>>> Event 9
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 17
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 18
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 21
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 22
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 24
+-E- R3BMCTrack::SetNPoints: Unknown detector ID 25
+[INFO   ] R3BStack: Number of primaries = 1
+[INFO   ]           Total number of particles = 1
+[INFO   ]           Number of tracks in output = 1
+[INFO   ] R3BFi3a: 0 points registered in this event
+[INFO   ] R3BFi3b: 0 points registered in this event
+[INFO   ] R3BFi7: 0 points registered in this event
+[INFO   ] R3BFi8: 0 points registered in this event
+[INFO   ] R3BFi10: 0 points registered in this event
+[INFO   ] R3BFi11: 0 points registered in this event
+[INFO   ] R3BdTof: 0 points registered in this event
+Time of this run:   User=0.07s Real=0.07s Sys=0s
+Number of events processed: 10
+
+
+Macro finished succesfully.
+Output file is sim.root
+Parameter file is par.root
+Real time 6.87095 s, CPU time 5.97s
+
+ Test passed
+ All ok 
+WARNING - Attempt to delete the physical volume store while geometry closed !
+WARNING - Attempt to delete the logical volume store while geometry closed !
+WARNING - Attempt to delete the solid store while geometry closed !
+WARNING - Attempt to delete the region store while geometry closed !
+sfiebiger@ap59:~/r3broot/R3BRoot/R3BRoot_michael/macros/r3b/16O_sf$ 

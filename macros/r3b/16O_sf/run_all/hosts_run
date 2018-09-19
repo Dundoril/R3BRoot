@@ -1,0 +1,33 @@
+### Programms needed
+#sudo apt-get install openmpi-bin libopenmpi-dev
+#sudo apt-get install python-mpi4py
+#
+### Start program with:
+# python /home/sfiebiger/Documents/progtest/pywrap/pywrap.py -- mpirun -mca plm_rsh_no_tree_spawn 1 -display-allocation -hostfile hosts_run python clemens_run.py
+#
+### IP's
+141.2.212.59 slots=2 max-slots=12 			# stefan
+141.2.212.56 slots=4 max-slots=12 			# Ozan
+141.2.212.57 slots=6 max-slots=12			# Kafa
+#141.2.212.58 slots=6 max-slots=12 			# christian #!
+#141.2.212.83 slots=4 max-slots=4 			# free 
+#141.2.212.84 slots=2 max-slots=4 			# philipp
+#141.2.212.86 slots=4 max-slots=4 			# ben
+#141.2.212.87 slots=4 max-slots=4 			# alex
+#141.2.212.88 slots=2 max-slots=4 			# daniel
+#141.2.212.89 slots=2 max-slots=4 			# tanja
+#141.2.212.90 slots=2 max-slots=4 			# christoph
+#141.2.212.100 slots=4 max-slots=4 			# markus
+#141.2.212.101 slots=4 max-slots=4 			# free
+#141.2.212.102 slots=2 max-slots=4 			# timo
+#141.2.212.103 slots=2 max-slots=4 			# mario
+#141.2.212.104 slots=6 max-slots=12 			# franz #!
+#141.2.212.105 slots=2 max-slots=4 			# meiko
+#141.2.212.106 slots=3 max-slots=4 			# free
+#141.2.212.111 slots=6 max-slots=12 		# benny #!
+#141.2.212.112 slots=3 max-slots=12 			# deniz
+#141.2.212.118 slots=6 max-slots=12 		# clemens #!
+141.2.212.119 slots=6 max-slots=12 			# zuzana 
+#141.2.212.122 slots=4 max-slots=4 			# free # rechner extrem langsam
+#141.2.212.120 slots=4 max-slots=4 			# free
+#141.2.212.121 slots=4 max-slots=4 		# free

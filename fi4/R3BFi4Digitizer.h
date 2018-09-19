@@ -54,12 +54,14 @@ class R3BFi4Digitizer : public FairTask
 	  TClonesArray* fFi4Points;
 	  TClonesArray* fFi6Points;
 	  TClonesArray* fFi5Points;
+	  TClonesArray* fFi11Points;
 	  
 	  TClonesArray* fMCTrack; 
 	  
 	  TClonesArray* fFi4Hits;
 	  TClonesArray* fFi6Hits;
 	  TClonesArray* fFi5Hits;
+	  TClonesArray* fFi11Hits;
 	  
   private:
   

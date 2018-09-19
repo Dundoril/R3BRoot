@@ -1,3 +1,19 @@
+#include <iomanip>
+#include <iostream>
+#include "TGeoManager.h"
+#include "TMath.h"
+
+// Create Matrix Unity
+TGeoRotation *fGlobalRot = new TGeoRotation();
+
+// Create a null translation
+TGeoTranslation *fGlobalTrans = new TGeoTranslation();
+TGeoRotation *fRefRot = NULL;
+
+TGeoManager*  gGeoMan = NULL;
+
+TGeoCombiTrans* GetGlobalPosition(TGeoCombiTrans *fRef);
+
 void create_dtof_geo(const char* geoTag)
 {
 
@@ -58,7 +74,7 @@ void create_dtof_geo(const char* geoTag)
 
   
   TGeoRotation *pMatrix1 = new TGeoRotation();
-  pMatrix1->RotateY(-16.7);
+  pMatrix1->RotateY(-18.0);
   TGeoCombiTrans* pMatrix2 = new TGeoCombiTrans("", x,y,z,pMatrix1);
 
   
@@ -73,28 +89,39 @@ void create_dtof_geo(const char* geoTag)
   
   // SHAPES, VOLUMES AND GEOMETRICAL HIERARCHY
   // Shape: mTOFBox type: TGeoBBox
-  Float_t detector_width = 13.500000;
-  Float_t detector_height = 50.000000;
-  Float_t detector_thickness = 0.500000; 
+  // Float_t detector_width = 13.500000;
+  // Float_t detector_height = 50.000000;
+  // Float_t detector_thickness = 0.500000; 
+ 
 
-  Float_t paddle_width = 1.350000;
-  Float_t paddle_thickness = 0.250000; 
-  
+  Float_t detector_height = 80.000000;
+
+
+  Float_t paddle_width = 2.70000;
+  Float_t paddle_thickness = 0.50000; 
+  Float_t air_gap_paddles = 0.04;
+  Float_t air_gap_layer = 0.45;
+
+
   
   // define number of layers and paddles with sizes of the detector
-  Int_t number_layers = detector_thickness/paddle_thickness; // number of layers
-  Int_t number_paddles = detector_width/paddle_width; // number of paddles per layer
-  
+  Int_t number_layers = 2; // number of layers
+  Int_t number_paddles = 44; // number of paddles per layer
+
+  Float_t  detector_width =number_paddles*paddle_width+(number_paddles-1)*air_gap_paddles;
+  Float_t detector_thickness =(number_layers-1)*air_gap_layer+number_layers*paddle_thickness;
+ 
   /*// directly set number of layers and paddles
   Int_t number_layers = 2;
   Int_t number_paddles = 10; */
   
-  TGeoShape *TOFd_Paddle_Box = new TGeoBBox("TOFd_Paddle_Box", paddle_width,detector_height,paddle_thickness);
+  TGeoShape *TOFd_Paddle_Box = new TGeoBBox("TOFd_Paddle_Box", paddle_width/2,detector_height/2,paddle_thickness/2);
   // Volume
   //TGeoVolume* TOFd_Paddle_Log = new TGeoVolume("mTOFLog",TOFd_Paddle_Box, pMed34); //TOFd_Paddle_Log
   //TOFd_Paddle_Log->SetVisLeaves(kTRUE);
   
-  cout << number_paddles << endl;
+  cout << "number paddles" << number_paddles << endl;
+  cout << "number layers" << number_layers << endl;
   
   // build layers of paddles 
   int layer_label;
@@ -104,12 +131,20 @@ void create_dtof_geo(const char* geoTag)
 	  
 	  if((layer_number%2)==0){layer_label=0;} else {layer_label=1;}
 	  
-	  
 	  for(int paddle_number = 0; paddle_number < number_paddles; paddle_number++){
+	  
+    //make hole in the middle
+    cout << layer_number << " | " << paddle_number << endl;
+   if (layer_number == 1 && (paddle_number == 21 || paddle_number == 20 || paddle_number == 22 )  ) continue;
+  //  if (layer_number == 1) continue;
+    if (layer_number == 0 && (paddle_number == 21 || paddle_number == 22 || paddle_number == 20 || paddle_number == 23)) continue;
+    if (layer_number == 0) continue;
 		  
-		Float_t paddle_xposition = -detector_width + paddle_width*(1+layer_label) + paddle_number*(paddle_width*2 + 0.05);
-		Float_t paddle_zposition = -detector_thickness + paddle_thickness + (layer_number*(paddle_thickness*2 + 0.05));
+		Float_t paddle_xposition = -detector_width/2 + paddle_width/2*(1+layer_label) + paddle_number*paddle_width+paddle_number*air_gap_paddles;
+		Float_t paddle_zposition = -detector_thickness/2 +(layer_number)*paddle_thickness+layer_number*air_gap_layer;
 		
+    cout << "x: " << paddle_xposition << " z: " << paddle_zposition << endl;
+
 		TGeoCombiTrans* pMatrix3 = new TGeoCombiTrans("", paddle_xposition,0,paddle_zposition,new TGeoRotation());
 		
 		TGeoVolume* TOFd_Paddle_Log = new TGeoVolume(Form("dTOFLog%d",paddle_index),TOFd_Paddle_Box, pMed34);

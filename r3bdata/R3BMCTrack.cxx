@@ -124,6 +124,9 @@ void R3BMCTrack::Print(Option_t* option) const
 #ifdef SOFIA
     cout << ", SCI " << GetNPoints(kSOFSCI) << ", AT " << GetNPoints(kSOFAT) << ", TRIM " << GetNPoints(kSOFTRIM) << ", MWPC1 " << GetNPoints(kSOFMWPC1) << ", TWIM " << GetNPoints(kSOFTWIM) << ", MWPC2 " << GetNPoints(kSOFMWPC2) << ", SOF ToF Wall " << GetNPoints(kSOFTofWall) << endl;
 #endif
+#ifdef GTPC
+    cout << ", GTPC " << GetNPoints(kGTPC) << endl;
+#endif
 }
 // -------------------------------------------------------------------------
 
@@ -186,14 +189,28 @@ Int_t R3BMCTrack::GetNPoints(DetectorId detId) const
         return ((fNPoints & 0xC0000000) >> 30);
     else if (detId == kACTAR)
         return ((fNPoints & 0x300000000) >> 32);
-    else if (detId == kFI4)
-        return ((fNPoints & 0xC00000000) >> 34);
-    else if (detId == kFI6)
-        return ((fNPoints & 0x3000000000) >> 36);
-    else if (detId == kFI5)
-        return ((fNPoints & 0xC000000000) >> 38);
+    //else if (detId == kFI4)
+        //return ((fNPoints & 0xC00000000) >> 34);
+    //else if (detId == kFI6)
+        //return ((fNPoints & 0x3000000000) >> 36);
+    //else if (detId == kFI5)
+        //return ((fNPoints & 0xC000000000) >> 38);
     else if (detId == kSFI)
         return ((fNPoints & 0x30000000000) >> 40);
+    else if (detId == kFI3a)
+        return ((fNPoints & 0xC00000000000000) >> 58);
+    else if (detId == kFI3b)
+        return ((fNPoints & 0x3000000000000000) >> 60);
+    else if (detId == kFI7)
+        return ((fNPoints & 0xC000000000000000) >> 62);
+    else if (detId == kFI8)
+        return ((fNPoints & 0xC00000000) >> 34);
+    else if (detId == kFI8)
+        return ((fNPoints & 0xC00000000) >> 34);
+    else if (detId == kFI10)
+        return ((fNPoints & 0x3000000000) >> 36);
+    else if (detId == kFI11)
+        return ((fNPoints & 0xC000000000) >> 38);
 #ifdef SOFIA
     else if (detId == kSOFSCI)
         return ((fNPoints & 0xC0000000000) >> 42);
@@ -209,6 +226,10 @@ Int_t R3BMCTrack::GetNPoints(DetectorId detId) const
         return ((fNPoints & 0x30000000000000) >> 52);
     else if (detId == kSOFTofWall)
         return ((fNPoints & 0xC0000000000000) >> 54);
+#endif
+#ifdef GTPC
+    else if (detId == kGTPC)
+        return ((fNPoints & 0x300000000000000) >> 56);
 #endif
     else
     {
@@ -295,21 +316,45 @@ void R3BMCTrack::SetNPoints(Int_t iDet, Int_t nP)
     {
         fNPoints = (fNPoints & (~0x300000000)) | (nPoints << 32);
     }
-    else if (iDet == kFI4)
-    {
-        fNPoints = (fNPoints & (~0xC00000000)) | (nPoints << 34);
-    }
-    else if (iDet == kFI6)
-    {
-        fNPoints = (fNPoints & (~0x3000000000)) | (nPoints << 36);
-    }
-    else if (iDet == kFI5)
-    {
-        fNPoints = (fNPoints & (~0xC000000000)) | (nPoints << 38);
-    }
+    //else if (iDet == kFI4)
+    //{
+        //fNPoints = (fNPoints & (~0xC00000000)) | (nPoints << 34);
+    //}
+    //else if (iDet == kFI6)
+    //{
+        //fNPoints = (fNPoints & (~0x3000000000)) | (nPoints << 36);
+    //}
+    //else if (iDet == kFI5)
+    //{
+        //fNPoints = (fNPoints & (~0xC000000000)) | (nPoints << 38);
+    //}
     else if (iDet == kSFI)
     {
         fNPoints = (fNPoints & (~0x30000000000)) | (nPoints << 40);
+    }
+    else if (iDet == kFI3a)
+    {
+        fNPoints = (fNPoints & (~0xC00000000000000)) | (nPoints << 58);
+    }
+    else if (iDet == kFI3b)
+    {
+        fNPoints = (fNPoints & (~0x3000000000000000)) | (nPoints << 60);
+    }
+    else if (iDet == kFI7)
+    {
+        fNPoints = (fNPoints & (~0xC000000000000000)) | (nPoints << 62);
+    }
+    else if (iDet == kFI8)
+    {
+        fNPoints = (fNPoints & (~0xC00000000)) | (nPoints << 34);
+    }
+    else if (iDet == kFI10)
+    {
+        fNPoints = (fNPoints & (~0x3000000000)) | (nPoints << 36);
+    }
+    else if (iDet == kFI11)
+    {
+        fNPoints = (fNPoints & (~0xC000000000)) | (nPoints << 38);
     }
 #ifdef SOFIA
     else if (iDet == kSOFSCI)
@@ -339,6 +384,12 @@ void R3BMCTrack::SetNPoints(Int_t iDet, Int_t nP)
     else if (iDet == kSOFTofWall)
     {
         fNPoints = (fNPoints & (~0xC0000000000000)) | (nPoints << 54);
+    }
+#endif
+#ifdef GTPC
+    else if (iDet == kGTPC)
+    {
+        fNPoints = (fNPoints & (~0x300000000000000)) | (nPoints << 56);
     }
 #endif
     else

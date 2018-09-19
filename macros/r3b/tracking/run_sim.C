@@ -7,15 +7,15 @@ void run_sim()
     TString parFile = "par.root";
 
     Bool_t magnet = kTRUE;
-    Float_t fieldScale = -0.68;
+    Float_t fieldScale = -0.9;
 
     TString generator1 = "box";
     TString generator2 = "ascii";
     TString generator3 = "r3b";
-    TString generator = generator1;
-    TString inputFile = "";
+    TString generator = generator2;
+    TString inputFile = "fragment_tracker.dat";
 
-    Int_t nEvents = 1;
+    Int_t nEvents = 100;
     Bool_t storeTrajectories = kTRUE;
     Int_t randomSeed = 335566; // 0 for time-dependent random numbers
 
@@ -57,7 +57,7 @@ void run_sim()
     // -----   Create R3B geometry --------------------------------------------
     // R3B Cave definition
     FairModule* cave = new R3BCave("CAVE");
-    cave->SetGeometryFileName("r3b_cave.geo");
+    cave->SetGeometryFileName("r3b_cave_vacuum.geo");
     run->AddModule(cave);
 
     // To skip the detector comment out the line with: run->AddModule(...
@@ -70,6 +70,15 @@ void run_sim()
 
     // PSP
     run->AddModule(new R3BPsp("psp_v13a.geo.root", {}, -221., -89., 94.1));
+    
+    // Fi4 detector
+    run->AddModule(new R3BFi4("fi4_v17a.geo.root", {(614. - 308.8)*TMath::Tan(-18.*TMath::DegToRad()) - 42., 0.069976, 614.}, {"" ,-90.,16.7,90.}));
+
+    // Fi5 detector
+    run->AddModule(new R3BFi5("fi5_v17a.geo.root", {(714. - 308.8)*TMath::Tan(-18.*TMath::DegToRad()) - 42., 0.069976, 714.}, {"" ,-90.,16.7,90.}));
+
+    // Fi6 detector
+    //run->AddModule(new R3BFi6("fi6_v17a.geo.root", {-73.274339-TMath::Tan(TMath::DegToRad()*16.7)*230, 0.069976, 513.649524+230.}, {"" ,-90.,16.7,90.}));
 
     // R3B SiTracker Cooling definition
     //run->AddModule(new R3BVacVesselCool(targetType, "vacvessel_v14a.geo.root"));
@@ -87,8 +96,8 @@ void run_sim()
     // Tof
     //run->AddModule(new R3BTof("tof_v17a.geo.root", { -417.359574, 2.400000, 960.777114 }, { "", -90., +31., 90. }));
 
-    // mTof
-    run->AddModule(new R3BmTof("mtof_v17a.geo.root", { -155.824045, 0.523976, 761.870346 }, { "", -90., +16.7, 90. }));
+    // dTof
+    run->AddModule(new R3BdTof("dtof_v17a.geo.root", { (762. - 308.8)*TMath::Tan(-18.*TMath::DegToRad()) - 42., 0.523976, 762.}, { "", -90., +16.7, 90. }));
 
     // MFI
     //run->AddModule(new R3BMfi("mfi_v17a.geo.root", { -63.82, 0., 520.25 }, { "", 90., +13.5, 90. })); // s412
@@ -118,7 +127,7 @@ void run_sim()
 
     if (generator.CompareTo("box") == 0)
     {
-        FairIonGenerator* boxGen = new FairIonGenerator(50, 128, 50, 1, 0., 0., 1.3, 0., 0., 0.);
+        FairIonGenerator* boxGen = new FairIonGenerator(50, 128, 50, 1, 0., 0., 1.4, 0., 0., 0.);
         primGen->AddGenerator(boxGen);
     }
 

@@ -1,0 +1,123 @@
+**************************************
+* ZUSAMMENFASSUNG DES KVI STRAHLZEIT *
+**************************************
+
+***** LOS-Auflösung ohne irfendwelche Korrektueren: *************
+Run		sigma_ToT/ToT / %	sigma_T_MCFD / ps  sigma_T_TAMEX / ps	    Comment
+
+
+
+
+
+**** UNPACKER ****
+    if(RunId<61)      ucesb_path = "/u/mheil/upexps/kvi2018/kvi2018_before_Run061";
+    else if(RunId<69) ucesb_path = "/u/mheil/upexps/kvi2018/kvi2018_before_Run068";
+    else if(RunId<86) ucesb_path = "/u/mheil/upexps/kvi2018/kvi2018_before_Run086";
+	else              ucesb_path = "/u/mheil/upexps/kvi2018/kvi2018";
+
+**** RUNS ******
+
+RUN		Elog_entry	Beam / AMeV		Comment
+31 		 121			12C@90		HV LOS changed
+32		 122			12C@90	    HV of FIB4 MAMPT set
+33		 125			12C@90		After intervention in cave
+35		 128			12C@90		FIBSIPM thresholds changed
+36		 131			12C@90		HV MAPMT2 adjusted
+37		 132			12C@90		LOS: MCDF gain changed from 3 to 1, HV adjusted
+38		 133			12C@90		LOS: Tamex thresholds changed from 10 to 5
+39		 138			12C@90		Restart after entering cave
+40		 139			12C@90		HV of MAPMTs of FIB4 adjusted
+41		 140			12C@90		ClockTDC FIB4 adjusted
+42		 143			12C@90		Sweep run for FIB4
+43		 145			12C@90		FIBSIPM thresholds adjusted
+44		 149			12C@90		With Lochblende, 3.2 kHz
+45		 150			12C@90		With Lochblende, 3.2 kHz, at the center of detectors
+46		 152			12C@90		With Lochblende, 3.2 kHz, slow sweep run
+47		 153		    	12C@90		With Lochblende, 3.2 kHz, back to center
+48		 156			12C@90		Without Lochblende, 15.1 kHz, FIB4 back to center
+49		 158			12C@90		Without Lochblende, 15.1 kHz
+50		 163			12C@90		Without Lochblende, 25 kHz, PADI thresholds for SiPms adjusted
+51		 170			12C@90		Without Lochblende, 25 kHz, PADI thresholds and HV for SiPms adjusted
+52		 172			12C@90		Without Lochblende, 22 kHz, PADI thresholds for SiPms adjusted
+53		 175			12C@90		Without Lochblende, 17 kHz, PADI thresholds for SiPms adjusted
+54		 178			12Cq90		Without Lochblende, 150 kHz, sweep run, PADI thresholds for SiPms adjusted
+55		 181			12C@90		Without Lochblende, 1 MHz,sweep run FIB4
+56		 185			12C@90		Without Lochblende, 25 kHz
+57	 	 186			12C@90		Without Lochblende, 25 kHz, HV of Fib4 MAMPT adjusted
+58		 187			12C@90		Without Lochblende, 25 kHz, HV of Fib4 MAMPT and single PMTs adjusted
+59		 188			12C@90		Without Lochblende, 20 kHz, HV of Fib4 single PMTs adjusted
+60		 189			12C@90		Without Lochblende, 20 kHz, HV of Fib4 MAMPT adjusted
+61   NOT IN ELOG, BUT RUN EXISTS
+62		 195			12C@90		Without Lochblende, 20 kHz, cabling of SPMT of FIB4 changed
+63		 204			12C@90		Without Lochblende
+64		 205			12C@90		Without Lochblende, HV of Fib5 single PMTs adjusted
+65		 206			12C@90		Without Lochblende, HV of Fib5 single PMTs adjusted
+66		 209			12C@90		Without Lochblende, sweep run
+67		 210			12C@90		Without Lochblende, sweep run
+68		 211			12C@90		Without Lochblende
+69		 219			12C@90		Without Lochblende, first run with FIB6
+70		 222			12C@90		Without Lochblende, sweep run of FIB6 and PTOF
+71		 223			12C@90		Without Lochblende, sweep run of FIB6 and PTOF in oposite direction
+72		 224			12C@90		Without Lochblende, sweep run, HV of PTOF adjusted
+73		 231			12C@90		Without Lochblende, run started after rotating the platform of Fiber+PTOF
+74		 236			12C@90		Without Lochblende, PSPX changed and included in main DAQ
+75		 237			12C@90		Without Lochblende, continuation of previous run
+76		 241			12C@90		Without Lochblende, continuation of previous run
+77	 	 245			12C@90		Without Lochblende, FibSiPMs connected again to the clock TDC board
+78		 248			12C@90		Without Lochblende, 22 kHz, same as 77
+79		 250			12C@90		Without Lochblende, 22 kHz, same as 77
+80		 251	EMPTY RUN
+81		 252	EMPTY RUN
+82		 255			12C@90		Without Lochblende, 1 MHz, same as 77
+83		 257			12C@90		Without Lochblende, 300 kHz, PADI thresholds for SiPm Fiber adjusted
+84		 262			12C@90		With Lochblende, 7.5 kHz, PADI thresholds for SiPm Fiber adjusted
+85		 264			12C@90		With Lochblende, 2.5 kHz
+86		 272    NO BEAM, NOISE RUN
+87		 276			p@190		Tuning
+88		 277			p@190		Tuning
+89		 278			p@190		Tuning
+90		 279			p@190		Tuning
+91		 280		  	p@190		Tuning, HV of PTOF, FIB1, FIB4 and FIB6 adjusted
+92		 282			p@190		20 kHz, sweep run for PTOF and FIB6		   
+93		 283			p@190		Sweep run for PTOF and FIB6, HV of PTOF PMTs adjusted
+94		 284			p@190		Same as previous
+95		 285			p@190		
+96		 286			p@190		Sweep run for FIB4
+97		 287			p@190		1 MHz
+98		 288			p@190		Sweep run for PTOF
+99		 289			p@190		FIB6 and FIB5 switched
+100		 290			p@190		Sweep run for FIB5
+101		 291			p@190		Sweep run for PTOF
+** END OF BEAM ****
+
+
+72 läuft um max6_values festzulegen
+anschließend 69 um eff für fiber6 festzulegen
+
+68 läuft für eff von fiber5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

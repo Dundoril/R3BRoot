@@ -1,0 +1,36 @@
+#ifndef R3BFIBMAPPEDITEM_H
+#define R3BFIBMAPPEDITEM_H
+
+#include "TObject.h"
+
+
+class R3BFibMappedItem : public TObject
+{
+  public:
+    // Default Constructor
+    R3BFibMappedItem();
+
+    // Standard Constructor
+    R3BFibMappedItem(UInt_t fiber, UInt_t cL, UInt_t fL, UInt_t cT, UInt_t fT);
+
+    // Destructor
+    virtual ~R3BFibMappedItem() { }
+
+    // Getters
+    inline const UInt_t& GetChannel()  const { return fFiber;  }
+    inline const UInt_t& GetCourseLeading()  const { return fCourseLeading;   }
+    inline const UInt_t& GetFineLeading()  const { return fFineLeading;   }
+    inline const UInt_t& GetCourseTrailing() const { return fCourseTrailing;  }
+    inline const UInt_t& GetFineTrailing() const { return fFineTrailing;  }
+
+  private:
+    UInt_t  fFiber   ;  
+    UInt_t  fCourseLeading; 
+    UInt_t  fFineLeading; 
+    UInt_t  fCourseTrailing;
+    UInt_t  fFineTrailing;
+  public:
+    ClassDef(R3BFibMappedItem, 1)
+};
+
+#endif

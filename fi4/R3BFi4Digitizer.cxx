@@ -39,9 +39,13 @@ using std::cout;
 using std::endl;
 		
 
-R3BFi4Digitizer::R3BFi4Digitizer() :
-  FairTask("R3B Fi4 Digitization scheme ") 
-  { 
+R3BFi4Digitizer::R3BFi4Digitizer()
+  : FairTask("R3B Fi4 Digitization scheme ")
+  , fFi4Points(NULL)
+  , fFi6Points(NULL)
+  , fFi5Points(NULL)
+  , fFi11Points(NULL)
+{
 	  
 	esigma = 0.001;
 	tsigma = 0.01;
@@ -49,9 +53,13 @@ R3BFi4Digitizer::R3BFi4Digitizer() :
 	  
 }
 
-R3BFi4Digitizer::R3BFi4Digitizer(Double_t e, Double_t t, Double_t y) :
-  FairTask("R3B Fi4 Digitization scheme ") 
-  { 
+R3BFi4Digitizer::R3BFi4Digitizer(Double_t e, Double_t t, Double_t y)
+  : FairTask("R3B Fi4 Digitization scheme ")
+  , fFi4Points(NULL)
+  , fFi6Points(NULL)
+  , fFi5Points(NULL)
+  , fFi11Points(NULL)
+{
 	  
 	esigma = e;
 	tsigma = t;
@@ -87,6 +95,7 @@ InitStatus R3BFi4Digitizer::Init() {
   fFi4Points = (TClonesArray*) ioman->GetObject("FI4Point");
   fFi6Points = (TClonesArray*) ioman->GetObject("Fi6Point");
   fFi5Points = (TClonesArray*) ioman->GetObject("Fi5Point");
+  fFi11Points = (TClonesArray*) ioman->GetObject("Fi11Point");
   
   fMCTrack = (TClonesArray*) ioman->GetObject("MCTrack");
    
@@ -99,6 +108,9 @@ InitStatus R3BFi4Digitizer::Init() {
   
   fFi5Hits = new TClonesArray("R3BFi4HitItem",1000);
   ioman->Register("Fi5Hit", "Digital response in Fi5", fFi5Hits, kTRUE);
+  
+  fFi11Hits = new TClonesArray("R3BFi4HitItem",1000);
+  ioman->Register("Fi11Hit", "Digital response in Fi11", fFi11Hits, kTRUE);
   
   //for sigmas
   prnd = new TRandom3();
@@ -266,19 +278,35 @@ void R3BFi4Digitizer::Exec(Option_t* opt)
 		
 		//running the digitizer for the Fi detectors
 		
-		Digitize(fFi4Points, fFi4Hits, 4000, 4);
-		
+    if(fFi4Points)
+    {
+        Digitize(fFi4Points, fFi4Hits, 4000, 4);
+    }
+
+    if(fFi6Points)
+    {
 		Digitize(fFi6Points, fFi6Hits, 2048, 6);
-		
+    }
+
+    if(fFi5Points)
+    {
 		Digitize(fFi5Points, fFi5Hits, 2048, 5);
-		
+    }
+
+    if(fFi11Points)
+    {
+		Digitize(fFi11Points, fFi11Hits, 2048, 5);
+    }
 		
 }
 // -------------------------------------------------------------------------
 
 void R3BFi4Digitizer::Reset()
 {
- if (fFi4Hits) fFi4Hits->Clear();
+    if (fFi4Hits) fFi4Hits->Clear();
+    if (fFi6Hits) fFi6Hits->Clear();
+    if (fFi5Hits) fFi5Hits->Clear();
+    if (fFi11Hits) fFi11Hits->Clear();
 }   
 
 void R3BFi4Digitizer::Finish()

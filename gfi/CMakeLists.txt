@@ -16,6 +16,7 @@ ${R3BROOT_SOURCE_DIR}/r3bdata
 ${R3BROOT_SOURCE_DIR}/r3bdata/calData
 ${R3BROOT_SOURCE_DIR}/r3bdata/dchData
 ${R3BROOT_SOURCE_DIR}/r3bdata/gfiData
+${R3BROOT_SOURCE_DIR}/r3bdata/fibData
 ${R3BROOT_SOURCE_DIR}/r3bdata/mtofData
 ${R3BROOT_SOURCE_DIR}/r3bdata/tofData
 ${R3BROOT_SOURCE_DIR}/r3bdata/landData
@@ -38,8 +39,8 @@ R3BGfi.cxx
 R3BGeoGfi.cxx   
 R3BGeoGfiPar.cxx   
 R3BGfiContFact.cxx
-R3BGfiDigiPar.cxx
-R3BGfiDigitizer.cxx   
+#R3BGfiDigiPar.cxx
+#R3BGfiDigitizer.cxx   
 )
 
 # fill list of header files from list of source files

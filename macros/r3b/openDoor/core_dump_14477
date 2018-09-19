@@ -1,0 +1,18 @@
+#0  0x00007f3d63f51b3c in __libc_waitpid (pid=14531, stat_loc=stat_loc
+entry=0x7ffef6db3900, options=options
+entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007f3d63ed912b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00007f3d64f4dcf4 in Exec (shellcmd=<optimized out>, this=<optimized out>) at /home/uhlig/fairsoft/source/may16_root6/tools/root/core/unix/src/TUnixSystem.cxx:2073
+#3  TUnixSystem::StackTrace (this=0x207e8e0) at /home/uhlig/fairsoft/source/may16_root6/tools/root/core/unix/src/TUnixSystem.cxx:2301
+#4  0x00007f3d583e9eff in FairLogger::LogFatalMessage (this=<optimized out>, strm=...) at /home/uhlig/fairroot/source/v-16.06/fairtools/FairLogger.cxx:576
+#5  0x00007f3d583ea054 in FairLogger::endl (strm=...) at /home/uhlig/fairroot/source/v-16.06/fairtools/FairLogger.cxx:503
+#6  0x00007f3d583e76ce in operator<< (__pf=0x7f3d583ea000 <FairLogger::endl(std::ostream&)>, this=<optimized out>) at /usr/include/c++/4.9/ostream:113
+#7  FairLogger::operator<< (this=this
+entry=0x3b191f0, manip=0x7f3d583ea000 <FairLogger::endl(std::ostream&)>) at /home/uhlig/fairroot/source/v-16.06/fairtools/FairLogger.cxx:470
+#8  0x00007f3d58b6aeef in FairModule::SetGeometryFileName (this=0x7d15cf0, fname=...) at /home/uhlig/fairroot/source/v-16.06/base/sim/FairModule.cxx:238
+#9  0x00007f3d595443df in ?? ()
+#10 0x00007ffef6db6578 in ?? ()
+#11 0x00007ffef6db6590 in ?? ()
+#12 0x00007ffef6db6560 in ?? ()
+#13 0x00007f3d656ad1a8 in _r_debug ()
+#14 0x0000000000000000 in ?? ()

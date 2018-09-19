@@ -10,6 +10,7 @@
 #define R3BONLINESPECTRA
 #define N_PLANE_MAX 100
 #define N_PADDLE_MAX 100
+#define N_PADDLE_MAX_PTOF 8
 #define N_PSPX 4
 
 #include "FairTask.h"
@@ -88,13 +89,59 @@ class R3BOnlineSpectra : public FairTask
     /**
      * Methods for setting position offset and effective velocity of light
      */
-    inline void SetLosParameters(Double_t offsetX, Double_t offsetY, Double_t veffX, Double_t veffY)
+    inline void SetLosParamMCFD(Double_t offsetX1, Double_t offsetY1, Double_t veffX1, Double_t veffY1,
+                                 Double_t offsetX2, Double_t offsetY2, Double_t veffX2, Double_t veffY2)
     {
-        flosOffsetX = offsetX;
-        flosOffsetY = offsetY;
-        flosVeffX = veffX;
-        flosVeffY = veffY;       
-    }
+        flosOffsetX1 = offsetX1;
+        flosOffsetY1 = offsetY1;
+        flosVeffX1 = veffX1;
+        flosVeffY1 = veffY1;     
+        flosOffsetX2 = offsetX2;
+        flosOffsetY2 = offsetY2;
+        flosVeffX2 = veffX2;
+        flosVeffY2 = veffY2;
+  
+    }    
+    
+    inline void SetLosParamMCFDwc(Double_t offsetX1wc, Double_t offsetY1wc, Double_t veffX1wc, Double_t veffY1wc,
+                                 Double_t offsetX2wc, Double_t offsetY2wc, Double_t veffX2wc, Double_t veffY2wc)
+    {
+        flosOffsetX1wc = offsetX1wc;
+        flosOffsetY1wc = offsetY1wc;
+        flosVeffX1wc = veffX1wc;
+        flosVeffY1wc = veffY1wc;     
+        flosOffsetX2wc = offsetX2wc;
+        flosOffsetY2wc = offsetY2wc;
+        flosVeffX2wc = veffX2wc;
+        flosVeffY2wc = veffY2wc;
+    }    
+    
+    inline void SetLosParamToT(Double_t offsetX1Q, Double_t offsetY1Q, Double_t veffX1Q, Double_t veffY1Q,
+                                 Double_t offsetX2Q, Double_t offsetY2Q, Double_t veffX2Q, Double_t veffY2Q)
+    {
+        flosOffsetX1Q = offsetX1Q;
+        flosOffsetY1Q = offsetY1Q;
+        flosVeffX1Q = veffX1Q;
+        flosVeffY1Q = veffY1Q;     
+        flosOffsetX2Q = offsetX2Q;
+        flosOffsetY2Q = offsetY2Q;
+        flosVeffX2Q = veffX2Q;
+        flosVeffY2Q = veffY2Q;
+  
+    }    
+    
+    inline void SetLosParamTAMEX(Double_t offsetX1T, Double_t offsetY1T, Double_t veffX1T, Double_t veffY1T,
+                                 Double_t offsetX2T, Double_t offsetY2T, Double_t veffX2T, Double_t veffY2T)
+    {
+        flosOffsetX1T = offsetX1T;
+        flosOffsetY1T = offsetY1T;
+        flosVeffX1T = veffX1T;
+        flosVeffY1T = veffY1T;     
+        flosOffsetX2T = offsetX2T;
+        flosOffsetY2T = offsetY2T;
+        flosVeffX2T = veffX2T;
+        flosVeffY2T = veffY2T;  
+    }     
     
     /**
      * Methods for setting number of planes and paddles
@@ -113,7 +160,19 @@ class R3BOnlineSpectra : public FairTask
     TClonesArray* fCalItemsTofd;                   /**< Array with cal items. */
     TClonesArray* fMappedItemsPspx;                    /**< Array with mapped items. */
     TClonesArray* fCalItemsPspx;                    /**< Array with cal items. */
-    
+    TClonesArray* fMappedItemsFi0;                 /**< Array with mapped items. */
+    TClonesArray* fHitItemsFi0;                    /**< Array with cal items. */
+    TClonesArray* fMappedItemsFi1;                 /**< Array with mapped items. */
+    TClonesArray* fHitItemsFi1;                    /**< Array with cal items. */
+    TClonesArray* fMappedItemsFi4;                 /**< Array with mapped items. */
+    TClonesArray* fHitItemsFi4;                    /**< Array with cal items. */
+    TClonesArray* fMappedItemsFi5;                 /**< Array with mapped items. */
+    TClonesArray* fHitItemsFi5;                    /**< Array with cal items. */
+    TClonesArray* fMappedItemsFi6;                 /**< Array with mapped items. */
+    TClonesArray* fHitItemsFi6;                    /**< Array with cal items. */
+    TClonesArray* fCalItemsPtof;                   /**< Array with cal items. */
+    TClonesArray* fHitItemsPtof;                   /**< Array with hit items. */
+   
 	// check for trigger should be done globablly (somewhere else)
     R3BEventHeader* header;                     /**< Event header. */
     Int_t fTrigger;                             /**< Trigger value. */
@@ -121,27 +180,77 @@ class R3BOnlineSpectra : public FairTask
     UInt_t fNofPlanes;  
     UInt_t fPaddlesPerPlane; /**< Number of paddles per plane. */    
 
+    Int_t fNEvents;         /**< Event counter. */
+    Int_t fNEvents4;         /**< Event counter for cuts and calculation of efficiency for fiber 4 */
+    Int_t fNEvents5;         /**< Event counter for cuts and calculation of efficiency for fiber 5 */
+    Int_t fNEvents6;         /**< Event counter for cuts and calculation of efficiency for fiber 6 */
+    Int_t fNEvents1;         /**< Event counter. */
 
     UInt_t fNofDetectors;  /**< Number of detectors. */
     UInt_t fNofChannels;   /**< Number of channels per detector. */    
     UInt_t fNofModules;    /**< Total number of channels. */
-    Double_t flosVeffX;   
-    Double_t flosVeffY;
-    Double_t flosOffsetX;
-    Double_t flosOffsetY;
+    Double_t flosVeffX1;   
+    Double_t flosVeffY1;
+    Double_t flosOffsetX1;
+    Double_t flosOffsetY1;
+    Double_t flosVeffX2;   
+    Double_t flosVeffY2;
+    Double_t flosOffsetX2;
+    Double_t flosOffsetY2;
+    Double_t flosVeffX1wc;   
+    Double_t flosVeffY1wc;
+    Double_t flosOffsetX1wc;
+    Double_t flosOffsetY1wc;
+    Double_t flosVeffX2wc;   
+    Double_t flosVeffY2wc;
+    Double_t flosOffsetX2wc;
+    Double_t flosOffsetY2wc;
+    Double_t flosVeffX1Q;   
+    Double_t flosVeffY1Q;
+    Double_t flosOffsetX1Q;
+    Double_t flosOffsetY1Q;
+    Double_t flosVeffX2Q;   
+    Double_t flosVeffY2Q;
+    Double_t flosOffsetX2Q;
+    Double_t flosOffsetY2Q;
+    Double_t flosVeffX1T;   
+    Double_t flosVeffY1T;
+    Double_t flosOffsetX1T;
+    Double_t flosOffsetY1T;
+    Double_t flosVeffX2T;   
+    Double_t flosVeffY2T;
+    Double_t flosOffsetX2T;
+    Double_t flosOffsetY2T; 
 
     TH1F *fh_los_channels;    
-    TH1F *fh_los_tres;
+    TH1F *fh_los_tres_MCFD;
+    TH1F *fh_los_tres_TAMEX;
+    TH1F *fh_los_tot;
     TH2F *fh_los_pos;
+    TH1F* fh_los_t7;
+    TH1F* fh_los_t5;
+    TH1F* fh_los_t3;
+    TH1F* fh_los_t1;
+    TH1F* fh_los_t2;
+    TH1F* fh_los_t4;
+    TH1F* fh_los_t6;
+    TH1F* fh_los_t8;   
+    TH2F* fh_los_test;
 
     TH1F *fh_tofd_channels[N_PLANE_MAX];    
 
-    TH1F* fhTotPm1[N_PLANE_MAX][N_PADDLE_MAX]; 
-    TH1F* fhTotPm2[N_PLANE_MAX][N_PADDLE_MAX]; 
-
-    TH1F *fh_cherenkovLos1;    
-    TH1F *fh_cherenkovLos2;    
-    TH1F *fh_cherenkovLos3;    
+    TH1F* fh_tofd_TotPm1[N_PLANE_MAX][N_PADDLE_MAX]; 
+    TH1F* fh_tofd_TotPm2[N_PLANE_MAX][N_PADDLE_MAX]; 
+ 
+ 
+    TH1F *fh_ptof_channels; 
+    TH1F *fh_ptof_channels_cut; 
+    TH1F *fh_ptof_test1;   
+    TH1F *fh_ptof_test2;   
+    TH1F *fh_ptof_ToF;   
+    TH1F* fh_ptof_TotPm1[2*N_PADDLE_MAX_PTOF+1]; 
+    TH1F* fh_ptof_TotPm2[2*N_PADDLE_MAX_PTOF+1]; 
+    TH2F* fh_ptof_qbar_q_vs_pos;
 
     
     TH1F *fh_pspx_strips_psp[N_PSPX];
@@ -157,7 +266,82 @@ class R3BOnlineSpectra : public FairTask
     TH2F *fh_pspx_cor_y_strips;
     TH2F *fh_pspx_cor_x_energy;
     TH2F *fh_pspx_cor_y_energy;
+
+    TH2F *fh_Fi0_channels;
+    TH2F *fh_Fi0_ToT_m;
+
+    TH1F *fh_Fi1_channels;
+    TH1F *fh_Fi1_fibers;
+    TH2F *fh_Fi1_multihit;
+    TH2F *fh_Fi1_ToT;
+    TH2F *fh_Fi1_FibervsTime;
+    TH2F *fh_Fi1_multihit_s;
+    TH2F *fh_Fi1_ToT_s;
+    TH2F *fh_Fi1_ToTvsTime_s;
+    TH1F *fh_Fi1_ToF;
+    TH1F *fh_Fi1_xpos;
+    TH1F *fh_Fi1_ypos;
+    TH1F* fh_Fi1_test;
+    Double_t max_value1[512];
+
+    TH2F *fh_Fi1vsFi4;
+    TH2F *fh_Fi5vsFi4;
     
+    TH1F *fh_Fi4_channels;
+    TH1F *fh_Fi4_fibers;
+    TH1F *fh_Fi4_eff;
+    TH1F *fh_Fi4_mult;
+    TH2F *fh_Fi4_multihit;
+    TH2F *fh_Fi4_ToT;				// ToT of sqrt(tot_mapmt*spmt)
+	TH2F *fh_Fi4_ToT_cut;				// ToT of sqrt(tot_mapmt*spmt)
+	TH2F *fh_Fi4_ToT_m;				// ToT multi-anode PMT
+    TH2F *fh_Fi4_FibervsTime;
+    TH2F *fh_Fi4_multihit_s;
+    TH2F *fh_Fi4_ToT_s;				// ToT of single PMT
+    TH2F *fh_Fi4_ToTvsTime_s;
+    TH1F *fh_Fi4_ToF;
+    TH1F *fh_Fi4_xpos;
+    TH1F *fh_Fi4_ypos;
+    TH1F *fh_Fi4_test;
+    TH2F *fh_Fi4_effvsPos;
+    Double_t max_value4[2055];
+   
+    TH1F *fh_Fi5_channels;
+    TH1F *fh_Fi5_fibers;
+    TH1F *fh_Fi5_eff;
+    TH1F *fh_Fi5_mult;
+    TH2F *fh_Fi5_multihit;
+    TH2F *fh_Fi5_ToT;
+    TH2F *fh_Fi5_ToT_m;
+    TH2F *fh_Fi5_FibervsTime;
+    TH2F *fh_Fi5_multihit_s;
+    TH2F *fh_Fi5_ToT_s;
+    TH2F *fh_Fi5_ToTvsTime_s[8];
+    TH2F *fh_Fi5_ToTvsTime_m;
+    TH1F *fh_Fi5_ToF;
+    TH1F *fh_Fi5_xpos;
+    TH1F *fh_Fi5_ypos;
+    Double_t max_value5[1040];
+   
+// Fiber 6 has two MAPMTs and 4 single PMTs
+    TH1F *fh_Fi6_channels;
+    TH1F *fh_Fi6_fibers;
+    TH1F *fh_Fi6_eff;
+    TH1F *fh_Fi6_mult;
+    TH2F *fh_Fi6_multihit;
+    TH2F *fh_Fi6_ToT;
+    TH2F *fh_Fi6_ToT_m;
+    TH2F *fh_Fi6_FibervsTime;
+    TH2F *fh_Fi6_multihit_s;
+    TH2F *fh_Fi6_ToT_s;
+    TH2F *fh_Fi6_ToTvsTime_s[4];
+    TH2F *fh_Fi6_ToTvsTime_m;
+    TH1F *fh_Fi6_ToF;
+    TH1F *fh_Fi6_xpos;
+    TH1F *fh_Fi6_ypos;
+    Double_t max_value6[1025];
+ 
+  
   public:
     ClassDef(R3BOnlineSpectra, 1)
 };

@@ -9,7 +9,7 @@
 #include "FairVolume.h"
 #include "R3BGeoGfi.h"
 #include "R3BGeoGfiPar.h"
-#include "R3BGfiPoint.h"
+#include "R3BFibPoint.h"
 #include "R3BMCStack.h"
 #include "TClonesArray.h"
 #include "TGeoMCGeometry.h"
@@ -35,7 +35,7 @@ R3BGfi::R3BGfi(const TString& geoFile)
     kGeoSaved = kFALSE;
     flGeoPar = new TList();
     flGeoPar->SetName(GetName());
-    fVerboseLevel = 1;
+    fVerboseLevel = 2;
 }
 
 R3BGfi::R3BGfi(const TString& geoFile,
@@ -57,7 +57,7 @@ R3BGfi::R3BGfi(const TString& geoFile,
     SetGeometryFileName(geoFile);
     fRot1->RotateY(rot_y1);
     fRot2->RotateY(rot_y2);
-    fGfiCollection = new TClonesArray("R3BGfiPoint");
+    fGfiCollection = new TClonesArray("R3BFibPoint");
     fPosIndex = 0;
     kGeoSaved = kFALSE;
     flGeoPar = new TList();
@@ -294,20 +294,20 @@ void R3BGfi::CopyClones(TClonesArray* cl1, TClonesArray* cl2, Int_t offset)
     Int_t nEntries = cl1->GetEntriesFast();
     LOG(INFO) << "R3BGfi: " << nEntries << " entries to add" << FairLogger::endl;
     TClonesArray& clref = *cl2;
-    R3BGfiPoint* oldpoint = NULL;
+    R3BFibPoint* oldpoint = NULL;
     for (Int_t i = 0; i < nEntries; i++)
     {
-        oldpoint = (R3BGfiPoint*)cl1->At(i);
+        oldpoint = (R3BFibPoint*)cl1->At(i);
         Int_t index = oldpoint->GetTrackID() + offset;
         oldpoint->SetTrackID(index);
-        new (clref[fPosIndex]) R3BGfiPoint(*oldpoint);
+        new (clref[fPosIndex]) R3BFibPoint(*oldpoint);
         fPosIndex++;
     }
     LOG(INFO) << "R3BGfi: " << cl2->GetEntriesFast() << " merged entries" << FairLogger::endl;
 }
 
 // -----   Private method AddHit   --------------------------------------------
-R3BGfiPoint* R3BGfi::AddHit(Int_t trackID,
+R3BFibPoint* R3BGfi::AddHit(Int_t trackID,
                             Int_t detID,
                             Int_t plane,
                             TVector3 posIn,
@@ -324,7 +324,7 @@ R3BGfiPoint* R3BGfi::AddHit(Int_t trackID,
         LOG(INFO) << "R3BGfi: Adding Point at (" << posIn.X() << ", " << posIn.Y() << ", " << posIn.Z()
                   << ") cm,  detector " << detID << ", track " << trackID << ", energy loss " << eLoss * 1e06 << " keV"
                   << FairLogger::endl;
-    return new (clref[size]) R3BGfiPoint(trackID, detID, plane, posIn, posOut, momIn, momOut, time, length, eLoss);
+    return new (clref[size]) R3BFibPoint(trackID, detID, plane, posIn, posOut, momIn, momOut, time, length, eLoss);
 }
 
 // -----   Public method ConstructGeometry   ----------------------------------

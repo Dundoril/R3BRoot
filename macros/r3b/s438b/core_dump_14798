@@ -1,0 +1,55 @@
+#0  0x00007fa7c5d71b3c in __libc_waitpid (pid=14833, stat_loc=stat_loc
+entry=0x7ffec1545570, options=options
+entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007fa7c5cf912b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00007fa7c6d6dcf4 in Exec (shellcmd=<optimized out>, this=<optimized out>) at /home/uhlig/fairsoft/source/may16_root6/tools/root/core/unix/src/TUnixSystem.cxx:2073
+#3  TUnixSystem::StackTrace (this=0xe3a8e0) at /home/uhlig/fairsoft/source/may16_root6/tools/root/core/unix/src/TUnixSystem.cxx:2301
+#4  0x00007fa7b9d9deff in FairLogger::LogFatalMessage (this=<optimized out>, strm=...) at /home/uhlig/fairroot/source/v-16.06/fairtools/FairLogger.cxx:576
+#5  0x00007fa7b9d9e054 in FairLogger::endl (strm=...) at /home/uhlig/fairroot/source/v-16.06/fairtools/FairLogger.cxx:503
+#6  0x00007fa7b9d9b6ce in operator<< (__pf=0x7fa7b9d9e000 <FairLogger::endl(std::ostream&)>, this=<optimized out>) at /usr/include/c++/4.9/ostream:113
+#7  FairLogger::operator<< (this=0x284f170, manip=0x7fa7b9d9e000 <FairLogger::endl(std::ostream&)>) at /home/uhlig/fairroot/source/v-16.06/fairtools/FairLogger.cxx:470
+#8  0x00007fa7b9d9c33f in FairLogger::Log (this=0x284f170, level=level
+entry=FATAL, file=file
+entry=0x7fa7baa34d78 "/u/mheil/R3BRoot/r3bsource/R3BUcesbSource.cxx", line=line
+entry=0x7fa7baa34c1a "87", func=func
+entry=0x7fa7baa34e40 <R3BUcesbSource::InitUnpackers()::__FUNCTION__> "InitUnpackers", format=format
+entry=0x7fa7baa34bd5 "ucesb: %s", arglist=0x7ffec15477d8) at /home/uhlig/fairroot/source/v-16.06/fairtools/FairLogger.cxx:193
+#9  0x00007fa7b9d9c54b in FairLogger::Fatal (this=<optimized out>, file=file
+entry=0x7fa7baa34d78 "/u/mheil/R3BRoot/r3bsource/R3BUcesbSource.cxx", line=line
+entry=0x7fa7baa34c1a "87", func=func
+entry=0x7fa7baa34e40 <R3BUcesbSource::InitUnpackers()::__FUNCTION__> "InitUnpackers", format=format
+entry=0x7fa7baa34bd5 "ucesb: %s") at /home/uhlig/fairroot/source/v-16.06/fairtools/FairLogger.cxx:72
+#10 0x00007fa7baa223c6 in R3BUcesbSource::InitUnpackers (this=0x5e75a70) at /u/mheil/R3BRoot/r3bsource/R3BUcesbSource.cxx:88
+#11 0x00007fa7ba04481e in FairRunOnline::Init (this=0x5f640a0) at /home/uhlig/fairroot/source/v-16.06/base/steer/FairRunOnline.cxx:237
+#12 0x00007fa7c748250f in ?? ()
+#13 0x00007ffec15479c0 in ?? ()
+#14 0x00007ffec15479d8 in ?? ()
+#15 0x00007ffec1547ab8 in ?? ()
+#16 0x0000000000000023 in ?? ()
+#17 0x00000000011d9a38 in ?? ()
+#18 0x00000000011d9a38 in ?? ()
+#19 0x00000000011d99c0 in ?? ()
+#20 0x0000000005e13d90 in ?? ()
+#21 0x0000000002c44c50 in ?? ()
+#22 0x0000000005e5c190 in ?? ()
+#23 0x40a3880000000000 in ?? ()
+#24 0x0000000005e5beb0 in ?? ()
+#25 0x0000000005f640a0 in ?? ()
+#26 0x0000000005e75a70 in ?? ()
+#27 0x00000000011d99c0 in ?? ()
+#28 0x00000000011d99c0 in ?? ()
+#29 0x0000000005f05f00 in ?? ()
+#30 0x00000000018bd5b0 in ?? ()
+#31 0x00000000011d9a70 in ?? ()
+#32 0x00007fa7c45ecc39 in get (this=<optimized out>) at /home/uhlig/fairsoft/source/may16_root6/tools/root/interpreter/llvm/src/tools/clang/include/clang/AST/DeclCXX.h:281
+#33 getDefinition (this=<optimized out>) at /home/uhlig/fairsoft/source/may16_root6/tools/root/interpreter/llvm/src/tools/clang/include/clang/AST/DeclCXX.h:676
+#34 clang::TagDecl::getDefinition (this=0x39f1, this
+entry=0x11d99c0) at /home/uhlig/fairsoft/source/may16_root6/tools/root/interpreter/llvm/src/tools/clang/lib/AST/Decl.cpp:3401
+#35 0x00007fa7c3c1a8de in getDefinition (this=0x11d99c0) at /home/uhlig/fairsoft/source/may16_root6/tools/root/interpreter/llvm/src/tools/clang/include/clang/AST/Decl.h:3241
+#36 clang::CodeGen::CodeGenTypes::ConvertRecordDeclType (this=0x5fa6aa0, RD=0x11d99c0) at /home/uhlig/fairsoft/source/may16_root6/tools/root/interpreter/llvm/src/tools/clang/lib/CodeGen/CodeGenTypes.cpp:649
+#37 0x0000000005f05f00 in ?? ()
+#38 0x0000000000e99790 in ?? ()
+#39 0x0000000005f91268 in ?? ()
+#40 0x00000000005dfddf in ?? ()
+#41 0x0000000000000400 in ?? ()
+#42 0x0000000000000000 in ?? ()

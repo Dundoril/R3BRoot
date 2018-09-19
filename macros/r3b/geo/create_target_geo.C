@@ -199,7 +199,7 @@ void ConstructGeometry1(TGeoMedium *lead)
   // Shape: LeadTarget type: TGeoBBox
   dx = 1.500000;	//s318
   dy = 1.500000;	//s318
-  dz = 0.008766520;     //s318: 199mg/cm2 = 0.17533040mm
+  dz = 0.2 / 11.3   ;// 0.1 g/cm^2 / 11.3 g/cm^3       //0.008766520;     //s318: 199mg/cm2 = 0.17533040mm
   TGeoShape *pLeadTarget = new TGeoBBox("LeadTarget", dx,dy,dz);
   TGeoVolume* pleadTarget_log
     = new TGeoVolume("leadTarget_log",pLeadTarget, lead);
@@ -368,7 +368,7 @@ void ConstructGeometry4(TGeoMedium *pMed2, TGeoMedium *pMed15,
   dx = 0.000000;
   dy = 0.000000;
   //dz = 3.025000;  // tanslation along z
-  dz=3.0; // this means the origine (0,0,0) starts at the edge of the Mylar entrance foil and the H2 liq.
+  dz=0.3; // this means the origine (0,0,0) starts at the edge of the Mylar entrance foil and the H2 liq.
   // Rotation: 
   thx = 90.000000;    phx = 0.000000;
   thy = 90.000000;    phy = 90.000000;

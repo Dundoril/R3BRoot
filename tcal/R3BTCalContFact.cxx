@@ -48,7 +48,16 @@ void R3BTCalContFact::setAllContainers()
     addContainer("LosTCalPar", "LOS TCAL Calibration Parameters");
     addContainer("TofdTCalPar", "TOFD TCAL Calibration Parameters");
     addContainer("StrawtubesTCalPar", "Strawtubes TCAL Calibration Parameters");
-    addContainer("PtofTCalPar", "PROF TCAL Calibration Parameters");
+#define ADD_FIBER(Name, NAME) do {\
+    addContainer(#Name"MAPMTTCalPar", #NAME" MAPMT TCAL Calibration Parameters");\
+    addContainer(#Name"SPMTTCalPar", #NAME" SPMT TCAL Calibration Parameters");\
+} while (0)
+    ADD_FIBER(Fi0, FI0);
+    ADD_FIBER(Fi1, FI1);
+    ADD_FIBER(Fi4, FI4);
+    ADD_FIBER(Fi5, FI5);
+    ADD_FIBER(Fi6, FI6);
+    addContainer("PtofTCalPar", "PTOF TCAL Calibration Parameters");
 }
 
 FairParSet* R3BTCalContFact::createContainer(FairContainer* c)
@@ -66,6 +75,15 @@ FairParSet* R3BTCalContFact::createContainer(FairContainer* c)
     containerNames.push_back("LosTCalPar");
     containerNames.push_back("TofdTCalPar");
     containerNames.push_back("StrawtubesTCalPar");
+#define PUSH_FIBER(Name) do {\
+    containerNames.push_back(#Name"MAPMTTCalPar");\
+    containerNames.push_back(#Name"SPMTTCalPar");\
+} while (0)
+    PUSH_FIBER(Fi0);
+    PUSH_FIBER(Fi1);
+    PUSH_FIBER(Fi4);
+    PUSH_FIBER(Fi5);
+    PUSH_FIBER(Fi6);
     containerNames.push_back("PtofTCalPar");
 
     bool found = false;

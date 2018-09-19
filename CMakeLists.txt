@@ -48,6 +48,8 @@ Else (FAIRBASE)
 
 EndIf (FAIRBASE)
 
+#added a variable to point to r3broot path in the system
+SET( R3BROOTPATH ${CMAKE_INSTALL_PREFIX} )
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/
 # is checked
@@ -79,7 +81,7 @@ include(CheckCXX11Features)
 # Load some basic macros which are needed later on
 include(FairMacros)
 include(R3BMacros)
-include(WriteConfigFile)
+include(WriteConfigFile_r3b)
 include(Dart)
 include(CheckCompiler)
 include(WriteEnvCache)
@@ -351,9 +353,18 @@ add_subdirectory (califa)
 add_subdirectory (xball)
 add_subdirectory (dch)
 add_subdirectory (gfi)
-add_subdirectory (fi4)
-add_subdirectory (fi6)
-add_subdirectory (fi5)
+add_subdirectory (fiber)
+add_subdirectory (fi0)
+add_subdirectory (fi1)
+add_subdirectory (fi3a)
+add_subdirectory (fi3b)
+#add_subdirectory (fi4)
+#add_subdirectory (fi5)
+#add_subdirectory (fi6)
+add_subdirectory (fi7)
+add_subdirectory (fi8)
+add_subdirectory (fi10)
+add_subdirectory (fi11)
 add_subdirectory (sfi)
 add_subdirectory (land)
 add_subdirectory (neuland)
@@ -387,6 +398,13 @@ IF(EXISTS "${R3BROOT_SOURCE_DIR}/sofia/")
   add_definitions(-DSOFIA)
   add_subdirectory(sofia)
 ENDIF(EXISTS "${R3BROOT_SOURCE_DIR}/sofia/")
+
+IF(EXISTS "${R3BROOT_SOURCE_DIR}/glad-tpc/")
+  Message("Building GLAD-TPC detector...")
+  Set(WITH_GTPC true)
+  add_definitions(-DGTPC)
+  add_subdirectory(glad-tpc)
+ENDIF(EXISTS "${R3BROOT_SOURCE_DIR}/glad-tpc/")
 
 ENDIF (NOT MODULE)
 

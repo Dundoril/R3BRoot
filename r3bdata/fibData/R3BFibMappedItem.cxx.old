@@ -1,0 +1,28 @@
+
+#include "R3BFibMappedItem.h"
+
+
+R3BFibMappedItem::R3BFibMappedItem()
+    : fFiber(0)
+    , fCourseLeading(0)
+    , fFineLeading(0)
+    , fCourseTrailing(0)    
+    , fFineTrailing(0)
+{
+}
+
+R3BFibMappedItem::R3BFibMappedItem(	
+					UInt_t fiber,
+					UInt_t cL,
+					UInt_t fL,
+					UInt_t cT,
+					UInt_t fT)
+: fFiber(fiber)
+  , fCourseLeading(cL)
+  , fFineLeading(fL)
+  , fCourseTrailing(cT)
+  , fFineTrailing(fT)
+{
+}
+
+ClassImp(R3BFibMappedItem)

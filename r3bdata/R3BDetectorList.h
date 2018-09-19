@@ -27,9 +27,15 @@ enum DetectorId
     kLUMON,
     kNEULAND,
     kACTAR,
-    kFI4,
-    kFI6,
-    kFI5,
+    kFI3a,
+    kFI3b,
+    // kFI4,
+    // kFI6,
+    kFI7,
+    kFI8,
+    // kFI5,
+    kFI10,
+    kFI11,
     kSFI,
 #ifdef SOFIA
     kSOFSCI,
@@ -39,6 +45,9 @@ enum DetectorId
     kSOFTWIM,
     kSOFMWPC2,
     kSOFTofWall,
+#endif
+#ifdef GTPC
+    kGTPC,
 #endif
     kLAST
 };
@@ -63,9 +72,15 @@ enum fDetectorType
     kStartrackPoint,
     kLuMonPoint,
     kNeulandPoint,
-    kFI4Point,
-    kFI6Point,
-    kFI5Point,
+    kFI3aPoint,
+    kFI3bPoint,
+    // kFI4Point,
+    // kFI6Point,
+    kFI7Point,
+    kFI8Point,
+    // kFI5Point,
+    kFI10Point,
+    kFI11Point,
     kSFIPoint
 #ifdef SOFIA
     ,kSOFSCIPoint
@@ -75,6 +90,9 @@ enum fDetectorType
     ,kSOFTWIMPoint
     ,kSOFMWPC2Point
     ,kSOFTofWallPoint
+#endif
+#ifdef GTPC
+    ,kGTPCPoint
 #endif
 };
 
